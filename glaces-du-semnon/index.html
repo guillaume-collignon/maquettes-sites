@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Les Glaces du Semnon — proposition</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap');
+:root{
+  --bg:#FDF6F8; --ink:#1A1216; --muted:#6B4A55; --acc:#C45A7A; --acc2:#8EC5B0;
+  --paper:#fffef9; --line:color-mix(in srgb,var(--ink) 12%,transparent);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Outfit,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.badge{position:fixed;top:14px;right:14px;z-index:80;background:#111;color:#fff;font-size:10px;font-weight:600;letter-spacing:.08em;padding:8px 12px;border-radius:2px;opacity:.88}
+.replace{position:absolute;bottom:10px;right:10px;z-index:5;font-size:9px;letter-spacing:.06em;text-transform:uppercase;background:rgba(0,0,0,.45);color:#fff;padding:4px 8px;border-radius:2px;opacity:.7;pointer-events:none}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+.num{font-family:Outfit,sans-serif;font-weight:300;letter-spacing:.12em;font-size:.75rem;color:var(--acc)}
+.fine{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:.55rem;padding:.95rem 1.45rem;font-weight:600;font-size:.92rem;border:1.5px solid var(--ink);background:var(--ink);color:var(--bg);transition:transform .2s ease,background .2s,color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--bg)}
+.btn-acc{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn-acc:hover{filter:brightness(1.08)}
+.site-nav{position:absolute;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:1.4rem clamp(1.2rem,4vw,3.5rem);mix-blend-mode:normal}
+.site-nav .brand{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.35rem;font-weight:600;letter-spacing:-.02em}
+.site-nav .links{display:flex;gap:1.75rem;font-size:.82rem;font-weight:500;letter-spacing:.04em}
+.site-nav .links a{opacity:.75;transition:opacity .2s}
+.site-nav .links a:hover{opacity:1}
+.site-nav.light .brand,.site-nav.light .links a{color:#fff}
+.site-nav.dark .brand,.site-nav.dark .links a{color:var(--ink)}
+@media(max-width:760px){.site-nav .links{display:none}}
+.fade-up{animation:fadeUp .9s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.img-hover{overflow:hidden}
+.img-hover img{transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.img-hover:hover img{transform:scale(1.045)}
+footer{padding:2.5rem clamp(1.2rem,4vw,3.5rem);border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+.mobile-bar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:.75rem .85rem calc(.75rem + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-top:1px solid var(--line);gap:.5rem}
+.mobile-bar .btn{flex:1;justify-content:center;min-height:48px;padding:.7rem}
+@media(max-width:760px){.mobile-bar{display:flex}footer{padding-bottom:6.5rem}}
+
+/* Atelier brut — contrasté, hors-grille, matières */
+body{background:var(--bg)}
+.nav-a{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;padding:1.1rem clamp(1rem,3vw,2.5rem);background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-a .brand{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.25rem}
+.hero-a{padding:6.5rem clamp(1rem,3vw,2.5rem) 2rem;display:grid;grid-template-columns:1.05fr .95fr;gap:1.25rem;align-items:end}
+.hero-a h1{font-family:"Cormorant Garamond",serif;font-size:clamp(3.6rem,9vw,7.5rem);line-height:.85;letter-spacing:-.05em;font-weight:700;text-transform:uppercase}
+.hero-a h1 span{display:block;font-style:italic;font-weight:500;text-transform:none;color:var(--acc);font-size:.72em;letter-spacing:-.03em;margin-top:.15em}
+.hero-a .lede{margin-top:1.4rem;max-width:24rem;color:var(--muted);font-weight:300;font-size:1.02rem}
+.hero-a .cta-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+.hero-a .stack{position:relative;min-height:520px}
+.hero-a .stack .p1{position:absolute;inset:0 12% 18% 0;overflow:hidden}
+.hero-a .stack .p2{position:absolute;right:0;bottom:0;width:55%;aspect-ratio:1;overflow:hidden;outline:10px solid var(--bg);z-index:2;box-shadow:0 30px 60px rgba(0,0,0,.2)}
+.hero-a .tag{position:absolute;left:4%;top:8%;z-index:3;background:var(--acc);color:#fff;padding:.55rem .85rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+@media(max-width:900px){
+  .hero-a{grid-template-columns:1fr;padding-top:5.5rem}
+  .hero-a .stack{min-height:380px;order:-1}
+  .hero-a h1{font-size:clamp(3rem,14vw,4.5rem)}
+}
+.strip{display:grid;grid-template-columns:repeat(12,1fr);gap:.75rem;padding:1rem clamp(1rem,3vw,2.5rem) 3rem}
+.strip .s{position:relative;overflow:hidden;background:var(--paper);grid-column:span 4;min-height:260px}
+.strip .s:nth-child(1){grid-column:span 5;min-height:340px}
+.strip .s:nth-child(2){grid-column:span 3;margin-top:3rem}
+.strip .s:nth-child(3){grid-column:span 4;margin-top:1.2rem}
+.strip .s .ph{height:58%;position:relative}
+.strip .s .body{padding:1.1rem 1.15rem}
+.strip .s h3{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:600}
+.strip .s p{color:var(--muted);font-size:.9rem;margin-top:.3rem}
+@media(max-width:900px){.strip{grid-template-columns:1fr}.strip .s,.strip .s:nth-child(1),.strip .s:nth-child(2),.strip .s:nth-child(3){grid-column:span 1;margin-top:0;min-height:0}}
+.raw-story{margin:2rem clamp(1rem,3vw,2.5rem);display:grid;grid-template-columns:1fr 1fr;background:var(--ink);color:var(--bg);min-height:380px}
+.raw-story .txt{padding:clamp(2rem,4vw,3rem);display:flex;flex-direction:column;justify-content:center}
+.raw-story h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;margin-bottom:1rem}
+.raw-story p{opacity:.82;font-weight:300;max-width:28rem}
+.raw-story .ph{position:relative;min-height:240px}
+@media(max-width:800px){.raw-story{grid-template-columns:1fr}}
+.hours{padding:3rem clamp(1rem,3vw,2.5rem) 4rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.hours h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem}
+.hours .list{display:grid;gap:0}
+.hours .row{display:grid;grid-template-columns:90px 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line)}
+.hours .row strong{font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--acc)}
+.contact-a{margin:0 clamp(1rem,3vw,2.5rem) 3rem;padding:2.2rem;border:2px solid var(--ink);display:grid;grid-template-columns:1.2fr .8fr;gap:1.5rem;align-items:center}
+.contact-a h2{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3.5vw,2.6rem);line-height:1.05}
+.contact-a .meta{display:grid;gap:.5rem}
+.contact-a .meta a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:800px){.hours,.contact-a{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="badge">MOCKUP — proposition</div>
+<nav class="nav-a">
+  <div class="brand">Les Glaces du Semnon</div>
+  <div style="display:flex;gap:1.2rem;font-size:.82rem;font-weight:500">
+    <a href="#produits">Produits</a><a href="#visite">Venir</a>
+  </div>
+</nav>
+<header class="hero-a">
+  <div class="fade-up">
+    <p class="fine" style="color:var(--acc);margin-bottom:.8rem">Glaces bio · Eancé</p>
+    <h1>Glaces<span>du Semnon</span></h1>
+    <p class="lede">Glaces bio artisanales aux Masses (~20 parfums) — marque La Mémère en GMS. Une vitrine pour la ferme le vendredi, au-delà de l’absence de site.</p>
+    <div class="cta-row">
+      <a class="btn btn-acc" href="tel:+33616390228">Appeler</a>
+      <a class="btn btn-ghost" href="mailto:glacesdusemnon@gmail.com">Écrire</a>
+    </div>
+  </div>
+  <div class="stack">
+    <div class="tag">Ven. 16h30–19h</div>
+    <div class="p1"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Glace artisanale" loading="lazy"><span class="replace">à remplacer</span></div></div>
+    <div class="p2"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Fruits / parfums" loading="lazy"><span class="replace">à remplacer</span></div></div>
+  </div>
+</header>
+<section class="strip" id="produits"><article class="s">
+  <div class="ph"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="~20 parfums" loading="lazy"><span class="replace">à remplacer</span></div></div>
+  <div class="body"><h3>~20 parfums</h3><p>Glaces bio artisanales — liste [À CONFIRMER].</p></div>
+</article><article class="s">
+  <div class="ph"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="La Mémère" loading="lazy"><span class="replace">à remplacer</span></div></div>
+  <div class="body"><h3>La Mémère</h3><p>Marque diffusée en GMS — [À CONFIRMER].</p></div>
+</article><article class="s">
+  <div class="ph"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Vendredi" loading="lazy"><span class="replace">à remplacer</span></div></div>
+  <div class="body"><h3>Vendredi</h3><p>16h30–19h aux Masses, Eancé.</p></div>
+</article></section>
+<section class="raw-story">
+  <div class="txt">
+    <p class="fine" style="opacity:.5;margin-bottom:.8rem">Savoir-faire</p>
+    <h2>Une marque, une ferme</h2>
+    <p>Parfums, horaires de vente et contact — lisibles sur téléphone.</p>
+    <p style="margin-top:1rem;font-size:.85rem;opacity:.55">Pas de site propre (vérifié 2026-09-18). Contenu propositionnel — [À CONFIRMER].</p>
+  </div>
+  <div class="ph"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Dégustation" loading="lazy"><span class="replace">à remplacer</span></div></div>
+</section>
+<section class="hours" id="visite">
+  <div>
+    <p class="fine" style="color:var(--acc);margin-bottom:.6rem">Où & quand</p>
+    <h2>Venir aux Masses</h2>
+    <p style="color:var(--muted);max-width:28rem">Vendredi 16h30–19h — Les Masses, 35640 Eancé.</p>
+  </div>
+  <div class="list"><div class="row"><strong>Ven.</strong><div><b>Les Masses</b><div style="color:var(--muted);font-size:.92rem;margin-top:.15rem">16h30–19h — vente à la ferme</div></div></div><div class="row"><strong>GMS</strong><div><b>La Mémère</b><div style="color:var(--muted);font-size:.92rem;margin-top:.15rem">Points de vente [À CONFIRMER]</div></div></div></div>
+</section>
+<section class="contact-a">
+  <div>
+    <h2>Venir aux Masses</h2>
+    <p style="color:var(--muted);margin-top:.5rem">Les Masses, 35640 Eancé</p>
+  </div>
+  <div class="meta">
+    <div><a href="tel:+33616390228">06 16 39 02 28</a></div>
+    <div><a href="mailto:glacesdusemnon@gmail.com">glacesdusemnon@gmail.com</a></div>
+    <div style="display:flex;gap:.5rem;margin-top:.6rem;flex-wrap:wrap">
+      <a class="btn btn-acc" href="tel:+33616390228">Appeler</a>
+      <a class="btn btn-ghost" href="mailto:glacesdusemnon@gmail.com">Écrire</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <span>Les Glaces du Semnon · Eancé</span>
+  <span>Maquette propositionnelle — DA Atelier brut · non officielle</span>
+</footer>
+<nav class="mobile-bar" aria-label="Actions">
+  <a class="btn btn-acc" href="tel:+33616390228">Appeler</a>
+  <a class="btn btn-ghost" href="mailto:glacesdusemnon@gmail.com">Écrire</a>
+</nav>
+</body></html>
