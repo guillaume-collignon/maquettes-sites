@@ -1,8 +1,13 @@
-<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Oh La Vache — proposition</title><style>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oh La Vache — proposition</title>
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap');
 :root{
---bg:#F7F0E8; --ink:#1A100C; --muted:#6B4A3A; --acc:#8B2E1F; --acc2:#C4A070;
---paper:#fffef9; --line:color-mix(in srgb,var(--ink) 12%,transparent);
+  --bg:#F7F0E8; --ink:#1A100C; --muted:#6B4A3A; --acc:#8B2E1F; --acc2:#C4A070;
+  --paper:#fffef9; --line:color-mix(in srgb,var(--ink) 12%,transparent);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -37,6 +42,8 @@ footer{padding:2.5rem clamp(1.2rem,4vw,3.5rem);border-top:1px solid var(--line);
 .mobile-bar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:.75rem .85rem calc(.75rem + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-top:1px solid var(--line);gap:.5rem}
 .mobile-bar .btn{flex:1;justify-content:center;min-height:48px;padding:.7rem}
 @media(max-width:760px){.mobile-bar{display:flex}footer{padding-bottom:6.5rem}}
+
+/* Maison gastronomique — plein écran, typo XXL, chevauchements */
 .hero-m{position:relative;min-height:100vh;min-height:100dvh;display:grid;grid-template-columns:1.15fr .85fr}
 .hero-m .visual{position:relative;min-height:70vh}
 .hero-m .visual img{position:absolute;inset:0}
@@ -48,7 +55,11 @@ footer{padding:2.5rem clamp(1.2rem,4vw,3.5rem);border-top:1px solid var(--line);
 .hero-m .float-badge{position:absolute;left:8%;bottom:12%;z-index:6;background:var(--paper);padding:1rem 1.2rem;box-shadow:0 20px 50px rgba(0,0,0,.18);max-width:200px;transform:rotate(-2deg)}
 .hero-m .float-badge strong{display:block;font-family:"Cormorant Garamond",serif;font-size:1.35rem;line-height:1.1}
 .hero-m .float-badge span{font-size:.78rem;color:var(--muted)}
-@media(max-width:900px){.hero-m{grid-template-columns:1fr;min-height:auto}.hero-m .visual{min-height:58vh;order:-1}.hero-m .float-badge{left:auto;right:5%;bottom:auto;top:72%}}
+@media(max-width:900px){
+  .hero-m{grid-template-columns:1fr;min-height:auto}
+  .hero-m .visual{min-height:58vh;order:-1}
+  .hero-m .float-badge{left:auto;right:5%;bottom:auto;top:72%}
+}
 .sec{padding:clamp(3.5rem,8vw,7rem) clamp(1.2rem,4vw,3.5rem)}
 .sec-label{display:flex;align-items:baseline;gap:1rem;margin-bottom:2rem}
 .sec-label h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:600;letter-spacing:-.03em}
@@ -79,4 +90,89 @@ footer{padding:2.5rem clamp(1.2rem,4vw,3.5rem);border-top:1px solid var(--line);
 .visit .meta{display:grid;gap:.65rem;font-size:.98rem}
 .visit .meta a{text-decoration:underline;text-underline-offset:3px}
 @media(max-width:800px){.visit-inner{grid-template-columns:1fr}}
-</style></head><body><div class="badge">MOCKUP — proposition</div><nav class="site-nav light"><div class="brand">Oh La Vache</div><div class="links"><a href="#produits">Produits</a><a href="#geste">Savoir-faire</a><a href="#visite">Venir</a></div></nav><header class="hero-m"><div class="visual"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Pièce de bœuf à la plancha" loading="lazy"><span class="replace">à remplacer</span></div><div class="float-badge fade-up"><strong>Retiers</strong><span>18 rue Maréchal de Lattre</span></div></div><div class="copy fade-up"><p class="fine" style="color:var(--acc)">Boucherie · charcuterie · traiteur · Retiers</p><h1>Viande <em>&amp; traiteur</em></h1><p class="lede">Ludovic Couvert — boucherie-charcuterie-traiteur place de Retiers. Une maison claire pour la carte, les commandes et le contact — quand ohlavache.fr n’est plus qu’un parking de domaine.</p><div style="display:flex;flex-wrap:wrap;gap:.6rem"><a class="btn btn-acc" href="tel:+33299436174">Appeler</a><a class="btn btn-ghost" href="mailto:couvert.ludovic@gmail.com">Écrire</a></div></div></header><section class="sec" id="produits"><div class="sec-label"><span class="num">01 —</span><h2>Boucherie &amp; table</h2></div><div class="masonry"><article class="tile big"><div class="ph"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Boucherie" loading="lazy"><span class="replace">à remplacer</span></div></div><div class="body"><h3>Boucherie</h3><p>Viandes à la coupe — gammes [À CONFIRMER].</p></div></article><article class="tile"><div class="ph"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Charcuterie" loading="lazy"><span class="replace">à remplacer</span></div></div><div class="body"><h3>Charcuterie</h3><p>Fabrications maison — [À CONFIRMER].</p></div></article><article class="tile"><div class="ph"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Traiteur" loading="lazy"><span class="replace">à remplacer</span></div></div><div class="body"><h3>Traiteur</h3><p>Réceptions &amp; plateaux — [À CONFIRMER].</p></div></article></div></section><section class="sec" id="geste" style="padding-top:0"><div class="gesture"><div><p class="num" style="margin-bottom:1rem">02 — Le geste</p><p class="quote">Se faire trouver <span>sans domaine en vente</span>.</p><p style="margin-top:1.4rem;color:var(--muted);max-width:28rem">Horaires, carte traiteur et téléphone — lisibles même quand le nom de domaine est garé chez un revendeur.</p><p style="margin-top:1rem;font-size:.85rem;color:var(--muted);border-left:2px solid var(--acc2);padding-left:.85rem">ohlavache.fr = Nameshift (vente) ; traiteur-ohlavache.fr = DNS mort (vérifié 2026-09-18). Contenu propositionnel — [À CONFIRMER].</p></div><div class="side"><div class="frame"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Plat de viande" loading="lazy"><span class="replace">à remplacer</span></div></div><div class="caption">Boucherie-traiteur · Retiers</div></div></div></section><section class="origin-band" id="origine"><div class="mapish"><div><p class="fine" style="opacity:.6;margin-bottom:1rem">03 — Origine</p><h2>18 rue Maréchal de Lattre de Tassigny</h2></div><div style="display:grid;gap:1rem;margin-top:2rem"><div><strong>Boutique</strong><span style="display:block;opacity:.75;font-weight:300;margin-top:.25rem">Retiers centre — Horaires [À CONFIRMER]</span></div></div></div><div class="photo"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Campagne Roche-aux-Fées" loading="lazy"><span class="replace">à remplacer</span></div></div></section><section class="visit" id="visite"><div class="visit-inner"><div><p class="fine" style="color:var(--acc)">Passez nous voir</p><h2>Commander / passer</h2><p style="color:var(--muted);max-width:32rem;margin-bottom:1.4rem">Boucherie et traiteur au bourg — confirmation humaine. Pas de boutique en ligne inventée.</p><div style="display:flex;flex-wrap:wrap;gap:.6rem"><a class="btn btn-acc" href="tel:+33299436174">Appeler</a><a class="btn btn-ghost" href="mailto:couvert.ludovic@gmail.com">Écrire</a></div></div><div class="meta"><div>18 rue Maréchal de Lattre de Tassigny, 35240 Retiers</div><div><a href="tel:+33299436174">02 99 43 61 74</a></div><div><a href="mailto:couvert.ludovic@gmail.com">couvert.ludovic@gmail.com</a></div></div></div></section><footer><span>Oh La Vache · Retiers</span><span>Maquette propositionnelle — DA Maison gastronomique · non officielle</span></footer><nav class="mobile-bar" aria-label="Actions"><a class="btn btn-acc" href="tel:+33299436174">Appeler</a><a class="btn btn-ghost" href="mailto:couvert.ludovic@gmail.com">Écrire</a></nav></body></html>
+</style>
+</head>
+<body>
+<div class="badge">MOCKUP — proposition</div>
+<nav class="site-nav light">
+  <div class="brand">Oh La Vache</div>
+  <div class="links"><a href="#produits">Produits</a><a href="#geste">Savoir-faire</a><a href="#visite">Venir</a></div>
+</nav>
+<header class="hero-m">
+  <div class="visual"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Pièce de bœuf à la plancha" loading="lazy"><span class="replace">à remplacer</span></div>
+    <div class="float-badge fade-up"><strong>Retiers</strong><span>18 rue Maréchal de Lattre</span></div>
+  </div>
+  <div class="copy fade-up">
+    <p class="fine" style="color:var(--acc)">Boucherie · charcuterie · traiteur · Retiers</p>
+    <h1>Viande <em>&amp; traiteur</em></h1>
+    <p class="lede">Ludovic Couvert — boucherie-charcuterie-traiteur place de Retiers. Une maison claire pour la carte, les commandes et le contact — quand ohlavache.fr n’est plus qu’un parking de domaine.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.6rem">
+      <a class="btn btn-acc" href="tel:+33299436174">Appeler</a>
+      <a class="btn btn-ghost" href="mailto:couvert.ludovic@gmail.com">Écrire</a>
+    </div>
+  </div>
+</header>
+<section class="sec" id="produits">
+  <div class="sec-label"><span class="num">01 —</span><h2>Boucherie &amp; table</h2></div>
+  <div class="masonry"><article class="tile big">
+  <div class="ph"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Boucherie" loading="lazy"><span class="replace">à remplacer</span></div></div>
+  <div class="body"><h3>Boucherie</h3><p>Viandes à la coupe — gammes [À CONFIRMER].</p></div>
+</article><article class="tile">
+  <div class="ph"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Charcuterie" loading="lazy"><span class="replace">à remplacer</span></div></div>
+  <div class="body"><h3>Charcuterie</h3><p>Fabrications maison — [À CONFIRMER].</p></div>
+</article><article class="tile">
+  <div class="ph"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Traiteur" loading="lazy"><span class="replace">à remplacer</span></div></div>
+  <div class="body"><h3>Traiteur</h3><p>Réceptions &amp; plateaux — [À CONFIRMER].</p></div>
+</article></div>
+</section>
+<section class="sec" id="geste" style="padding-top:0">
+  <div class="gesture">
+    <div>
+      <p class="num" style="margin-bottom:1rem">02 — Le geste</p>
+      <p class="quote">Se faire trouver <span>sans domaine en vente</span>.</p>
+      <p style="margin-top:1.4rem;color:var(--muted);max-width:28rem">Horaires, carte traiteur et téléphone — lisibles même quand le nom de domaine est garé chez un revendeur.</p>
+      <p style="margin-top:1rem;font-size:.85rem;color:var(--muted);border-left:2px solid var(--acc2);padding-left:.85rem">ohlavache.fr = Nameshift (vente) ; traiteur-ohlavache.fr = DNS mort (vérifié 2026-09-18). Contenu propositionnel — [À CONFIRMER].</p>
+    </div>
+    <div class="side">
+      <div class="frame"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Plat de viande" loading="lazy"><span class="replace">à remplacer</span></div></div>
+      <div class="caption">Boucherie-traiteur · Retiers</div>
+    </div>
+  </div>
+</section>
+<section class="origin-band" id="origine">
+  <div class="mapish">
+    <div>
+      <p class="fine" style="opacity:.6;margin-bottom:1rem">03 — Origine</p>
+      <h2>18 rue Maréchal de Lattre de Tassigny</h2>
+    </div>
+    <div style="display:grid;gap:1rem;margin-top:2rem"><div><strong>Boutique</strong><span style="display:block;opacity:.75;font-weight:300;margin-top:.25rem">Retiers centre — Horaires [À CONFIRMER]</span></div></div>
+  </div>
+  <div class="photo"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Campagne Roche-aux-Fées" loading="lazy"><span class="replace">à remplacer</span></div></div>
+</section>
+<section class="visit" id="visite">
+  <div class="visit-inner">
+    <div>
+      <p class="fine" style="color:var(--acc)">Passez nous voir</p>
+      <h2>Commander / passer</h2>
+      <p style="color:var(--muted);max-width:32rem;margin-bottom:1.4rem">Boucherie et traiteur au bourg — confirmation humaine. Pas de boutique en ligne inventée.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.6rem">
+        <a class="btn btn-acc" href="tel:+33299436174">Appeler</a>
+        <a class="btn btn-ghost" href="mailto:couvert.ludovic@gmail.com">Écrire</a>
+      </div>
+    </div>
+    <div class="meta">
+      <div>18 rue Maréchal de Lattre de Tassigny, 35240 Retiers</div>
+      <div><a href="tel:+33299436174">02 99 43 61 74</a></div>
+      <div><a href="mailto:couvert.ludovic@gmail.com">couvert.ludovic@gmail.com</a></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <span>Oh La Vache · Retiers</span>
+  <span>Maquette propositionnelle — DA Maison gastronomique · non officielle</span>
+</footer>
+<nav class="mobile-bar" aria-label="Actions">
+  <a class="btn btn-acc" href="tel:+33299436174">Appeler</a>
+  <a class="btn btn-ghost" href="mailto:couvert.ludovic@gmail.com">Écrire</a>
+</nav>
+</body></html>
