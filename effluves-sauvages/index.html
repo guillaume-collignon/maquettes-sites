@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Effluves Sauvages — proposition</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap');
+:root{
+  --bg:#F4F7F1; --ink:#1A2018; --muted:#556B55; --acc:#3F6B45; --acc2:#C4B07A;
+  --paper:#fffef9; --line:color-mix(in srgb,var(--ink) 12%,transparent);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Outfit,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.badge{position:fixed;top:14px;right:14px;z-index:80;background:#111;color:#fff;font-size:10px;font-weight:600;letter-spacing:.08em;padding:8px 12px;border-radius:2px;opacity:.88}
+.replace{position:absolute;bottom:10px;right:10px;z-index:5;font-size:9px;letter-spacing:.06em;text-transform:uppercase;background:rgba(0,0,0,.45);color:#fff;padding:4px 8px;border-radius:2px;opacity:.7;pointer-events:none}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+.num{font-family:Outfit,sans-serif;font-weight:300;letter-spacing:.12em;font-size:.75rem;color:var(--acc)}
+.fine{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:.55rem;padding:.95rem 1.45rem;font-weight:600;font-size:.92rem;border:1.5px solid var(--ink);background:var(--ink);color:var(--bg);transition:transform .2s ease,background .2s,color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--bg)}
+.btn-acc{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn-acc:hover{filter:brightness(1.08)}
+.site-nav{position:absolute;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:1.4rem clamp(1.2rem,4vw,3.5rem);mix-blend-mode:normal}
+.site-nav .brand{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.35rem;font-weight:600;letter-spacing:-.02em}
+.site-nav .links{display:flex;gap:1.75rem;font-size:.82rem;font-weight:500;letter-spacing:.04em}
+.site-nav .links a{opacity:.75;transition:opacity .2s}
+.site-nav .links a:hover{opacity:1}
+.site-nav.light .brand,.site-nav.light .links a{color:#fff}
+.site-nav.dark .brand,.site-nav.dark .links a{color:var(--ink)}
+@media(max-width:760px){.site-nav .links{display:none}}
+.fade-up{animation:fadeUp .9s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.img-hover{overflow:hidden}
+.img-hover img{transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.img-hover:hover img{transform:scale(1.045)}
+footer{padding:2.5rem clamp(1.2rem,4vw,3.5rem);border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+.mobile-bar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:.75rem .85rem calc(.75rem + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-top:1px solid var(--line);gap:.5rem}
+.mobile-bar .btn{flex:1;justify-content:center;min-height:48px;padding:.7rem}
+@media(max-width:760px){.mobile-bar{display:flex}footer{padding-bottom:6.5rem}}
+
+/* Éditorial terroir — magazine, asymétrie, numéros, annotations */
+.mast{padding:1.1rem clamp(1.2rem,4vw,3.5rem) .4rem;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid var(--ink);margin:0 clamp(1.2rem,4vw,3.5rem)}
+.mast .issue{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.mast .brand{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:700}
+.hero-e{padding:2rem clamp(1.2rem,4vw,3.5rem) 0;display:grid;grid-template-columns:1fr 1.35fr;gap:0;align-items:start;position:relative}
+.hero-e .typo{padding:2.5rem 1.5rem 2rem 0;position:relative;z-index:2}
+.hero-e .eyebrow{color:var(--acc);margin-bottom:1rem}
+.hero-e h1{font-family:"Cormorant Garamond",serif;font-size:clamp(3.4rem,8vw,6.8rem);line-height:.88;letter-spacing:-.045em;font-weight:600;margin-bottom:1.4rem}
+.hero-e h1 .line2{display:block;font-style:italic;font-weight:500;color:var(--acc);margin-left:8%}
+.hero-e .lede{max-width:26rem;color:var(--muted);font-weight:300;margin-bottom:1.6rem;font-size:1.05rem}
+.hero-e .photo-col{position:relative;margin-top:1rem}
+.hero-e .photo-main{aspect-ratio:3/4;position:relative;overflow:hidden;width:88%;margin-left:auto}
+.hero-e .photo-float{position:absolute;left:-8%;bottom:-8%;width:48%;aspect-ratio:1;overflow:hidden;border:6px solid var(--bg);box-shadow:0 25px 60px rgba(0,0,0,.15);z-index:3}
+.hero-e .anno{position:absolute;right:4%;top:12%;writing-mode:vertical-rl;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);z-index:4}
+@media(max-width:900px){
+  .hero-e{grid-template-columns:1fr}
+  .hero-e .photo-main{width:100%;aspect-ratio:4/5}
+  .hero-e .photo-float{width:42%;left:4%;bottom:-6%}
+  .hero-e .typo{padding:1.5rem 0}
+}
+.chapters{padding:5rem clamp(1.2rem,4vw,3.5rem) 2rem}
+.chapter{display:grid;grid-template-columns:80px 1fr;gap:1.5rem;padding:2.8rem 0;border-top:1px solid var(--line)}
+.chapter .n{font-family:"Cormorant Garamond",serif;font-size:3rem;color:var(--acc);line-height:1;font-weight:600}
+.chapter h2{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:600;letter-spacing:-.02em;margin-bottom:.6rem}
+.chapter .grid-asymm{display:grid;grid-template-columns:1.3fr .9fr;gap:1.5rem;margin-top:1.4rem;align-items:start}
+.chapter .grid-asymm.reverse{grid-template-columns:.9fr 1.3fr}
+.chapter .card-soft{padding:0;background:transparent;border:0}
+.chapter .card-soft h3{font-family:"Cormorant Garamond",serif;font-size:1.45rem;margin-bottom:.35rem}
+.chapter .card-soft p{color:var(--muted);font-size:.95rem}
+.chapter .ph{position:relative;aspect-ratio:5/4;overflow:hidden}
+.chapter .ph.tall{aspect-ratio:3/4}
+@media(max-width:800px){.chapter{grid-template-columns:1fr}.chapter .grid-asymm,.chapter .grid-asymm.reverse{grid-template-columns:1fr}}
+.pull{margin:1rem clamp(1.2rem,4vw,3.5rem);padding:3rem 0;display:grid;grid-template-columns:1fr 1.2fr;gap:2rem;align-items:center;border-top:2px solid var(--ink);border-bottom:1px solid var(--line)}
+.pull blockquote{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.12;font-weight:500;letter-spacing:-.02em}
+.pull .facts{display:grid;gap:1rem}
+.pull .facts div{padding-bottom:.8rem;border-bottom:1px solid var(--line)}
+.pull .facts strong{display:block;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin-bottom:.2rem}
+@media(max-width:800px){.pull{grid-template-columns:1fr}}
+.cta-e{margin:3rem clamp(1.2rem,4vw,3.5rem) 4rem;padding:clamp(2.2rem,5vw,3.5rem);background:var(--ink);color:var(--bg);display:grid;grid-template-columns:1.3fr .7fr;gap:2rem;position:relative;overflow:hidden}
+.cta-e::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border:1px solid color-mix(in srgb,var(--bg) 25%,transparent);border-radius:50%}
+.cta-e h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2.2rem,4.5vw,3.6rem);line-height:1;font-weight:600;margin-bottom:1rem}
+.cta-e a.btn{background:var(--bg);color:var(--ink);border-color:var(--bg)}
+.cta-e .meta a{color:var(--bg);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:800px){.cta-e{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="badge">MOCKUP — proposition</div>
+<div class="mast">
+  <div class="brand">Effluves Sauvages</div>
+  <div class="issue">Plantes sauvages · La Bosse-de-Bretagne · Édition locale</div>
+</div>
+<header class="hero-e">
+  <div class="typo fade-up">
+    <p class="eyebrow fine">Tisanes · sirops · baumes</p>
+    <h1>Plantes<br><span class="line2">sauvages</span></h1>
+    <p class="lede">Effluves Sauvages — tisanes, sirops, baumes et hydrolats à La Bosse-de-Bretagne. Une page nette pour marchés, ateliers et contact, à la place du seul Blogspot.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.55rem">
+      <a class="btn btn-acc" href="tel:+33642860934">Appeler</a>
+      <a class="btn btn-ghost" href="mailto:effluvesauvages@gmail.com">Écrire</a>
+    </div>
+  </div>
+  <div class="photo-col">
+    <div class="photo-main"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Épices et plantes aromatiques" loading="lazy"><span class="replace">à remplacer</span></div></div>
+    <div class="photo-float"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Couleurs du jardin" loading="lazy"><span class="replace">à remplacer</span></div></div>
+    <div class="anno">La Bosse · 35320</div>
+  </div>
+</header>
+<section class="chapters" id="produits"><article class="chapter">
+  <div class="n">01</div>
+  <div>
+    <h2>Tisanes &amp; sirops</h2>
+    <p style="color:var(--muted);max-width:36rem">Plantes cueillies / transformées — gammes [À CONFIRMER].</p>
+    <div class="grid-asymm">
+      <div style="display:grid;gap:1.25rem"><div class="card-soft"><h3>Tisanes</h3><p>Mélanges — [À CONFIRMER].</p></div><div class="card-soft"><h3>Sirops</h3><p>Sureau et autres — [À CONFIRMER].</p></div></div>
+      <div class="ph tall"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Tisanes &amp; sirops" loading="lazy"><span class="replace">à remplacer</span></div></div>
+    </div>
+  </div>
+</article><article class="chapter">
+  <div class="n">02</div>
+  <div>
+    <h2>Baumes &amp; hydrolats</h2>
+    <p style="color:var(--muted);max-width:36rem">Soins et ateliers — [À CONFIRMER].</p>
+    <div class="grid-asymm reverse">
+      <div style="display:grid;gap:1.25rem"><div class="card-soft"><h3>Baumes</h3><p>Recettes — [À CONFIRMER].</p></div><div class="card-soft"><h3>Ateliers</h3><p>Sur demande — [À CONFIRMER].</p></div></div>
+      <div class="ph"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Baumes &amp; hydrolats" loading="lazy"><span class="replace">à remplacer</span></div></div>
+    </div>
+  </div>
+</article><article class="chapter">
+  <div class="n">03</div>
+  <div>
+    <h2>Nous trouver</h2>
+    <p style="color:var(--muted);max-width:36rem">La Bosse-de-Bretagne — marchés ponctuels du secteur.</p>
+    <div class="grid-asymm">
+      <div style="display:grid;gap:1.25rem"><div class="card-soft"><h3>Secteur</h3><p>La Bosse-de-Bretagne, 35320</p></div><div class="card-soft"><h3>Contact</h3><p>06 42 86 09 34</p></div></div>
+      <div class="ph tall"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Nous trouver" loading="lazy"><span class="replace">à remplacer</span></div></div>
+    </div>
+  </div>
+</article></section>
+<section class="pull">
+  <blockquote>Des plantes <em>lisibles</em> hors du Blogspot.</blockquote>
+  <div class="facts"><div><strong>Lieu</strong>La Bosse-de-Bretagne</div><div><strong>Activité</strong>Plantes sauvages</div><div><strong>Site actuel</strong>Blogspot seul</div></div>
+</section>
+<section class="cta-e" id="visite">
+  <div>
+    <p class="fine" style="opacity:.55;margin-bottom:.8rem">Nous trouver</p>
+    <h2>Écrire ou demander un atelier</h2>
+    <p style="opacity:.8;max-width:30rem;margin-bottom:1.4rem;font-weight:300">Marchés et ateliers — modalités [À CONFIRMER].</p>
+    <a class="btn" href="tel:+33642860934">Appeler</a>
+  </div>
+  <div class="meta" style="display:grid;gap:.55rem;align-content:end">
+    <div>La Bosse-de-Bretagne (35320) — ateliers &amp; marchés locaux</div>
+    <div><a href="tel:+33642860934">06 42 86 09 34</a></div>
+    <div><a href="mailto:effluvesauvages@gmail.com">effluvesauvages@gmail.com</a></div>
+    <p style="opacity:.55;font-size:.8rem;margin-top:.5rem">Blogspot seulement (vérifié 2026-09-18). Contenu propositionnel — [À CONFIRMER].</p>
+  </div>
+</section>
+<footer>
+  <span>Effluves Sauvages · La Bosse-de-Bretagne</span>
+  <span>Maquette propositionnelle — DA Éditorial terroir · non officielle</span>
+</footer>
+<nav class="mobile-bar" aria-label="Actions">
+  <a class="btn btn-acc" href="tel:+33642860934">Appeler</a>
+  <a class="btn btn-ghost" href="mailto:effluvesauvages@gmail.com">Écrire</a>
+</nav>
+</body></html>
