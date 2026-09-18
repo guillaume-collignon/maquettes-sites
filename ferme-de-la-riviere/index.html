@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ferme de la Rivière — proposition</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600;700&display=swap');
+:root{
+  --bg:#F6EFE6; --ink:#1A100C; --muted:#6B4A3A; --acc:#8B2E1F; --acc2:#C4A070;
+  --paper:#fffef9; --line:color-mix(in srgb,var(--ink) 12%,transparent);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Outfit,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.badge{position:fixed;top:14px;right:14px;z-index:80;background:#111;color:#fff;font-size:10px;font-weight:600;letter-spacing:.08em;padding:8px 12px;border-radius:2px;opacity:.88}
+.replace{position:absolute;bottom:10px;right:10px;z-index:5;font-size:9px;letter-spacing:.06em;text-transform:uppercase;background:rgba(0,0,0,.45);color:#fff;padding:4px 8px;border-radius:2px;opacity:.7;pointer-events:none}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+.num{font-family:Outfit,sans-serif;font-weight:300;letter-spacing:.12em;font-size:.75rem;color:var(--acc)}
+.fine{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:.55rem;padding:.95rem 1.45rem;font-weight:600;font-size:.92rem;border:1.5px solid var(--ink);background:var(--ink);color:var(--bg);transition:transform .2s ease,background .2s,color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--bg)}
+.btn-acc{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn-acc:hover{filter:brightness(1.08)}
+.site-nav{position:absolute;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:1.4rem clamp(1.2rem,4vw,3.5rem);mix-blend-mode:normal}
+.site-nav .brand{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.35rem;font-weight:600;letter-spacing:-.02em}
+.site-nav .links{display:flex;gap:1.75rem;font-size:.82rem;font-weight:500;letter-spacing:.04em}
+.site-nav .links a{opacity:.75;transition:opacity .2s}
+.site-nav .links a:hover{opacity:1}
+.site-nav.light .brand,.site-nav.light .links a{color:#fff}
+.site-nav.dark .brand,.site-nav.dark .links a{color:var(--ink)}
+@media(max-width:760px){.site-nav .links{display:none}}
+.fade-up{animation:fadeUp .9s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.img-hover{overflow:hidden}
+.img-hover img{transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.img-hover:hover img{transform:scale(1.045)}
+footer{padding:2.5rem clamp(1.2rem,4vw,3.5rem);border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+.mobile-bar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:.75rem .85rem calc(.75rem + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-top:1px solid var(--line);gap:.5rem}
+.mobile-bar .btn{flex:1;justify-content:center;min-height:48px;padding:.7rem}
+@media(max-width:760px){.mobile-bar{display:flex}footer{padding-bottom:6.5rem}}
+
+/* Maison gastronomique — plein écran, typo XXL, chevauchements */
+.hero-m{position:relative;min-height:100vh;min-height:100dvh;display:grid;grid-template-columns:1.15fr .85fr}
+.hero-m .visual{position:relative;min-height:70vh}
+.hero-m .visual img{position:absolute;inset:0}
+.hero-m .copy{display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(2rem,6vw,5rem) clamp(1.4rem,4vw,3.2rem) 3.5rem;background:var(--bg);position:relative}
+.hero-m .copy::before{content:"";position:absolute;left:-48px;top:18%;width:96px;height:96px;background:var(--acc2);opacity:.35;border-radius:50%;filter:blur(2px)}
+.hero-m h1{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(3.2rem,7.5vw,6.2rem);line-height:.92;letter-spacing:-.04em;font-weight:600;margin:.6rem 0 1.2rem;max-width:11ch}
+.hero-m h1 em{font-style:italic;color:var(--acc);font-weight:500}
+.hero-m .lede{font-size:1.05rem;color:var(--muted);max-width:28rem;margin-bottom:1.8rem;font-weight:300}
+.hero-m .float-badge{position:absolute;left:8%;bottom:12%;z-index:6;background:var(--paper);padding:1rem 1.2rem;box-shadow:0 20px 50px rgba(0,0,0,.18);max-width:200px;transform:rotate(-2deg)}
+.hero-m .float-badge strong{display:block;font-family:"Cormorant Garamond",serif;font-size:1.35rem;line-height:1.1}
+.hero-m .float-badge span{font-size:.78rem;color:var(--muted)}
+@media(max-width:900px){
+  .hero-m{grid-template-columns:1fr;min-height:auto}
+  .hero-m .visual{min-height:58vh;order:-1}
+  .hero-m .float-badge{left:auto;right:5%;bottom:auto;top:72%}
+}
+.sec{padding:clamp(3.5rem,8vw,7rem) clamp(1.2rem,4vw,3.5rem)}
+.sec-label{display:flex;align-items:baseline;gap:1rem;margin-bottom:2rem}
+.sec-label h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:600;letter-spacing:-.03em}
+.masonry{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:1rem;align-items:stretch}
+.masonry .tile{position:relative;background:var(--paper);overflow:hidden}
+.masonry .tile.big{grid-row:span 2;min-height:420px}
+.masonry .tile .ph{aspect-ratio:4/3;position:relative}
+.masonry .tile.big .ph{aspect-ratio:auto;height:62%}
+.masonry .tile .body{padding:1.25rem 1.35rem 1.5rem}
+.masonry .tile h3{font-family:"Cormorant Garamond",serif;font-size:1.55rem;font-weight:600;margin-bottom:.35rem}
+.masonry .tile p{color:var(--muted);font-size:.92rem}
+@media(max-width:900px){.masonry{grid-template-columns:1fr}.masonry .tile.big{grid-row:auto;min-height:0}.masonry .tile.big .ph{height:220px}}
+.gesture{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center}
+.gesture .quote{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3.5vw,2.8rem);line-height:1.15;font-weight:500;letter-spacing:-.02em}
+.gesture .quote span{color:var(--acc);font-style:italic}
+.gesture .side{position:relative}
+.gesture .side .frame{aspect-ratio:3/4;position:relative;overflow:hidden}
+.gesture .caption{position:absolute;left:-1.5rem;bottom:2rem;background:var(--acc);color:#fff;padding:1rem 1.25rem;max-width:220px;font-size:.88rem}
+@media(max-width:860px){.gesture{grid-template-columns:1fr}.gesture .caption{left:1rem}}
+.origin-band{display:grid;grid-template-columns:1fr 1fr;min-height:420px}
+.origin-band .mapish{background:var(--ink);color:var(--bg);padding:clamp(2rem,5vw,3.5rem);display:flex;flex-direction:column;justify-content:space-between}
+.origin-band .mapish h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2.2rem,4vw,3.4rem);line-height:1;font-weight:600}
+.origin-band .photo{position:relative;min-height:280px}
+@media(max-width:800px){.origin-band{grid-template-columns:1fr}}
+.visit{padding:clamp(3rem,7vw,6rem) clamp(1.2rem,4vw,3.5rem);background:color-mix(in srgb,var(--acc) 8%,var(--bg))}
+.visit-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:end}
+.visit h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2.4rem,5vw,4rem);line-height:1;letter-spacing:-.03em;margin:.5rem 0 1rem}
+.visit .meta{display:grid;gap:.65rem;font-size:.98rem}
+.visit .meta a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:800px){.visit-inner{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="badge">MOCKUP — proposition</div>
+<nav class="site-nav light">
+  <div class="brand">Ferme de la Rivière</div>
+  <div class="links"><a href="#produits">Produits</a><a href="#geste">Savoir-faire</a><a href="#visite">Venir</a></div>
+</nav>
+<header class="hero-m">
+  <div class="visual"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Pièce de bœuf — ambiance boucherie" loading="lazy"><span class="replace">à remplacer</span></div>
+    <div class="float-badge fade-up"><strong>Vente directe</strong><span>Colis · Brie près de Janzé</span></div>
+  </div>
+  <div class="copy fade-up">
+    <p class="fine" style="color:var(--acc)">Élevage bovin · Brie</p>
+    <h1>Colis <em>&amp; viande</em></h1>
+    <p class="lede">Pierre &amp; Florent Hardy élèvent à Brie depuis 2017. Une maison claire pour colis, horaires et contact — quand ventedirecte-viandebovine-35.fr ne répond plus.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.6rem">
+      <a class="btn btn-acc" href="tel:+33621810929">Appeler</a>
+      <a class="btn btn-ghost" href="mailto:delariviere.gaec@sfr.fr">Écrire</a>
+    </div>
+  </div>
+</header>
+<section class="sec" id="produits">
+  <div class="sec-label"><span class="num">01 —</span><h2>De la ferme à votre table</h2></div>
+  <div class="masonry"><article class="tile big">
+  <div class="ph"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Colis de viande" loading="lazy"><span class="replace">à remplacer</span></div></div>
+  <div class="body"><h3>Colis de viande</h3><p>Bovins élevés à la ferme — compositions [À CONFIRMER].</p></div>
+</article><article class="tile">
+  <div class="ph"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Depuis 2017" loading="lazy"><span class="replace">à remplacer</span></div></div>
+  <div class="body"><h3>Depuis 2017</h3><p>Pierre &amp; Florent Hardy — élevage à Brie.</p></div>
+</article><article class="tile">
+  <div class="ph"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="À la ferme" loading="lazy"><span class="replace">à remplacer</span></div></div>
+  <div class="body"><h3>À la ferme</h3><p>La Rivière Montalembert — modalités [À CONFIRMER].</p></div>
+</article></div>
+</section>
+<section class="sec" id="geste" style="padding-top:0">
+  <div class="gesture">
+    <div>
+      <p class="num" style="margin-bottom:1rem">02 — Le geste</p>
+      <p class="quote">Être trouvable <span>sans site en panne</span>.</p>
+      <p style="margin-top:1.4rem;color:var(--muted);max-width:28rem">Colis, contact et adresse — lisibles même quand le DNS refuse la page.</p>
+      <p style="margin-top:1rem;font-size:.85rem;color:var(--muted);border-left:2px solid var(--acc2);padding-left:.85rem">ventedirecte-viandebovine-35.fr → unreachable (vérifié 2026-09-18). Contenu propositionnel — [À CONFIRMER].</p>
+    </div>
+    <div class="side">
+      <div class="frame"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Ferme bovine" loading="lazy"><span class="replace">à remplacer</span></div></div>
+      <div class="caption">Élevage · La Rivière Montalembert</div>
+    </div>
+  </div>
+</section>
+<section class="origin-band" id="origine">
+  <div class="mapish">
+    <div>
+      <p class="fine" style="opacity:.6;margin-bottom:1rem">03 — Origine</p>
+      <h2>La Rivière Montalembert, 35150 Brie</h2>
+    </div>
+    <div style="display:grid;gap:1rem;margin-top:2rem"><div><strong>Ferme</strong><span style="display:block;opacity:.75;font-weight:300;margin-top:.25rem">La Rivière — Colis — horaires [À CONFIRMER]</span></div></div>
+  </div>
+  <div class="photo"><div class="img-hover" style="position:relative;width:100%;height:100%"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Paysage bocage" loading="lazy"><span class="replace">à remplacer</span></div></div>
+</section>
+<section class="visit" id="visite">
+  <div class="visit-inner">
+    <div>
+      <p class="fine" style="color:var(--acc)">Passez nous voir</p>
+      <h2>Commander / appeler</h2>
+      <p style="color:var(--muted);max-width:32rem;margin-bottom:1.4rem">Colis en vente directe — confirmation humaine. Pas de boutique en ligne inventée.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.6rem">
+        <a class="btn btn-acc" href="tel:+33621810929">Appeler</a>
+        <a class="btn btn-ghost" href="mailto:delariviere.gaec@sfr.fr">Écrire</a>
+      </div>
+    </div>
+    <div class="meta">
+      <div>La Rivière Montalembert, 35150 Brie</div>
+      <div><a href="tel:+33621810929">06 21 81 09 29</a></div>
+      <div><a href="mailto:delariviere.gaec@sfr.fr">delariviere.gaec@sfr.fr</a></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <span>Ferme de la Rivière · Brie</span>
+  <span>Maquette propositionnelle — DA Maison gastronomique · non officielle</span>
+</footer>
+<nav class="mobile-bar" aria-label="Actions">
+  <a class="btn btn-acc" href="tel:+33621810929">Appeler</a>
+  <a class="btn btn-ghost" href="mailto:delariviere.gaec@sfr.fr">Écrire</a>
+</nav>
+</body></html>
