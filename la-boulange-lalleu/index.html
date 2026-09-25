@@ -1,0 +1,180 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La Boulange. — Réservez votre pain (click &amp; collect · proposition)</title><style>
+@font-face{font-family:'Inter';src:url('assets/Inter.ttf') format('truetype');font-weight:100 900;font-display:block}
+@font-face{font-family:'Fraunces';src:url('assets/Fraunces.ttf') format('truetype');font-weight:100 900;font-display:block}
+:root{--bg:#faf9f7;--surface:#fff;--ink:#141211;--mut:#77716b;--soft:#efece8;--acc:#E9A15B;--acc-deep:#C9803A;--acc-ink:#9A5E22;--on-acc:#1f1a16;--acc-soft:#FBEBD6;--r:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.005em}
+.tc{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.02em;color:var(--acc-ink);background:var(--acc-soft);padding:1px 7px;border-radius:999px;vertical-align:1px;white-space:nowrap}
+/* header */
+header{max-width:1200px;margin:0 auto;height:72px;display:flex;align-items:center;gap:14px;padding:0 32px}
+.logo{font-family:Fraunces,serif;font-weight:600;font-size:22px;letter-spacing:-.02em}
+.logo b{color:var(--acc-deep)}
+.mk{font-size:11px;font-weight:500;color:var(--mut);background:var(--soft);padding:4px 10px;border-radius:999px}
+header .sp{flex:1}
+.tel{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);font-weight:600;font-size:14px}
+.tel i{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--surface);box-shadow:0 1px 2px #0000000f,0 0 0 1px #0000000a}
+/* layout */
+.app{max-width:1200px;margin:0 auto;padding:18px 32px 60px;display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:48px;align-items:start}
+.kicker{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--acc-ink)}
+.kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px var(--acc-soft)}
+.kicker .mk-m{display:none}
+.kicker .kx{margin-left:-6px}
+h1{font-family:Fraunces,serif;font-weight:500;font-size:52px;line-height:1.02;letter-spacing:-.035em;margin:12px 0 10px}
+h1 em{font-style:normal;color:var(--acc-deep)}
+.lede{color:var(--mut);font-size:16px;max-width:52ch}
+.flow{display:flex;gap:22px;margin-top:18px;font-size:13px;color:var(--mut)}
+.flow span b{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--ink);color:#fff;font-size:11px;margin-right:7px}
+.controls{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;margin:30px 0 22px}
+.seg{display:inline-flex;background:var(--soft);border-radius:999px;padding:4px}
+.seg button{padding:10px 18px;border-radius:999px;font-weight:600;font-size:14px;color:var(--mut);display:flex;align-items:center;gap:8px}
+.seg button.on{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px #0000001a}
+.seg button.on i{width:7px;height:7px;border-radius:50%;background:var(--acc)}
+.chips{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;text-align:left;padding:10px 16px;border-radius:16px;background:var(--surface);box-shadow:0 0 0 1px #00000010}
+.chip b{display:block;font-size:14px;font-weight:600}
+.chip small{font-size:12px;color:var(--mut)}
+.chip.on{background:var(--ink);color:#fff;box-shadow:none}
+.chip.on small{color:#F2C28E}
+.lbl{font-size:12px;font-weight:600;color:var(--mut);margin-bottom:10px}
+.prods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.prod{position:relative}
+.prod img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--r);display:block;background:var(--soft)}
+.prod .pi{padding:12px 4px 0}
+.prod h3{font-size:16px;font-weight:600;letter-spacing:-.01em}
+.prod p{font-size:13px;color:var(--mut)}
+.prod .price{display:block;font-size:13px;color:var(--mut);margin-top:4px}
+.plus{position:absolute;right:12px;top:12px;width:44px;height:44px;border-radius:50%;background:var(--surface);font-size:24px;font-weight:400;line-height:1;box-shadow:0 4px 14px #0000001f}
+.stepper{position:absolute;right:12px;top:12px;display:flex;align-items:center;gap:4px;background:var(--acc);color:var(--on-acc);border-radius:999px;padding:4px;box-shadow:0 4px 14px #E9A15B59}
+.stepper button{width:34px;height:34px;border-radius:50%;font-size:20px;color:var(--on-acc)}
+.stepper b{min-width:16px;text-align:center}
+/* cart */
+.cart{position:sticky;top:20px;background:var(--surface);border-radius:28px;padding:26px;box-shadow:0 1px 2px #0000000a,0 12px 40px #00000012}
+.cart h2{font-size:18px;font-weight:700;letter-spacing:-.01em}
+.when{display:flex;align-items:center;gap:12px;margin:16px 0 18px;padding:14px;border-radius:16px;background:var(--acc-soft)}
+.when .ic{width:38px;height:38px;border-radius:12px;background:var(--acc);color:var(--on-acc);display:grid;place-items:center;font-size:18px;flex:0 0 auto}
+.when b{display:block;font-size:14px}
+.when small{font-size:12px;color:var(--acc-ink)}
+.line{display:flex;align-items:center;gap:12px;padding:9px 0}
+.line img{width:44px;height:44px;border-radius:12px;object-fit:cover}
+.line div{flex:1}
+.line b{display:block;font-size:14px;font-weight:600}
+.line small{font-size:12px;color:var(--mut)}
+.line span{font-weight:600;color:var(--mut)}
+.hr{height:1px;background:var(--soft);margin:12px 0}
+.pay .lbl{margin:4px 0 8px}
+.pay .seg{display:flex;width:100%}
+.pay .seg button{flex:1;justify-content:center;padding:9px 8px;font-size:13px}
+.pay p{font-size:11.5px;color:var(--mut);margin-top:6px}
+.cta{display:flex;justify-content:space-between;align-items:center;width:100%;margin-top:18px;background:var(--acc);color:var(--on-acc);font-weight:700;font-size:16px;padding:17px 20px;border-radius:16px;box-shadow:0 8px 24px #E9A15B55}
+.cta small{font-weight:500;opacity:.9;font-size:13px}
+.fine{font-size:12px;color:var(--mut);text-align:center;margin-top:12px}
+/* below the fold */
+.below{max-width:1200px;margin:0 auto;padding:40px 32px 120px}
+.confirm{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:center;background:var(--surface);border-radius:32px;padding:48px;box-shadow:0 1px 2px #0000000a}
+.phone{background:#141211;border-radius:44px;padding:10px;box-shadow:0 30px 60px #0000002b}
+.screen{background:var(--bg);border-radius:36px;overflow:hidden;padding:28px 22px 26px;text-align:center}
+.screen .ok{width:56px;height:56px;margin:8px auto 14px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:grid;place-items:center;font-size:26px;box-shadow:0 0 0 8px var(--acc-soft)}
+.screen h3{font-family:Fraunces,serif;font-weight:500;font-size:25px;line-height:1.1;letter-spacing:-.02em}
+.screen p{font-size:13px;color:var(--mut);margin-top:8px}
+.screen img{width:100%;height:120px;object-fit:cover;border-radius:18px;margin:16px 0 12px}
+.screen .rows div{display:flex;justify-content:space-between;font-size:13px;padding:5px 2px}
+.screen .rows div span{color:var(--mut)}
+.confirm .t .k{font-size:13px;font-weight:600;color:var(--acc-ink)}
+.confirm .t h2{font-family:Fraunces,serif;font-weight:500;font-size:40px;line-height:1.05;letter-spacing:-.03em;margin:10px 0 14px}
+.confirm .t p{color:var(--mut);font-size:16px;max-width:48ch}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}
+.facts b{display:block;font-size:15px;margin-bottom:4px}
+.facts p{font-size:14px;color:var(--mut)}
+.foot{margin-top:56px;padding-top:24px;border-top:1px solid var(--soft);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--mut)}
+.foot a{color:var(--ink);font-weight:600;text-decoration:none}
+.bar{display:none}
+@media (max-width:760px){
+ header{height:60px;padding:0 20px}
+ header .mk,header .tel span,header .sp{display:none}
+ .tel{margin-left:auto}
+ .tel i{width:40px;height:40px}
+ .app{grid-template-columns:1fr;padding:4px 20px 30px;gap:30px}
+ .kicker{font-size:12px}
+ .kicker .mk-m{display:inline;margin-left:auto;font-size:10.5px;font-weight:500;color:var(--mut);background:var(--soft);padding:3px 9px;border-radius:999px;white-space:nowrap}
+ .kicker .kx{display:none}
+ h1{font-size:34px;margin:10px 0 18px}
+ .lede,.flow{display:none}
+ .controls{margin:0 0 18px;gap:14px;display:block}
+ .seg{display:flex;width:100%;margin-bottom:14px}
+ .seg button{flex:1;justify-content:center;padding:10px 8px;font-size:14px}
+ .chips{margin:0 -20px;padding:0 20px}
+ .chip{padding:9px 14px}
+ .chip b{font-size:13.5px}.chip small{font-size:11.5px}
+ .lbl-p{display:none}
+ .prods{grid-template-columns:1fr;gap:12px}
+ .prod{display:grid;grid-template-columns:96px 1fr auto;gap:14px;align-items:center;background:var(--surface);border-radius:20px;padding:8px 12px 8px 8px;box-shadow:0 0 0 1px #0000000a}
+ .prod img{width:96px;height:96px;aspect-ratio:auto;border-radius:14px}
+ .prod .pi{padding:0}
+ .prod h3{font-size:15.5px}
+ .prod p{font-size:12.5px;line-height:1.35}
+ .prod .price{font-size:12px}
+ .plus,.stepper{position:static}
+ .plus{width:40px;height:40px;font-size:22px;background:var(--soft);box-shadow:none}
+ .stepper{flex-direction:column;padding:3px;gap:0;box-shadow:none}
+ .stepper button{width:32px;height:26px;font-size:17px}
+ .cart{position:static;border-radius:24px;padding:22px}
+ .below{padding:10px 20px 120px}
+ .confirm{grid-template-columns:1fr;padding:28px 20px;gap:30px;border-radius:26px}
+ .confirm .t{order:-1}
+ .confirm .t h2{font-size:30px}
+ .phone{max-width:300px;margin:0 auto;width:100%}
+ .facts{grid-template-columns:1fr;gap:18px;margin-top:36px}
+ .bar{display:flex;position:fixed;z-index:40;left:16px;right:16px;bottom:16px;justify-content:space-between;align-items:center;background:var(--acc);color:var(--on-acc);border-radius:18px;padding:16px 20px;font-weight:700;font-size:16px;box-shadow:0 10px 30px #E9A15B66}
+ .bar small{font-weight:500;font-size:13px;opacity:.92}
+}
+</style></head><body>
+<header><div class="logo">La Boulange<b>.</b></div><span class="mk">MOCKUP — proposition</span><div class="sp"></div>
+<a class="tel" href="tel:+33950205936"><span>09 50 20 59 36</span><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></i></a></header>
+
+<div class="app"><main>
+ <div class="kicker"><span class="dot"></span>Click &amp; collect<span class="kx"> · retrait au fournil de Lalleu</span><span class="mk-m">Mockup — proposition</span></div>
+ <h1>Réservez votre pain.<br><em>Retirez-le au fournil.</em></h1>
+ <p class="lede">Pain bio au levain naturel, cuit au feu de bois. Réservez avant l’heure limite, passez le chercher à votre créneau.</p>
+ <div class="flow"><span><b>1</b>Je choisis mes pains</span><span><b>2</b>Je choisis mon créneau</span><span><b>3</b>Je retire au fournil</span></div>
+ <div class="controls">
+  <div class="seg"><button class="on"><i></i>Chaque samedi</button><button>Juste cette fois</button></div>
+  <div class="chips"><button class="chip"><b>Mar. 16h–19h</b><small>Commande avant lun. 12h</small></button><button class="chip on"><b>Sam. 16h30–19h</b><small>Commande avant ven. 12h</small></button><button class="chip"><b>Dim. 9h–12h</b><small>Commande avant ven. 12h</small></button></div>
+ </div>
+ <div class="lbl lbl-p">Pains de la fournée · gamme et horaires <span class="tc">à confirmer</span></div>
+ <div class="prods"><article class="prod"><img src="assets/boule-claire.jpg" alt="Pain au levain"><div class="pi"><h3>Pain au levain</h3><p>Farine bio · levain naturel · feu de bois</p><span class="price">Prix <span class="tc">à confirmer</span></span></div><div class="stepper"><button>−</button><b>2</b><button>+</button></div></article><article class="prod"><img src="assets/brioche-tressee.jpg" alt="Brioche tressée"><div class="pi"><h3>Brioche tressée</h3><p>La tresse du week-end</p><span class="price">Prix <span class="tc">à confirmer</span></span></div><div class="stepper"><button>−</button><b>1</b><button>+</button></div></article><article class="prod"><img src="assets/pain-de-mie-2.jpg" alt="Pain de mie"><div class="pi"><h3>Pain de mie</h3><p>Cuit au feu de bois</p><span class="price">Prix <span class="tc">à confirmer</span></span></div><button class="plus" aria-label="Ajouter">+</button></article></div>
+</main>
+
+<aside class="cart"><h2>Mon panier</h2>
+ <div class="when"><div class="ic">↻</div><div><b>Chaque samedi · 16h30–19h</b><small>Au fournil · modifiable jusqu’à vendredi 12h</small></div></div>
+ <div class="line"><img src="assets/boule-claire.jpg" alt=""><div><b>Pain au levain</b><small>Prix <span class="tc">à confirmer</span></small></div><span>× 2</span></div>
+ <div class="line"><img src="assets/brioche-tressee.jpg" alt=""><div><b>Brioche tressée</b><small>Prix <span class="tc">à confirmer</span></small></div><span>× 1</span></div>
+ <div class="hr"></div>
+ <div class="pay"><div class="lbl">Paiement</div>
+  <div class="seg"><button class="on">Au retrait</button><button>En ligne <span class="tc">proposition</span></button></div>
+  <p>Par défaut, vous réglez au fournil, comme aujourd’hui.</p></div>
+ <button class="cta">Réserver mon pain <small>3 pains →</small></button>
+ <p class="fine">Récapitulatif par e-mail · pause en un clic</p>
+</aside></div>
+
+<div class="below">
+ <section class="confirm">
+  <div class="phone"><div class="screen"><div class="ok">✓</div>
+   <h3>Votre pain vous attend samedi 16h30</h3><p>Au fournil · 10 rue des Violettes, Lalleu</p>
+   <img src="assets/boule-bois.jpg" alt="Miche au levain (illustration)">
+   <div class="rows"><div><span>Pain au levain</span><b>× 2</b></div><div><span>Brioche tressée</span><b>× 1</b></div><div><span>Paiement</span><b>au retrait</b></div><div><span>Prochain samedi</span><b>réservé ↻</b></div></div>
+  </div></div>
+  <div class="t"><div class="k">Après la réservation</div><h2>Un écran clair pour vos clients, une liste claire pour vous.</h2>
+   <p>Chaque vendredi à midi, la liste de la fournée arrive par e-mail : qui vient, quand, combien de pains façonner. Les habitués du samedi n’ont plus besoin de rappeler chaque semaine.</p></div>
+ </section>
+ <div class="facts">
+  <div><b>Un seul four à bois</b><p>Levain naturel, farines biologiques, producteurs locaux. Réserver, c’est être sûr d’avoir son pain.</p></div>
+  <div><b>Les heures limites</b><p>Mardi : avant lundi 12h. Samedi et dimanche : avant vendredi 12h. Horaires <span class="tc">à confirmer</span></p></div>
+  <div><b>Le téléphone reste là</b><p>09 50 20 59 36 — laissez un message, ou laboulange.lalleu@gmail.com.</p></div>
+ </div>
+ <div class="foot"><span>La Boulange. · 10 rue des Violettes, 35320 Lalleu</span><span>Maquette — proposition de Guillaume Collignon · photos d’illustration · données d’exemple</span><a href="tel:+33950205936">09 50 20 59 36</a></div>
+</div>
+<div class="bar"><span>Réserver · 3 pains</span><small>Sam. 16h30 ↻</small></div>
+</body></html>
