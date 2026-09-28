@@ -1,0 +1,227 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>C’Kikafaim — Il est où l’camion ?</title><meta name="robots" content="noindex"><style>
+@font-face{font-family:'Fraunces';src:url('assets/Fraunces.ttf') format('truetype');font-weight:100 900;font-display:block}@font-face{font-family:'Fraunces';font-style:italic;src:url('assets/Fraunces-Italic.ttf') format('truetype');font-weight:100 900;font-display:block}
+@font-face{font-family:'Inter';src:url('assets/Inter.ttf') format('truetype');font-weight:100 900;font-display:block}
+*{box-sizing:border-box;margin:0;padding:0}
+button,input{font:inherit;color:inherit;background:none;border:0}
+button{cursor:pointer}
+a{color:inherit}
+img{display:block;max-width:100%}
+:root{--bg:#FAF8F5;--surface:#fff;--ink:#1B1714;--mut:#756C63;--soft:#F1ECE6;--line:#E9E2D9;--acc:#F0B26B;--acc-deep:#D98A3A;--acc-ink:#9B5A1C;--acc-soft:#FCEBD5;--on-acc:#1F1710}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.006em}
+.tc{display:inline-block;font:600 10px/1.6 Inter,sans-serif;letter-spacing:.02em;color:var(--acc-ink);background:var(--acc-soft);padding:0 7px;border-radius:999px;vertical-align:2px;white-space:nowrap}
+.ex{display:inline-block;font:500 10px/1.6 Inter,sans-serif;color:var(--mut);background:var(--soft);padding:0 6px;border-radius:999px;vertical-align:1px;white-space:nowrap}
+.mk{font:600 10.5px/1 Inter,sans-serif;letter-spacing:.04em;color:var(--mut);border:1px solid var(--line);background:var(--surface);padding:6px 10px;border-radius:999px;white-space:nowrap}
+.logo{display:flex;flex-direction:column;line-height:1;text-decoration:none}
+.logo b{font-size:21px;letter-spacing:-.03em}
+.logo small{font-size:11px;color:var(--mut);margin-top:4px;font-weight:500}
+.telbtn{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:14px}
+.telbtn i{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--surface);box-shadow:0 0 0 1px var(--line)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 24px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;white-space:nowrap}
+.btn.acc{background:var(--acc);color:var(--on-acc);box-shadow:0 8px 22px #F0B26B55}
+.btn.ghost{background:var(--surface);box-shadow:0 0 0 1px var(--line)}
+.plus{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:999px;background:var(--surface);box-shadow:0 0 0 1px var(--line);font-weight:600;font-size:13px}
+.plus.on{background:var(--acc);box-shadow:none;color:var(--on-acc)}
+.plus span{font-size:18px;line-height:1;margin-top:-2px}
+.dot{width:8px;height:8px;border-radius:50%;background:#3DAA6A;box-shadow:0 0 0 4px #3DAA6A26;display:inline-block}
+footer{border-top:1px solid var(--line);margin-top:40px}
+footer .in{max-width:1200px;margin:0 auto;padding:36px 32px 110px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:32px;font-size:14px}
+footer h4{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin-bottom:10px}
+footer p{color:var(--ink)} footer .cr{grid-column:1/-1;font-size:11px;color:var(--mut);line-height:1.5}
+.mbar{display:none}
+@media(max-width:760px){
+ footer .in{grid-template-columns:1fr;padding:28px 20px 120px}
+ .mbar{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:50;align-items:center;gap:12px;background:var(--ink);color:#fff;border-radius:22px;padding:10px 10px 10px 18px;box-shadow:0 12px 30px #0000003d}
+ .mbar .t{flex:1;line-height:1.2} .mbar .t b{display:block;font-size:14px} .mbar .t small{font-size:12px;color:#D9CFC4}
+ .mbar .btn{height:46px;padding:0 18px;font-size:14px}
+}
+
+header{max-width:1240px;margin:0 auto;height:76px;display:flex;align-items:center;gap:16px;padding:0 32px}
+.logo b{font-family:Fraunces,serif;font-weight:600;font-variation-settings:'SOFT' 100,'WONK' 1,'opsz' 144;font-size:30px;letter-spacing:-.01em}
+header .sp{flex:1}
+header nav{display:flex;gap:24px;font-size:14px;font-weight:500;color:var(--mut);margin-right:12px} header nav a{text-decoration:none}
+.hero{max-width:1240px;margin:0 auto;padding:10px 32px 0;position:relative;display:grid;grid-template-columns:1fr 470px;gap:0}
+.hero h1{font-family:Fraunces,serif;font-weight:600;font-variation-settings:'SOFT' 100,'WONK' 1,'opsz' 144;font-size:116px;line-height:.9;letter-spacing:-.035em;position:relative;z-index:2;margin-top:18px}
+.hero h1 i{color:var(--acc-deep)}
+.hero .lede{font-size:17px;color:var(--mut);max-width:40ch;margin:24px 0 0}
+.ticket{position:relative;z-index:3;margin-top:24px;width:600px;background:var(--surface);border-radius:28px;padding:22px 24px;box-shadow:0 1px 2px #0000000a,0 22px 50px #2a18081a;display:grid;grid-template-columns:1fr auto;gap:6px 20px;align-items:center}
+.ticket .k{grid-column:1/-1;display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:600;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.ticket h2{font-size:24px;letter-spacing:-.025em;line-height:1.1}
+.ticket p{font-size:14px;color:var(--mut)}
+.ticket .acts{grid-row:2/4;grid-column:2;display:flex;flex-direction:column;gap:8px}
+.ticket .btn{height:48px}
+.ticket .dl{grid-column:1/-1;font-size:12.5px;color:var(--acc-ink);border-top:1px dashed var(--line);padding-top:12px;margin-top:8px}
+.photo{position:relative;height:640px}
+.photo .big{position:absolute;right:0;top:0;width:470px;height:600px;border-radius:220px 220px 36px 36px;object-fit:cover}
+.photo .sm{position:absolute;left:-70px;bottom:0;width:200px;height:200px;border-radius:50%;object-fit:cover;border:8px solid var(--bg)}
+.photo .cap{position:absolute;right:16px;bottom:56px;font-size:11px;color:#fff;background:#0007;padding:4px 10px;border-radius:999px}
+.photo .tag{position:absolute;right:-14px;top:70px;background:var(--acc);color:var(--on-acc);border-radius:999px;padding:10px 16px;font-weight:600;font-size:13px;transform:rotate(6deg);box-shadow:0 8px 20px #d98a3a40}
+.sec{max-width:1240px;margin:0 auto;padding:80px 32px 0}
+.num{font-size:12px;font-weight:600;color:var(--mut);letter-spacing:.1em}
+.sec h2{font-family:Fraunces,serif;font-weight:600;font-variation-settings:'SOFT' 100,'WONK' 1,'opsz' 144;font-size:64px;line-height:1;letter-spacing:-.025em;margin:8px 0 28px}
+.sec h2 i{color:var(--acc-deep)}
+.agenda{border-top:1px solid var(--ink)}
+.ag{display:grid;grid-template-columns:150px 1.2fr 1fr auto;gap:24px;align-items:center;padding:20px 12px;border-bottom:1px solid var(--line)}
+.ag .d{font-family:Fraunces,serif;font-weight:600;font-variation-settings:'SOFT' 100,'WONK' 1;font-size:36px;line-height:1}
+.ag .d small{font-family:Inter;font-size:13px;color:var(--mut);margin-left:6px}
+.ag h3{font-size:20px;letter-spacing:-.02em}
+.ag p{color:var(--mut);font-size:14px}
+.ag a{font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap}
+.ag.now{background:var(--acc-soft);border-radius:20px;border-bottom-color:transparent}
+.ag.now a{background:var(--ink);color:#fff;padding:10px 16px;border-radius:999px}
+.menu{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:260px 260px;gap:16px}
+.mi{position:relative;border-radius:30px;overflow:hidden}
+.mi:first-child{grid-row:1/3}
+.mi img{width:100%;height:100%;object-fit:cover}
+.mi .lab{position:absolute;left:14px;right:14px;bottom:14px;display:flex;justify-content:space-between;align-items:center;background:#fffffff0;border-radius:18px;padding:10px 10px 10px 16px}
+.mi .lab b{font-size:15px}.mi .lab small{display:block;font-size:12px;color:var(--mut);font-weight:500}
+.sidesline{margin-top:18px;font-size:15px;color:var(--mut)} .sidesline b{color:var(--ink);font-weight:600}
+.venue{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;background:var(--surface);border-radius:36px;padding:44px;box-shadow:0 0 0 1px var(--line)}
+.venue h2{margin-bottom:12px}
+.venue p{color:var(--mut);font-size:16px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form label{display:flex;flex-direction:column;gap:6px;font-size:12.5px;font-weight:600;color:var(--mut)}
+.form input{height:48px;border-radius:14px;box-shadow:0 0 0 1px var(--line);padding:0 14px;font-size:15px;color:var(--ink);background:var(--bg)}
+.form .full{grid-column:1/-1}
+.form .btn{grid-column:1/-1}
+@media(max-width:760px){
+ header{height:62px;padding:0 18px} header nav,header .mk,.telbtn span{display:none}
+ .logo b{font-size:28px}
+ .hero{grid-template-columns:1fr;padding:0 18px}
+ .hero h1{font-size:62px;margin-top:12px}
+ .hero .lede{font-size:15px;margin-top:14px}
+ .ticket{width:auto;grid-template-columns:1fr;padding:18px;margin-top:18px;border-radius:24px}
+ .ticket h2{font-size:22px}
+ .ticket{grid-template-columns:minmax(0,1fr)}.ticket .acts{grid-row:auto;grid-column:1;flex-direction:column;margin-top:10px;gap:8px}.ticket .btn{width:100%;height:48px;padding:0 12px;font-size:15px}.ticket .btn.ghost{height:44px}
+ .photo{height:380px;margin-top:22px}.photo .big{width:100%;height:360px;border-radius:160px 160px 28px 28px}.photo .sm{left:10px;width:120px;height:120px}.photo .tag{right:6px;top:40px}
+ .sec{padding:56px 18px 0}.sec h2{font-size:44px}
+ .ag{grid-template-columns:1fr auto;gap:4px 12px;padding:16px 10px}.ag .d{font-size:28px}.ag a{grid-row:1/3;grid-column:2}
+ .ag>div:nth-child(3){grid-column:1}
+ .ag a{font-size:0!important;padding:10px 14px!important;border-radius:999px;box-shadow:0 0 0 1px var(--line)} .ag a:after{content:'Réserver';font-size:13px} .ag.now a{box-shadow:none}
+ .menu{grid-template-columns:1fr 1fr;grid-template-rows:240px 170px 170px}.mi:first-child{grid-column:1/-1;grid-row:auto}
+ .mi .lab{left:8px;right:8px;bottom:8px;padding:8px 8px 8px 12px}.mi .lab .plus{display:none}
+ .venue{grid-template-columns:1fr;padding:26px;gap:22px}
+ .form{grid-template-columns:1fr}
+ .mhide{display:none}
+}
+
+/* ---- v2b/v2c overrides ---- */
+.logo b{font-size:28px;letter-spacing:-.02em}
+.logo small{font-style:italic;color:var(--acc-ink);font-weight:500;font-size:12px}
+.hero h1{font-size:112px;line-height:.92;letter-spacing:-.04em}
+.hero h1 i{font-style:italic;font-weight:600}
+.hero .sub{font-family:Fraunces,serif;font-variation-settings:'SOFT' 100,'WONK' 0,'opsz' 36;font-weight:500;font-size:28px;line-height:1.2;letter-spacing:-.015em;margin-top:22px;max-width:22ch}
+.hero .sub b{font-weight:600;color:var(--acc-ink)}
+.hero .lede{margin-top:12px;font-size:16px}
+.sec h2{font-size:62px;letter-spacing:-.035em}
+.sec h2 i{font-style:italic}
+.sec .intro{color:var(--mut);font-size:16px;max-width:52ch;margin:-12px 0 26px}
+.ag .d{font-size:32px}
+/* reservation */
+.resa{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:stretch}
+.card{background:var(--surface);border-radius:32px;padding:32px;box-shadow:0 0 0 1px var(--line)}
+.step{padding:18px 0;border-bottom:1px dashed var(--line)} .step:first-child{padding-top:0} .step:last-child{border:0;padding-bottom:0}
+.step h4{font-size:13px;font-weight:600;color:var(--mut);margin-bottom:12px;display:flex;gap:10px;align-items:center}
+.step h4 em{font-style:normal;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:11px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{height:40px;padding:0 16px;border-radius:999px;box-shadow:0 0 0 1px var(--line);font-size:14px;font-weight:500;background:var(--bg)}
+.chips button small{color:var(--mut);margin-left:6px;font-size:12px}
+.chips button.on{background:var(--ink);color:#fff;box-shadow:none}.chips button.on small{color:#D9CFC4}
+.chips button.off{opacity:.5}.chips button.off{cursor:default}
+.qty{display:grid;gap:10px}
+.qrow{display:flex;align-items:center;gap:14px}
+.qrow img{width:52px;height:52px;border-radius:16px;object-fit:cover}
+.qrow div{flex:1;line-height:1.25}.qrow b{font-size:15px}.qrow small{display:block;color:var(--mut);font-size:12.5px}
+.stp{display:flex;align-items:center;gap:12px;background:var(--bg);border-radius:999px;padding:4px;box-shadow:0 0 0 1px var(--line)}
+.stp button{width:32px;height:32px;border-radius:50%;background:var(--surface);box-shadow:0 0 0 1px var(--line);font-size:17px;line-height:1}
+.stp span{min-width:14px;text-align:center;font-weight:600}
+.recap{display:flex;flex-direction:column;padding:0;overflow:hidden}
+.recap img{width:100%;height:230px;object-fit:cover}
+.recap .rb{padding:26px 28px 28px;display:flex;flex-direction:column;gap:12px;flex:1}
+.recap h3{font-family:Fraunces,serif;font-variation-settings:'SOFT' 100,'WONK' 1;font-weight:600;font-size:30px;letter-spacing:-.025em;line-height:1.05}
+.recap ul{list-style:none;display:grid;gap:8px;font-size:14.5px}
+.recap li{display:flex;justify-content:space-between;gap:12px;color:var(--mut)} .recap li b{color:var(--ink);font-weight:600}
+.recap .tot{border-top:1px solid var(--line);padding-top:12px;display:flex;justify-content:space-between;align-items:baseline;font-weight:600}
+.recap .tot strong{font-size:22px;letter-spacing:-.02em}
+.recap .btn{width:100%;margin-top:auto}
+.recap .fine{font-size:12px;color:var(--mut);text-align:center}
+/* events band */
+.band{display:flex;align-items:center;gap:28px;background:var(--acc-soft);border-radius:32px;padding:30px 36px}
+.band img{width:96px;height:96px;border-radius:50%;object-fit:cover;flex:0 0 auto}
+.band div{flex:1}.band h3{font-family:Fraunces,serif;font-variation-settings:'SOFT' 100,'WONK' 1;font-weight:600;font-size:30px;letter-spacing:-.02em;line-height:1.1}
+.band p{color:var(--mut);font-size:15px;margin-top:4px}
+.band .btn{background:var(--ink);color:#fff}
+/* sign-off */
+.signoff{max-width:1240px;margin:90px auto 0;padding:0 32px;text-align:center}
+.signoff .big{font-family:Fraunces,serif;font-variation-settings:'SOFT' 100,'WONK' 1,'opsz' 144;font-weight:600;font-size:88px;line-height:.95;letter-spacing:-.04em}
+.signoff .big i{color:var(--acc-deep)}
+.signoff p{color:var(--mut);font-size:17px;margin:16px 0 26px}
+.signoff .acts{display:flex;gap:12px;justify-content:center}
+@media(max-width:760px){
+ .logo b{font-size:25px}
+ .hero h1{font-size:60px;margin-top:14px}
+ .hero .sub{font-size:21px;margin-top:14px}
+ .sec h2{font-size:42px}
+ .sec .intro{font-size:15px;margin:-14px 0 20px}
+ .ag .d{font-size:26px}
+ .resa{grid-template-columns:minmax(0,1fr)}.resa>*{min-width:0}
+ .hero{grid-template-columns:minmax(0,1fr)}.hero>*{min-width:0}
+ .card{padding:22px;border-radius:26px}
+ .recap{padding:0}.recap img{height:170px}.recap .rb{padding:20px 22px 24px}.recap h3{font-size:26px}
+ .chips{flex-wrap:nowrap;overflow-x:auto;margin:0 -22px;padding:2px 22px;scrollbar-width:none}.chips button{flex:0 0 auto}
+ .band{flex-direction:column;align-items:flex-start;gap:14px;padding:24px}.band img{width:72px;height:72px}.band h3{font-size:25px}
+ .signoff{margin-top:64px;padding:0 20px}.signoff .big{font-size:50px}.signoff p{font-size:15px}.signoff .acts{flex-direction:column}
+ .mbar .btn{padding:0 16px}
+}
+.hero .sub{max-width:24ch}.hero .sub2{display:block;color:var(--mut);font-size:.82em;margin-top:4px}.hero h1{letter-spacing:-.03em}
+@media(max-width:760px){.hero .sub{max-width:none}}</style></head><body>
+<header><a class="logo" href="#"><b>C’Kikafaim</b><small>C’est qui qu’a faim ?</small></a><div class="sp"></div>
+<nav><a href="#semaine">La tournée</a><a href="#broche">À la broche</a><a href="#reserver">Réserver</a></nav>
+<span class="mk">MOCKUP — proposition</span><a class="telbtn" href="tel:+33683564638" aria-label="Appeler"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></i><span>06 83 56 46 38</span></a></header>
+<section class="hero"><div><h1>Il est où<br><i>l’camion&nbsp;?</i></h1>
+<p class="sub">Aujourd’hui, il est au <b>marché de Bain&#8209;de&#8209;Bretagne.</b> <span class="sub2">Les poulettes dorent.</span></p>
+<p class="lede mhide">Poulets, porc et jambonneau rôtis à la broche par Didier, dans son camion. Six arrêts par semaine autour de Guichen.</p>
+<div class="ticket"><div class="k"><span class="dot"></span>Lundi 28 sept. · en ce moment</div>
+<div><h2>Marché de Bain-de-Bretagne</h2><p>7h–13h · prêtes dès 10h30</p></div>
+<div class="acts"><a class="btn acc" href="#reserver">Je réserve ma poulette</a><a class="btn ghost" href="tel:+33683564638"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg> J’appelle Didier</a></div>
+<div class="dl">⏱ Pour ce midi, réservez avant 9h <span class="ex">exemple</span> · on paie au camion</div></div></div>
+<div class="photo"><img class="big" src="assets/rotisserie-camion.jpg" alt="Poulets à la broche dans une rôtisserie"><img class="sm" src="assets/poulet-assiette.jpg" alt="Poulet rôti">
+<span class="tag">Ça tourne depuis ce matin</span><span class="cap">Photo d’illustration · à remplacer</span></div></section>
+
+<section class="sec" id="semaine"><span class="num">02 — LA TOURNÉE</span><h2>T’es où <i>cette semaine ?</i></h2>
+<p class="intro">Six rendez-vous entre Bain-de-Bretagne et Bréal. Trouvez le vôtre, Didier vous met votre poulette de côté.</p>
+<div class="agenda"><div class="ag now"><div class="d">Lun.<small>matin</small></div><div><h3>Bain-de-Bretagne</h3><p>Au marché du lundi</p></div><div><p>7h–13h · poulettes prêtes dès 10h30</p></div><a href="#reserver">Je réserve pour aujourd’hui</a></div><div class="ag"><div class="d">Lun.<small>soir</small></div><div><h3>Saint-Senoux</h3><p>Pour le dîner</p></div><div><p>Horaires à confirmer</p></div><a href="#reserver">Réserver ici →</a></div><div class="ag"><div class="d">Mar.<small>soir</small></div><div><h3>Pléchâtel</h3><p>Pour le dîner</p></div><div><p>Horaires à confirmer</p></div><a href="#reserver">Réserver ici →</a></div><div class="ag"><div class="d">Mer.<small>soir</small></div><div><h3>Bréal-sous-Montfort</h3><p>Pour le dîner</p></div><div><p>Horaires à confirmer</p></div><a href="#reserver">Réserver ici →</a></div><div class="ag"><div class="d">Jeu.<small>midi</small></div><div><h3>Guichen</h3><p>À la maison, sur sites d’entreprise</p></div><div><p>Horaires à confirmer</p></div><a href="#reserver">Réserver ici →</a></div><div class="ag"><div class="d">Ven.<small>midi</small></div><div><h3>Guichen</h3><p>Encore à la maison</p></div><div><p>Horaires à confirmer</p></div><a href="#reserver">Réserver ici →</a></div></div>
+<p style="font-size:12px;color:var(--mut);margin-top:12px">Tournée relevée dans la presse locale (février 2025) — lieux et horaires <span class="tc">à confirmer</span></p></section>
+
+<section class="sec" id="broche"><span class="num">03 — À LA BROCHE</span><h2>La star, <i>et sa bande.</i></h2><div class="menu"><div class="mi"><img src="assets/poulet-broche.jpg" alt="La poulette entière"><div class="lab"><div><b>La poulette entière</b><small>13,00 € <span class="ex">exemple</span></small></div><button class="plus" data-add><span>+</span> Ajouter</button></div></div><div class="mi"><img src="assets/poulet-assiette.jpg" alt="La demi-poulette"><div class="lab"><div><b>La demi-poulette</b><small>7,50 € <span class="ex">exemple</span></small></div><button class="plus" data-add><span>+</span> Ajouter</button></div></div><div class="mi"><img src="assets/porc-roti.jpg" alt="Porc rôti"><div class="lab"><div><b>Porc rôti</b><small>6,50 € <span class="ex">exemple</span></small></div><button class="plus" data-add><span>+</span> Ajouter</button></div></div><div class="mi"><img src="assets/gratin.jpg" alt="Gratin dauphinois"><div class="lab"><div><b>Gratin dauphinois</b><small>3,50 € <span class="ex">exemple</span></small></div><button class="plus" data-add><span>+</span> Ajouter</button></div></div><div class="mi"><img src="assets/jambonneau.jpg" alt="Jambonneau"><div class="lab"><div><b>Jambonneau</b><small>8,00 € <span class="ex">exemple</span></small></div><button class="plus" data-add><span>+</span> Ajouter</button></div></div></div>
+<p class="sidesline">Pour accompagner : <b>saucisses</b>, <b>ratatouille</b>, <b>risotto</b> — selon l’arrêt <span class="tc">à confirmer</span></p></section>
+
+<section class="sec" id="reserver"><span class="num">04 — RÉSERVER</span><h2>On vous la <i>met de côté.</i></h2>
+<p class="intro">Choisissez l’arrêt et l’heure, passez la chercher toute chaude. Pas de paiement en ligne : on règle au camion.</p>
+<div class="resa"><div class="card">
+<div class="step"><h4><em>1</em>Où ?</h4><div class="chips pick"><button class="on">Lun. matin<small>Bain-de-Bretagne</small></button><button>Lun. soir<small>Saint-Senoux</small></button><button>Mar. soir<small>Pléchâtel</small></button><button>Mer. soir<small>Bréal</small></button><button>Jeu. midi<small>Guichen</small></button><button>Ven. midi<small>Guichen</small></button></div></div>
+<div class="step"><h4><em>2</em>À quelle heure ?</h4><div class="chips pick"><button class="off">10h30<small>complet</small></button><button>11h00</button><button class="on">11h30</button><button>12h00</button><button>12h30</button></div></div>
+<div class="step"><h4><em>3</em>Qu’est-ce qui vous ferait plaisir ?</h4><div class="qty">
+<div class="qrow"><img src="assets/poulet-broche.jpg" alt=""><div><b>La poulette entière</b><small>13,00 € · exemple</small></div><div class="stp"><button>−</button><span>1</span><button>+</button></div></div>
+<div class="qrow"><img src="assets/gratin.jpg" alt=""><div><b>Gratin dauphinois</b><small>3,50 € · exemple</small></div><div class="stp"><button>−</button><span>1</span><button>+</button></div></div>
+<div class="qrow"><img src="assets/porc-roti.jpg" alt=""><div><b>Porc rôti</b><small>6,50 € · exemple</small></div><div class="stp"><button>−</button><span>0</span><button>+</button></div></div>
+</div></div></div>
+<div class="card recap"><img src="assets/rotisserie-broches.jpg" alt="Poulets en train de dorer à la broche"><div class="rb"><h3>Votre poulette vous attend.</h3>
+<ul><li>Arrêt<b>Bain-de-Bretagne</b></li><li>Retrait<b>Lundi 28 · 11h30</b></li><li>1 poulette entière<b>13,00 €</b></li><li>1 gratin dauphinois<b>3,50 €</b></li></ul>
+<div class="tot"><span>À régler au camion</span><strong>16,50 €</strong></div>
+<a class="btn acc" href="#">Je réserve ma poulette</a><p class="fine">Confirmation par SMS · fonctionnalité proposée, prix d’exemple</p></div></div></div></section>
+
+<section class="sec"><div class="band"><img src="assets/poulet-broche.jpg" alt=""><div><h3>Une fête, un repas d’équipe ?</h3><p>Le camion vient déjà le midi sur des sites d’entreprise à Guichen. Demandez une date. <span class="tc">à confirmer</span></p></div><a class="btn" href="#">Faire venir le camion</a></div></section>
+
+<section class="signoff"><div class="big">C’est qui <i>qu’a faim ?</i></div><p>Levez la main, Didier s’occupe du reste.</p>
+<div class="acts"><a class="btn acc" href="#reserver">Je réserve ma poulette</a><a class="btn ghost" href="tel:+33683564638"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg> 06 83 56 46 38</a></div></section>
+
+<footer><div class="in"><div><h4>C’Kikafaim</h4><p>Camion rôtisserie de Didier Renault — poulets, porc, jambonneau et accompagnements, à deux pas de chez vous.</p></div>
+<div><h4>Contact</h4><p><a href="tel:+33683564638">06 83 56 46 38</a><br><a href="mailto:ckikafaim@gmail.com">ckikafaim@gmail.com</a><br>Facebook : C’kikafaim</p></div>
+<div><h4>Tournée</h4><p>Bain-de-Bretagne · Saint-Senoux · Pléchâtel · Bréal-sous-Montfort · Guichen <span class="tc">à confirmer</span></p></div>
+<p class="cr">MOCKUP — proposition non contractuelle préparée par Guillaume Collignon. Tournée d’après la presse locale (févr. 2025), à confirmer. Prix, créneaux et heures limites = données d’exemple. Réservation en ligne = fonctionnalité proposée, pas encore existante ; paiement au camion. Photos d’illustration (Wikimedia Commons, à remplacer par vos photos) : Rotisserie in Dieppe Market — CC0 ; RotisserieChicken.jpg — CC BY 3.0 ; Rotisserie chicken bought from Dieppe Market — CC0 ; Roast pork slices — domaine public ; Jamboneau laqué au miel — CC BY-SA 3.0 ; Gratin dauphinois 2019 — CC BY-SA 4.0.</p></div></footer>
+<div class="mbar"><span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div class="t"><b>Bain-de-Bretagne</b><small>Aujourd’hui · prête dès 10h30</small></div><a class="btn acc" href="#reserver">Je réserve</a></div>
+<script>
+document.querySelectorAll('[data-add]').forEach(b=>b.addEventListener('click',()=>{b.classList.add('on');b.innerHTML='<span>✓</span> Ajouté';}));
+document.querySelectorAll('.pick').forEach(g=>g.querySelectorAll('button:not(.off)').forEach(x=>x.addEventListener('click',()=>{g.querySelectorAll('button').forEach(y=>y.classList.remove('on'));x.classList.add('on');})));
+</script></body></html>
