@@ -1,0 +1,367 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bûches glacées & glaces de la ferme · Glaces & Délices, Gravot</title><style>
+@font-face{font-family:'Inter';src:url('assets/Inter.ttf') format('truetype');font-weight:100 900;font-display:block}
+@font-face{font-family:'Calistoga';src:url('assets/Calistoga.ttf') format('truetype');font-display:block}
+:root{
+ --bg:#FFFAF8;--surface:#FFFFFF;--tint:#FCEFF4;--tint-2:#F8E3EC;
+ --ink:#2A1418;--ink-2:#4A3238;--mut:#7A666C;--line:#EFE2E6;
+ --acc:#F2A2C0;--acc-hi:#F7BDD3;--acc-deep:#8A1450;--on-acc:#3A0820;
+ --r-xl:32px;--r-lg:24px;--r-md:18px;--r-sm:12px;
+ --sh-1:0 1px 2px #2a141810,0 0 0 1px var(--line);
+ --sh-2:0 2px 4px #2a14140a,0 14px 32px -12px #3a08202e,0 0 0 1px #efe2e680;
+ --sh-3:0 30px 70px -24px #3a082047,0 8px 20px -10px #3a08201f;
+ --ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+button,input{font:inherit;color:inherit;background:none;border:0}button{cursor:pointer}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.55 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.011em;overflow-x:hidden}
+.wrap{max-width:1232px;margin:0 auto;padding:0 28px}
+.disp{font-family:Calistoga,Georgia,serif;font-weight:400;letter-spacing:-.018em}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--acc-deep)}
+.kicker:before{content:'';width:18px;height:2px;border-radius:2px;background:var(--acc)}
+/* boutons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 24px;border-radius:999px;font-weight:650;font-size:15px;white-space:nowrap;transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s}
+.btn svg{transition:transform .2s var(--ease)}
+.btn:hover{transform:translateY(-1px)}.btn:hover svg:last-child{transform:translateX(2px)}
+.btn.acc{background:var(--acc);color:var(--on-acc);box-shadow:0 1px 0 #ffffff80 inset,0 10px 22px -8px #c9578a8c}
+.btn.acc:hover{background:var(--acc-hi)}
+.btn.ghost{background:var(--surface);color:var(--ink);box-shadow:var(--sh-1)}
+.btn.ghost:hover{box-shadow:0 0 0 1px #d9c3cb,0 8px 18px -10px #3a082033}
+.btn.sm{height:44px;padding:0 18px;font-size:14px}
+.icb{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--surface);box-shadow:var(--sh-1);color:var(--ink);flex:0 0 auto;transition:box-shadow .2s,transform .2s var(--ease)}
+.icb:hover{transform:translateY(-1px);box-shadow:0 0 0 1px #d9c3cb,0 8px 18px -10px #3a082033}
+.chip{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 15px;border-radius:999px;background:var(--surface);box-shadow:var(--sh-1);font-size:14px;font-weight:550;white-space:nowrap;transition:box-shadow .2s,background .2s}
+.chip:hover{box-shadow:0 0 0 1px #d9c3cb}
+.chip.on{background:var(--tint);box-shadow:0 0 0 1.5px var(--acc-deep);color:var(--acc-deep);font-weight:650}
+.dot{display:inline-block;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px #00000014,0 0 0 2px #fff;flex:0 0 auto}
+/* header */
+header.top{display:flex;align-items:center;gap:28px;height:88px}
+header.top .logo{height:50px;width:auto}
+header.top nav{display:flex;gap:4px;margin-left:8px}
+header.top nav a{height:40px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;font-size:14.5px;font-weight:550;color:var(--ink-2);transition:background .2s}
+header.top nav a:hover{background:var(--tint)}
+header.top .sp{flex:1}
+header.top .acts{display:flex;align-items:center;gap:10px}
+.mbrand{display:none}
+.nw{white-space:nowrap}
+/* hero */
+.hero{text-align:center;padding:14px 0 0}
+.pill{display:inline-flex;align-items:center;gap:12px;height:40px;padding:0 16px 0 6px;border-radius:999px;background:var(--surface);box-shadow:var(--sh-1);font-size:14px;font-weight:550;color:var(--ink-2)}
+.pill b{display:inline-flex;align-items:center;gap:7px;height:30px;padding:0 12px;border-radius:999px;background:var(--acc);color:var(--on-acc);font-size:13px;font-weight:700}
+.pill b i{width:6px;height:6px;border-radius:50%;background:var(--on-acc);opacity:.75}
+.hero h1{font-size:60px;line-height:1.02;margin:20px auto 14px;max-width:820px;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--acc-deep)}
+.hero .lede{font-size:18px;line-height:1.55;color:var(--mut);max-width:600px;margin:0 auto}
+.stage{position:relative;margin:30px 0 0;border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--sh-2);aspect-ratio:1176/560;background:#ECE8E9}
+.stage picture,.stage img{width:100%;height:100%;object-fit:cover}
+.sticker{position:absolute;left:28px;top:28px;display:flex;align-items:center;gap:12px;padding:10px 20px 10px 10px;border-radius:999px;background:#fffffff2;box-shadow:0 12px 30px -12px #3a082040;transform:rotate(-3deg);backdrop-filter:blur(6px)}
+.sticker img{width:40px;height:40px;border-radius:50%;background:var(--tint);padding:3px}
+.sticker span{font-family:Calistoga,serif;font-size:21px;line-height:1;color:var(--ink)}
+.sticker small{display:block;font-family:Inter,sans-serif;font-size:11.5px;font-weight:600;color:var(--mut);margin-top:3px;letter-spacing:0}
+.sheet{position:absolute;right:28px;top:50%;transform:translateY(-50%);width:430px;background:var(--surface);border-radius:var(--r-lg);padding:24px;box-shadow:var(--sh-3);text-align:left}
+.sheet .hd{display:flex;align-items:center;gap:14px}
+.sheet .hd .mini{width:52px;height:52px;border-radius:14px;background:var(--tint);display:grid;place-items:center;flex:0 0 auto}
+.sheet .hd .mini .slice{width:34px;height:30px}
+.sheet h3{font-size:22px;line-height:1.1}
+.sheet .hd p{font-size:13.5px;color:var(--mut);margin-top:3px}
+.sheet .hd .tag{margin-left:auto;align-self:flex-start;font-size:11.5px;font-weight:700;color:var(--acc-deep);background:var(--tint);padding:5px 9px;border-radius:999px;white-space:nowrap}
+.lbl{display:flex;justify-content:space-between;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);margin:20px 0 9px}
+.lbl span{text-transform:none;letter-spacing:0;font-weight:550}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:4px;border-radius:14px;background:#F6EEF1}
+.seg span{display:grid;place-items:center;height:40px;border-radius:10px;font-size:14px;font-weight:650;color:var(--mut)}
+.seg span.on{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px #3a08201a,0 4px 10px -4px #3a082026}
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.days span{display:flex;flex-direction:column;align-items:center;justify-content:center;height:58px;border-radius:14px;box-shadow:var(--sh-1);font-size:12px;font-weight:550;color:var(--mut);line-height:1.2;background:var(--surface)}
+.days span b{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+.days span.on{background:var(--tint);box-shadow:0 0 0 1.5px var(--acc-deep);color:var(--acc-deep)}.days span.on b{color:var(--acc-deep)}
+.sheet .btn{width:100%;margin-top:20px;height:54px}
+.fine{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:12px;font-size:12.5px;color:var(--mut)}
+.fine svg{color:var(--acc-deep)}
+.trust{display:flex;justify-content:center;gap:34px;margin:26px 0 0;font-size:14px;color:var(--ink-2);font-weight:550}
+.trust span{display:inline-flex;align-items:center;gap:9px}.trust svg{color:var(--acc-deep)}
+/* sections */
+section.s{margin-top:120px}
+.sh{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:32px}
+.sh h2{font-size:46px;line-height:1.04;margin-top:12px}
+.sh p{color:var(--mut);max-width:430px;font-size:16px}
+.card{background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--sh-1)}
+/* semaine + retrait */
+.farmgrid{display:grid;grid-template-columns:4.6fr 7.4fr;gap:20px}
+.wk{padding:28px;display:flex;flex-direction:column}
+.wk .ph{position:relative;flex:1;min-height:150px;margin-top:20px;border-radius:var(--r-md);overflow:hidden;background:#e9e4e5}
+.wk .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:32% 30%}
+.wk .ph span{position:absolute;left:12px;bottom:12px;display:inline-flex;align-items:center;gap:7px;background:#fffffff0;border-radius:999px;padding:7px 13px;font-size:12.5px;font-weight:600}
+.wk .ph span svg{color:var(--acc-deep)}
+.wk h3,.rt h3{font-size:24px;line-height:1.1}
+.wk .sub,.rt .sub{color:var(--mut);font-size:14.5px;margin-top:6px}
+.days6{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:22px 0 18px}
+.days6 div{position:relative;display:flex;flex-direction:column;align-items:center;padding:12px 4px 11px;border-radius:16px;background:#FBF6F7;font-size:12px;color:var(--mut);font-weight:550;line-height:1.25}
+.days6 div b{font-size:20px;color:var(--ink);letter-spacing:-.03em;margin:1px 0 3px;font-weight:700}
+.days6 div em{font-style:normal;font-size:11px;font-weight:650}
+.days6 .today{background:var(--surface);box-shadow:0 0 0 1.5px var(--ink)}
+.days6 .today:after{content:"auj.";position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:999px;letter-spacing:.02em}
+.days6 .open{background:var(--acc);color:var(--on-acc)}.days6 .open b{color:var(--on-acc)}
+.note{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--ink-2);background:var(--tint);border-radius:14px;padding:12px 14px}
+.note svg{color:var(--acc-deep);flex:0 0 auto;margin-top:1px}
+.addr{display:flex;align-items:center;gap:12px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+.addr .t{flex:1;min-width:0}.addr b{display:block;font-size:15px}.addr small{color:var(--mut);font-size:13px}
+.addr .pinb{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:var(--tint);color:var(--acc-deep);flex:0 0 auto}
+.rt{padding:28px;display:grid;grid-template-columns:1fr;gap:0}
+.rt .grp{margin-top:20px}
+.rt .grp h4{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);margin-bottom:10px;display:flex;justify-content:space-between}
+.rt .grp h4 span{text-transform:none;letter-spacing:0;font-weight:550}
+.fl{display:flex;flex-wrap:wrap;gap:8px}
+.fh{font-size:12.5px;font-weight:600;color:var(--mut);margin:12px 0 8px}.fh:first-of-type{margin-top:0}
+.fl .chip{padding:0 11px 0 8px;height:36px;font-size:13.5px;gap:7px}
+.rt .fl{gap:6px}
+.fl .chip.on:after{content:'';width:14px;height:14px;margin-left:2px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/contain no-repeat}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.slots span{display:flex;flex-direction:column;justify-content:center;height:58px;padding:0 14px;border-radius:14px;box-shadow:var(--sh-1);font-size:12.5px;color:var(--mut);font-weight:550;line-height:1.25;background:var(--surface)}
+.slots span b{font-size:14.5px;color:var(--ink);font-weight:700}
+.slots span.on{background:var(--tint);box-shadow:0 0 0 1.5px var(--acc-deep);color:var(--acc-deep)}.slots span.on b{color:var(--acc-deep)}
+.rt .foot{display:flex;align-items:center;gap:16px;margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.rt .foot p{flex:1;font-size:13px;color:var(--mut)}
+/* bûches */
+.bgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.bc{position:relative;padding:10px 10px 18px;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.bc:hover{transform:translateY(-3px);box-shadow:var(--sh-2)}
+.bc .vis{position:relative;height:148px;border-radius:var(--r-md);background:var(--tint);display:grid;place-items:center;margin-bottom:16px}
+.bc .vis:after{content:'';position:absolute;left:50%;bottom:22px;width:136px;height:18px;transform:translateX(-50%);border-radius:50%;background:#fff;box-shadow:0 8px 14px -8px #3a082038}
+.bc .vis .slice{position:relative;z-index:1}
+.slice{display:flex;flex-direction:column;width:98px;height:84px;border-radius:999px 999px 10px 10px;overflow:hidden;box-shadow:0 12px 20px -12px #3a08205c,inset 0 0 0 1px #00000010}
+.slice>span{display:block}
+.slice .base{flex:0 0 18%}
+.bc h3{font-size:20px;line-height:1.15;padding:0 8px}
+.bc p{font-size:13.5px;color:var(--mut);padding:4px 8px 0;min-height:42px;line-height:1.45}
+.bc .row{display:flex;align-items:center;justify-content:space-between;padding:12px 8px 0}
+.bc .row .dots{display:flex;gap:4px}
+.bc .add{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--tint);color:var(--acc-deep);transition:background .2s}
+.bc:hover .add{background:var(--acc);color:var(--on-acc)}
+.bc.on{box-shadow:0 0 0 2px var(--acc-deep)}
+.bc.on .add{background:var(--acc-deep);color:#fff}
+.bc .badge{position:absolute;top:20px;left:20px;font-size:11px;font-weight:700;color:var(--acc-deep);background:#fff;padding:4px 9px;border-radius:999px;box-shadow:0 2px 6px #3a082014}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.gal figure{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/3;background:#eee;box-shadow:var(--sh-1)}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.gal figure:hover img{transform:scale(1.03)}
+.galcap{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:13.5px;color:var(--mut)}
+.galcap svg{color:var(--acc-deep);flex:0 0 auto}
+.deadl{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+/* sur commande */
+.order{display:grid;grid-template-columns:1.05fr 1fr;gap:0;overflow:hidden;background:var(--tint)}
+.order .ph{position:relative;min-height:440px}
+.order .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+.order .ph .lab{position:absolute;left:20px;bottom:20px;display:inline-flex;gap:8px;align-items:center;background:#fffffff0;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600}
+.order .tx{padding:52px 52px 48px}
+.order h2{font-size:40px;line-height:1.06;margin:12px 0 14px}
+.order .tx>p{color:var(--ink-2)}
+.order .fl{margin:22px 0 26px}
+.order .fl .chip{background:#fffffff2}
+.order .cta{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.order .cta small{display:flex;align-items:center;gap:8px;color:var(--ink-2);font-size:13.5px}
+.order .cta small svg{color:var(--acc-deep)}
+/* ferme */
+.story{display:grid;grid-template-columns:7fr 5fr;gap:20px;align-items:stretch}
+.story .big{border-radius:var(--r-xl);overflow:hidden;min-height:520px;position:relative;box-shadow:var(--sh-1)}
+.story .big img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 50%}
+.story .side{display:flex;flex-direction:column;gap:20px}
+.story .txt{padding:32px}
+.story .txt h2{font-size:38px;line-height:1.06;margin:12px 0 14px}
+.story .txt p{color:var(--ink-2);font-size:15.5px}
+.stats{display:grid;grid-template-columns:1fr 1fr;flex:1;overflow:hidden}
+.stats div{padding:22px 24px;display:flex;flex-direction:column;justify-content:flex-start}
+.stats div:nth-child(odd){border-right:1px solid var(--line)}
+.stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+.stats b{font-family:Calistoga,serif;font-weight:400;font-size:34px;line-height:1;letter-spacing:-.02em}
+.stats span{font-size:13.5px;color:var(--mut);margin-top:6px}
+.band{position:relative;margin-top:20px;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:1176/400;box-shadow:var(--sh-1)}
+.band img{width:100%;height:100%;object-fit:cover;object-position:50% 52%}
+.band .lab{position:absolute;left:24px;bottom:24px;max-width:480px;background:#fffffff2;border-radius:var(--r-md);padding:18px 20px;box-shadow:0 12px 30px -14px #3a082040}
+.band .lab b{display:block;font-size:16px}.band .lab span{font-size:14px;color:var(--mut)}
+/* où */
+.where{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:20px}
+.pl{padding:24px;display:flex;gap:16px;align-items:flex-start}
+.pl .pi{display:grid;place-items:center;width:48px;height:48px;border-radius:16px;background:var(--tint);color:var(--acc-deep);flex:0 0 auto}
+.pl b{display:block;font-size:17px;margin-bottom:2px}.pl p{font-size:14px;color:var(--mut)}
+.pl a.lk{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:14px;font-weight:650;color:var(--acc-deep)}
+.contact{padding:24px;background:var(--ink);color:#fff;box-shadow:none}
+.contact b{display:block;font-size:17px}.contact p{font-size:14px;color:#ffffffb3;margin:4px 0 16px}
+.contact .acts{display:flex;gap:10px}
+.contact .btn.acc{flex:1}
+.contact .icb{background:#ffffff14;box-shadow:none;color:#fff}
+/* footer */
+footer.f{margin-top:110px;border-top:1px solid var(--line)}
+footer.f .in{max-width:1232px;margin:0 auto;padding:44px 28px 56px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:32px;font-size:14px;color:var(--ink-2)}
+footer.f .logo{height:44px;width:auto;margin-bottom:12px}
+footer.f h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin-bottom:12px}
+footer.f p{margin-bottom:6px}
+footer.f .demo{grid-column:1/-1;font-size:11px;color:var(--mut);opacity:.75;padding-top:12px;border-top:1px solid var(--line)}
+.mbar,.m-only{display:none}
+/* ───── mobile ───── */
+@media(max-width:760px){
+ body{font-size:15px}
+ .wrap{padding:0 18px}
+ .d-only{display:none!important}.m-only{display:initial}
+ header.top{height:68px;gap:12px}
+ header.top .logo,header.top nav{display:none}
+ .mbrand{display:flex;align-items:center;gap:10px}
+ .mbrand img{width:44px;height:44px;border-radius:50%;background:var(--surface);box-shadow:var(--sh-1);padding:4px}
+ .mbrand b{display:block;font-size:15px;font-weight:750;letter-spacing:-.02em;line-height:1.1}
+ .mbrand small{display:block;font-size:12px;color:var(--mut);font-weight:550}
+ .hero{padding:6px 0 0}
+ .pill{height:36px;font-size:13px;gap:10px}
+ .pill b{height:26px;font-size:12px}
+ .hero h1{font-size:40px;margin:16px auto 10px;line-height:1.04}
+ .hero .lede{font-size:15.5px;max-width:330px}
+ .stage{aspect-ratio:auto;margin-top:22px;overflow:visible;box-shadow:none;background:none}
+ .stage picture{display:block;border-radius:26px;overflow:hidden;aspect-ratio:1100/785;box-shadow:var(--sh-1)}
+ .sticker{left:12px;bottom:auto;top:12px;padding:7px 14px 7px 7px;gap:9px}
+ .sticker img{width:30px;height:30px}
+ .sticker span{font-size:16px}.sticker small{display:none}
+ .sheet{position:relative;right:auto;top:auto;transform:none;width:auto;margin:-34px 10px 0;padding:18px;border-radius:22px}
+ .sheet h3{font-size:20px}
+ .sheet .hd .tag{display:none}
+ .sheet .btn{display:none}
+ .seg span{height:38px;font-size:13px}
+ .days{grid-template-columns:repeat(5,1fr);gap:5px}
+ .days span{height:54px;font-size:11px;border-radius:12px}.days span b{font-size:13.5px}
+ .trust{flex-direction:column;align-items:flex-start;gap:10px;margin:22px 10px 0}
+ section.s{margin-top:80px}
+ .sh{display:block;margin-bottom:22px}
+ .sh h2{font-size:32px}.sh p{margin-top:10px;font-size:15px}
+ .farmgrid{grid-template-columns:1fr;gap:14px}
+ .wk .ph{display:none}
+ .wk,.rt{padding:20px}
+ .days6{gap:5px}.days6 div{padding:10px 2px 9px;border-radius:13px;font-size:11px}.days6 div b{font-size:17px}.days6 div em{font-size:10px}
+ .slots{grid-template-columns:1fr 1fr}
+ .rt .foot{flex-direction:column;align-items:stretch;gap:12px}.rt .foot .btn{width:100%}
+ .rail{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:18px;margin:0 -18px;padding:4px 18px 10px;gap:12px;scrollbar-width:none}
+ .rail::-webkit-scrollbar{display:none}
+ .rail>*{flex:0 0 74%;scroll-snap-align:start}
+ .gal.rail>*{flex:0 0 82%}
+ .bc .vis{height:132px}
+ .order{grid-template-columns:1fr}
+ .order .ph{min-height:230px}
+ .order .tx{padding:26px 22px 28px}
+ .order h2{font-size:30px}
+ .order .fl{display:none}
+ .order .tx>p{margin-bottom:22px}
+ .story{grid-template-columns:1fr}
+ .story .big{min-height:260px;border-radius:26px}
+ .story .txt{padding:24px}.story .txt h2{font-size:30px}
+ .stats b{font-size:28px}.stats div{padding:18px}
+ .band{aspect-ratio:5/4;border-radius:26px}
+ .fl .chip{height:36px;font-size:13.5px;padding:0 12px 0 8px;gap:7px}
+ .addr{flex-wrap:wrap}.addr .t{flex:1 1 calc(100% - 60px)}.addr .icb{flex:1;width:auto;border-radius:14px;display:inline-flex;justify-content:center;gap:7px;font-size:13.5px;font-weight:600}
+ .where{grid-template-columns:1fr;gap:12px}
+ footer.f{margin-top:80px}
+ footer.f .in{grid-template-columns:1fr;padding:32px 18px 128px;gap:22px}
+ .mbar{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:50;gap:10px;align-items:center;padding:8px;border-radius:24px;background:#ffffffeb;backdrop-filter:blur(12px);box-shadow:0 14px 36px -10px #2a141440,0 0 0 1px var(--line)}
+ .mbar .btn{flex:1;height:52px;padding:0 16px}
+ .mbar .icb{width:52px;height:52px;box-shadow:0 0 0 1px var(--line)}
+}
+</style></head><body>
+<div class="wrap">
+<header class="top">
+ <a href="#"><img class="logo" src="assets/logo-h.png" alt="Glaces et Délices de la Ferme"></a>
+ <a class="mbrand" href="#"><img src="assets/cow.png" alt=""><span><b>Glaces &amp; Délices</b><small>la ferme de Gravot</small></span></a>
+ <nav><a href="#buches">Bûches</a><a href="#semaine">Cette semaine</a><a href="#commande">Sur commande</a><a href="#ferme">La ferme</a></nav>
+ <span class="sp"></span>
+ <div class="acts"><a class="icb" href="tel:+33699463614" aria-label="Appeler la ferme"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a><a class="btn acc sm d-only" href="#precommande">Précommander <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+</header>
+
+<section class="hero">
+ <span class="pill"><b><i></i>Noël dans 78 jours</b><span class="d-only">Commandes jusqu'au jeu. 17 déc.</span><span class="m-only">commandes jusqu'au 17 déc.</span></span>
+ <h1 class="disp"><span class="d-only">Votre bûche glacée, <em>réservée en une minute.</em></span><span class="m-only">Votre bûche glacée, <em>réservée.</em></span></h1>
+ <p class="lede">Montée à la ferme avec le lait de nos vaches. Vous choisissez, on la prépare, vous passez la prendre à Gravot.</p>
+ <div class="stage" id="precommande">
+  <picture><source media="(max-width:760px)" srcset="assets/hero-mobile.jpg"><img src="assets/hero-wide.jpg" alt="Bûche glacée blanche décorée de meringues aux myrtilles et d'écorces confites"></picture>
+  <div class="sticker"><img src="assets/cow.png" alt=""><div><span>Givrés à Gravot.</span><small>Glaces &amp; desserts de la ferme</small></div></div>
+  <div class="sheet">
+   <div class="hd"><span class="mini"><span class="slice"><span style="flex:1;background:#F2DE66"></span><span style="flex:1;background:#6A58A0"></span><span class="base" style="background:#D5E298"></span></span></span><div><h3 class="disp">La Myrti'Bell</h3><p>Sorbet citron · sorbet myrtille</p></div><span class="tag">8 recettes</span></div>
+   <p class="lbl">Nombre de parts</p>
+   <div class="seg"><span>6/8</span><span class="on">8/10</span><span>10/12</span><span>18</span></div>
+   <p class="lbl">Retrait à la ferme <span>décembre 2026</span></p>
+   <div class="days"><span>ven.<b>18</b></span><span>sam.<b>19</b></span><span>mar.<b>22</b></span><span class="on">mer.<b>23</b></span><span>jeu.<b>24</b></span></div>
+   <a class="btn acc" href="#">Précommander ma bûche <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+   <p class="fine"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg> Confirmation automatique · paiement au retrait</p>
+  </div>
+ </div>
+ <div class="trust"><span><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2h8M9 2v3l-3 4v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9l-3-4V2"/><path d="M6 13h12"/></svg> Le lait de nos vaches</span><span><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 4 13c0-6 7-10 16-10 0 9-4 16-10 16"/><path d="M4 21c4-6 8-9 12-11"/></svg> Sans colorant ni conservateur</span><span><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg> Retrait à la ferme de Gravot</span></div>
+</section>
+
+<section class="s" id="semaine">
+ <div class="sh"><div><span class="kicker">Toute l'année</span><h2 class="disp">Cette semaine à la ferme</h2></div><p>Le magasin ouvre le vendredi après-midi, le reste du temps on vous reçoit sur rendez-vous. Réservez vos pots, on les prépare.</p></div>
+ <div class="farmgrid">
+  <div class="card wk">
+   <h3 class="disp">Semaine du 5 octobre</h3><p class="sub">Magasin le vendredi, sur rendez-vous les autres jours.</p>
+   <div class="days6"><div class="">lun.<b>5</b><em>rdv</em></div><div class="">mar.<b>6</b><em>rdv</em></div><div class="">mer.<b>7</b><em>rdv</em></div><div class="today">jeu.<b>8</b><em>rdv</em></div><div class="open">ven.<b>9</b><em>magasin</em></div><div class="">sam.<b>10</b><em>rdv</em></div></div>
+   <p class="note"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> L'horaire du magasin est annoncé chaque semaine. Un doute&nbsp;? Un SMS suffit.</p>
+   <div class="addr"><span class="pinb"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div class="t"><b>3 Gravot</b><small class="nw">35480 Guipry-Messac</small></div>
+    <a class="icb" href="https://www.google.com/maps/search/?api=1&query=Gravot+35480+Guipry-Messac" aria-label="Itinéraire"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg><span class="m-only">Itinéraire</span></a><a class="icb" href="sms:+33699463614" aria-label="Envoyer un SMS"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg><span class="m-only">SMS</span></a><a class="icb" href="tel:+33699463614" aria-label="Appeler"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span class="m-only">Appeler</span></a></div>
+   <div class="ph"><img src="assets/ferme-pots.jpg" alt="À la ferme de Gravot, les pots de glace sur la table de pique-nique"><span><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg> On vous accueille à la ferme</span></div>
+  </div>
+  <div class="card rt" id="retrait">
+   <h3 class="disp">Réserver un retrait</h3><p class="sub">Choisissez vos parfums et un moment&nbsp;: tout est prêt quand vous arrivez.</p>
+   <div class="grp"><h4>Parfums de la ferme <span>2 choisis</span></h4><p class="fh">Crèmes glacées</p><div class="fl"><span class="chip"><i class="dot" style="--c:#F4E4B3;width:14px;height:14px"></i>Vanille de Madagascar</span><span class="chip"><i class="dot" style="--c:#5A2E22;width:14px;height:14px"></i>Chocolat extra</span><span class="chip on"><i class="dot" style="--c:#D59650;width:14px;height:14px"></i>Caramel salé</span><span class="chip"><i class="dot" style="--c:#8B5E3C;width:14px;height:14px"></i>Café</span><span class="chip"><i class="dot" style="--c:#BFE3C8;width:14px;height:14px"></i>Menthe stracciatella</span></div><p class="fh">Sorbets</p><div class="fl"><span class="chip"><i class="dot" style="--c:#F2DE66;width:14px;height:14px"></i>Citron</span><span class="chip"><i class="dot" style="--c:#4B1E44;width:14px;height:14px"></i>Cassis</span><span class="chip"><i class="dot" style="--c:#F2A93B;width:14px;height:14px"></i>Mangue</span><span class="chip"><i class="dot" style="--c:#E8603C;width:14px;height:14px"></i>Orange sanguine</span><span class="chip"><i class="dot" style="--c:#EE7C8E;width:14px;height:14px"></i>Fraise</span><span class="chip on"><i class="dot" style="--c:#D7436C;width:14px;height:14px"></i>Framboise</span></div></div>
+   <div class="grp"><h4>Quand passez-vous&nbsp;?</h4><div class="slots"><span class="on"><b>Ven. 9 oct.</b>au magasin</span><span class=""><b>Sam. 10 oct.</b>sur rendez-vous</span><span class=""><b>Lun. 12 oct.</b>sur rendez-vous</span><span class=""><b>Mar. 13 oct.</b>sur rendez-vous</span></div></div>
+   <div class="foot"><p>Pots, verrines et petits gâteaux glacés selon le stock du magasin.</p><a class="btn acc" href="#"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 12.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> Réserver mon retrait</a></div>
+  </div>
+ </div>
+</section>
+
+<section class="s" id="buches">
+ <div class="sh"><div><span class="kicker">Carte des fêtes</span><h2 class="disp">Huit bûches, deux parfums chacune</h2></div><p>De 6/8 à 18 parts, montées à la ferme. Commandes de Noël jusqu'au jeu. 17 déc., du Nouvel An jusqu'au jeu. 24 déc.</p></div>
+ <div class="bgrid rail"><article class="card bc"><div class="vis"><span class="slice"><span style="flex:1;background:#D59650"></span><span style="flex:1;background:#D8D27A"></span><span class="base" style="background:#6B3A22"></span></span></div><h3 class="disp">La Breizhal</h3><p>Glace caramel salé, sorbet pomme, sur croquant chocolat-caramel.</p><div class="row"><span class="dots"><i class="dot" style="--c:#D59650;width:12px;height:12px"></i><i class="dot" style="--c:#D8D27A;width:12px;height:12px"></i></span><span class="add"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></div></article><article class="card bc"><div class="vis"><span class="slice"><span style="flex:1;background:#5A2E22"></span><span style="flex:1;background:#D59650"></span><span class="base" style="background:#E2C38C"></span></span></div><h3 class="disp">La Craquante</h3><p>Glace chocolat extra, caramel salé et cacahuètes, sur biscuit joconde, éclats de caramel.</p><div class="row"><span class="dots"><i class="dot" style="--c:#5A2E22;width:12px;height:12px"></i><i class="dot" style="--c:#D59650;width:12px;height:12px"></i></span><span class="add"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></div></article><article class="card bc"><div class="vis"><span class="slice"><span style="flex:1;background:#F0B04A"></span><span style="flex:1;background:#F6F2EA"></span><span class="base" style="background:#EEE2C8"></span></span></div><h3 class="disp">La Tropicale</h3><p>Sorbet fruits exotiques, glace coco, sur dacquoise coco.</p><div class="row"><span class="dots"><i class="dot" style="--c:#F0B04A;width:12px;height:12px"></i><i class="dot" style="--c:#F6F2EA;width:12px;height:12px"></i></span><span class="add"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></div></article><article class="card bc"><div class="vis"><span class="slice" style="box-shadow:0 0 0 5px #4A2418 inset, 0 10px 18px -10px #3a08204d"><span style="flex:1;background:#F4E4B3"></span><span style="flex:1;background:#B98A5E"></span><span class="base" style="background:#C59C6A"></span></span></div><h3 class="disp">La Buenossimo</h3><p>Vanille de Madagascar, noisette, coque chocolat-amandes, sur dacquoise noisette.</p><div class="row"><span class="dots"><i class="dot" style="--c:#F4E4B3;width:12px;height:12px"></i><i class="dot" style="--c:#B98A5E;width:12px;height:12px"></i></span><span class="add"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></div></article><article class="card bc on"><span class=badge>Sélectionnée</span><div class="vis"><span class="slice"><span style="flex:1;background:#F2DE66"></span><span style="flex:1;background:#6A58A0"></span><span class="base" style="background:#D5E298"></span></span></div><h3 class="disp">La Myrti'Bell</h3><p>Sorbet citron, sorbet myrtille, sur dacquoise citron vert.</p><div class="row"><span class="dots"><i class="dot" style="--c:#F2DE66;width:12px;height:12px"></i><i class="dot" style="--c:#6A58A0;width:12px;height:12px"></i></span><span class="add"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div></article><article class="card bc"><div class="vis"><span class="slice"><span style="flex:.16;background:#D7436C"></span><span style="flex:1;background:#EBD9B2"></span><span class="base" style="background:#E2C38C"></span></span></div><h3 class="disp">Le Nougat glacé</h3><p>Nougat glacé pistaches et amandes caramélisées, glaçage framboise.</p><div class="row"><span class="dots"><i class="dot" style="--c:#EBD9B2;width:12px;height:12px"></i></span><span class="add"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></div></article><article class="card bc"><div class="vis"><span class="slice"><span style="flex:1;background:#A8865F"></span><span style="flex:1;background:#D8D27A"></span><span class="base" style="background:#E2C38C"></span></span></div><h3 class="disp">La Bigoudène</h3><p>Glace sarrasin, sorbet pomme cidré, sur biscuit joconde, éclats de caramel.</p><div class="row"><span class="dots"><i class="dot" style="--c:#A8865F;width:12px;height:12px"></i><i class="dot" style="--c:#D8D27A;width:12px;height:12px"></i></span><span class="add"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></div></article><article class="card bc"><div class="vis"><span class="slice"><span style="flex:1;background:#D7436C"></span><span style="flex:1;background:#B5C67A"></span><span class="base" style="background:#C9D296"></span></span></div><h3 class="disp">La Suprême</h3><p>Glace framboise, glace pistache, sur génoise pistache.</p><div class="row"><span class="dots"><i class="dot" style="--c:#D7436C;width:12px;height:12px"></i><i class="dot" style="--c:#B5C67A;width:12px;height:12px"></i></span><span class="add"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></div></article></div>
+ <div class="gal rail">
+  <figure><img src="assets/buche-framboise.jpg" alt="Bûche glacée rouge décorée de houx et de framboises"></figure>
+  <figure><img src="assets/buche-nougat.jpg" alt="Bûche glacée aux amandes caramélisées"></figure>
+  <figure><img src="assets/buche-chocolat.jpg" alt="Bûche glacée en coque chocolat et noisettes"></figure>
+ </div>
+ <p class="galcap"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg> Quelques bûches des fêtes 2025, sorties du labo de la ferme.</p>
+</section>
+
+<section class="s" id="commande">
+ <div class="card order">
+  <div class="ph"><img src="assets/petits-gateaux.jpg" alt="Petits gâteaux glacés de la ferme, framboise et meringue"><span class="lab"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Fait maison, à la ferme</span></div>
+  <div class="tx"><span class="kicker">Toute l'année, sur commande</span>
+   <h2 class="disp">Un dessert glacé pour une occasion&nbsp;?</h2>
+   <p>Dômes, omelette norvégienne, vacherin, gâteau glacé… Demandez-le au moins huit jours à l'avance pour choisir vos parfums.</p>
+   <div class="fl"><span class="chip">Dômes glacés</span><span class="chip">Gâteau glacé</span><span class="chip">Omelette norvégienne</span><span class="chip">Vacherin vanille-fraise</span><span class="chip">Tarte citron meringuée</span></div>
+   <div class="cta"><a class="btn acc" href="#">Demander un dessert <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><small><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Demandé aujourd'hui&nbsp;: prêt au plus tôt le ven. 16 oct.</small></div>
+  </div>
+ </div>
+</section>
+
+<section class="s" id="ferme">
+ <div class="story">
+  <div class="big"><img src="assets/labo.jpg" alt="Mise en pot des glaces au labo de la ferme"></div>
+  <div class="side">
+   <div class="card txt"><span class="kicker">La ferme</span><h2 class="disp">De l'étable au pot, sans détour.</h2>
+    <p>Une ferme laitière de Prim'Holstein. En 2009, on découvre le concept « Glace de la Ferme »&nbsp;; depuis, notre lait entier et la crème de notre écrémeuse deviennent crèmes glacées et sorbets, ici même.</p></div>
+   <div class="card stats"><div><b>84&nbsp;°C</b><span>pasteurisation des crèmes glacées</span></div><div><b>~50&nbsp;%</b><span>de fruits dans les sorbets</span></div><div><b>0</b><span>colorant ni conservateur</span></div><div><b>15&nbsp;min</b><span>du mélange au bac</span></div></div>
+  </div>
+ </div>
+ <div class="band"><img src="assets/pots-table.jpg" alt="Pots de crèmes glacées et sorbets de la ferme alignés sur une table"></div>
+ <p class="galcap"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg> Les parfums, écrits sur le pot&nbsp;: vanille de Madagascar, chocolat extra, caramel salé, sorbets cassis, mangue, orange sanguine…</p>
+</section>
+
+<section class="s" id="ou">
+ <div class="sh"><div><span class="kicker">Où nous trouver</span><h2 class="disp">À la ferme, et pas loin</h2></div></div>
+ <div class="where">
+  <div class="card pl"><span class="pi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span><div><b>Au magasin de la ferme</b><p>3 Gravot, <span class="nw">35480 Guipry-Messac</span></p><a class="lk" href="https://www.google.com/maps/search/?api=1&query=Gravot+35480+Guipry-Messac">Itinéraire <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
+  <div class="card pl"><span class="pi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 12.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span><div><b>Boutique de la Trotinais</b><p>Point de vente · Saint-Senoux</p><a class="lk" href="https://www.google.com/maps/search/?api=1&query=La+Trotinais+Saint-Senoux">Itinéraire <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
+  <div class="card contact"><b>Une question, une commande&nbsp;?</b><p>Par SMS, c'est encore plus simple.</p><div class="acts"><a class="btn acc" href="sms:+33699463614"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg> Envoyer un SMS</a><a class="icb" href="tel:+33699463614" aria-label="Appeler"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a><a class="icb" href="mailto:aurelie.greffier4@orange.fr" aria-label="E-mail"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg></a></div></div>
+ </div>
+</section>
+</div>
+
+<footer class="f"><div class="in">
+ <div><img class="logo" src="assets/logo-h.png" alt="Glaces et Délices de la Ferme"><p>GAEC Briand Greffier<br>3 Gravot, <span class="nw">35480 Guipry-Messac</span></p></div>
+ <div><h4>Contact</h4><p><a href="tel:+33699463614">06 99 46 36 14</a> · SMS bienvenus</p><p><a href="mailto:aurelie.greffier4@orange.fr">aurelie.greffier4@orange.fr</a></p></div>
+ <div><h4>Sur le site</h4><p><a href="#buches">Bûches des fêtes</a></p><p><a href="#semaine">Cette semaine</a></p><p><a href="#commande">Desserts sur commande</a></p></div>
+ <p class="demo">Démo · octobre 2026</p>
+</div></footer>
+<div class="mbar"><a class="icb" href="tel:+33699463614" aria-label="Appeler"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a><a class="btn acc" href="#precommande">Précommander ma bûche <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+</body></html>
