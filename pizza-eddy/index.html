@@ -1,0 +1,177 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pizza Eddy — où est le camion ce soir ?</title><style>
+@font-face{font-family:'Inter';src:url('assets/Inter.ttf') format('truetype');font-weight:100 900;font-display:block}
+:root{--bg:#FFF8FB;--surface:#fff;--ink:#26121C;--mut:#7A6470;--line:#F2DEE8;--soft:#FDE8F2;--acc:#F25C9E;--acc-deep:#B5145E;--on-acc:#2A0716;--acc-shadow:#f25c9e40}
+*{box-sizing:border-box;margin:0;padding:0}
+button,input{font:inherit;color:inherit;background:none;border:0}button{cursor:pointer}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.006em;overflow-x:hidden}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border-radius:999px;font-weight:700;font-size:15px;white-space:nowrap}
+.btn.acc{background:var(--acc);color:var(--on-acc);box-shadow:0 10px 24px var(--acc-shadow)}
+.btn.ghost{background:var(--surface);box-shadow:0 0 0 1px var(--line);color:var(--ink)}
+.btn.dark{background:var(--ink);color:#fff}
+.icbtn{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--surface);box-shadow:0 0 0 1px var(--line);color:var(--ink);flex:0 0 auto}
+.chip{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 16px;border-radius:999px;background:var(--surface);box-shadow:0 0 0 1px var(--line);font-size:13.5px;font-weight:600;white-space:nowrap}
+.chip.on{background:var(--ink);box-shadow:none;color:#fff}
+.new{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:#fff;border-radius:6px;padding:2px 6px;vertical-align:2px;margin-left:6px}
+.live{display:inline-flex;align-items:center;gap:8px}.live i{width:8px;height:8px;border-radius:50%;background:#2FB872;box-shadow:0 0 0 4px #2fb87230}
+.badge{width:46px;height:46px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:'Pacifico',cursive;font-size:13px;line-height:.9;text-align:center;box-shadow:0 0 0 3px var(--acc);flex:0 0 auto}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:16px;letter-spacing:-.02em;line-height:1.1}
+.brand small{display:block;font-weight:600;font-size:12px;color:var(--mut);letter-spacing:0}
+header.top{display:flex;align-items:center;gap:22px;height:84px}
+header.top nav{display:flex;gap:26px;font-size:14.5px;font-weight:600;color:var(--mut);margin-left:22px}
+header.top .sp{flex:1}
+footer.f{margin-top:96px;border-top:1px solid var(--line)}
+footer.f .in{max-width:1240px;margin:0 auto;padding:40px 32px 120px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;font-size:14px}
+footer.f h4{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin-bottom:10px}
+footer.f p{margin-bottom:4px}
+footer.f .note{grid-column:1/-1;font-size:11px;color:var(--mut);opacity:.8}
+.mbar{display:none}
+@media(max-width:760px){
+ .wrap{padding:0 18px}
+ .d-only{display:none!important}
+ header.top{height:66px;gap:10px}
+ .brand{font-size:15px}.badge{width:42px;height:42px;font-size:12px}
+ footer.f .in{grid-template-columns:1fr;padding:32px 18px 130px}
+ .mbar{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:50;gap:10px;align-items:center;padding:10px;border-radius:24px;background:var(--surface);box-shadow:0 12px 34px #26121c33,0 0 0 1px var(--line)}
+ .mbar .btn{flex:1;height:52px;padding:0 16px;font-size:14.5px}
+ .mbar .icbtn{width:52px;height:52px}
+}
+@font-face{font-family:'Bungee';src:url('assets/Bungee.ttf') format('truetype');font-display:block}@font-face{font-family:'Pacifico';src:url('assets/Pacifico.ttf') format('truetype');font-display:block}
+.disp{font-family:Bungee,Impact,sans-serif;font-weight:400;letter-spacing:.005em;text-transform:uppercase}
+.tonight{position:relative;margin-top:8px;border-radius:40px;overflow:hidden;min-height:600px;display:flex;align-items:flex-end}
+.tonight > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tonight:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#26121ccc 0%,#26121c55 45%,#26121c00 70%),linear-gradient(180deg,#26121c00 40%,#26121c88 100%)}
+.tonight .in{position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:28px;width:100%;padding:34px}
+.tonight h1{font-size:74px;line-height:.98;color:#fff;max-width:620px;text-shadow:0 4px 30px #0005}
+.tonight h1 em{font-style:normal;color:var(--acc)}
+.tonight .sub{color:#fff;font-size:17px;margin-top:14px;max-width:480px;opacity:.95}
+.stop{width:420px;background:var(--surface);border-radius:30px;padding:22px;box-shadow:0 30px 60px #0004;flex:0 0 auto}
+.stop .top{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;color:var(--mut)}
+.stop .top .live{color:#1d8a52}
+.stop h3{font-size:26px;letter-spacing:-.02em;margin:10px 0 2px}
+.stop .adr{color:var(--mut);font-size:14.5px}
+.mapc{position:relative;height:130px;margin:16px 0;border-radius:20px;background:#F6EEF2;overflow:hidden}
+.mapc svg{position:absolute;inset:0;width:100%;height:100%}
+.mapc .pinx{position:absolute;left:58%;top:34%;width:44px;height:44px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--acc);box-shadow:0 8px 18px #b5145e55;display:grid;place-items:center}
+.mapc .pinx span{transform:rotate(45deg);color:var(--on-acc)}
+.mapc .eta{position:absolute;left:12px;bottom:12px;background:#fff;border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:700;box-shadow:0 4px 12px #0001}
+.stop .row{display:flex;gap:10px}
+.stop .row .btn{flex:1;height:52px;padding:0 14px}
+.timeline{margin-top:70px}
+.sh{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:22px}
+.sh h2{font-size:40px;line-height:1.02}
+.sh p{color:var(--mut);max-width:420px}
+.week{display:grid;grid-template-columns:1fr .8fr 1fr 1.4fr 1.2fr;gap:12px}
+.day{border-radius:28px;padding:20px;background:var(--surface);box-shadow:0 0 0 1px var(--line);display:flex;flex-direction:column;gap:6px;min-height:210px}
+.day .d{font-family:Bungee,sans-serif;font-size:22px}
+.day .h{font-size:13px;font-weight:700;color:var(--mut)}
+.day .pl{margin-top:auto;font-weight:700;font-size:15.5px;line-height:1.25}
+.day .pl small{display:block;font-weight:500;color:var(--mut);font-size:13px;margin-top:2px}
+.day.off{background:transparent;box-shadow:0 0 0 1.5px dashed var(--line);border:1.5px dashed #e6c9d7;box-shadow:none;color:var(--mut)}
+.day.now{background:var(--acc);box-shadow:none;color:var(--on-acc)}
+.day.now .h,.day.now .pl small{color:var(--on-acc);opacity:.8}
+.day.now .tag{align-self:flex-start;background:var(--ink);color:#fff;font-size:11.5px;font-weight:800;border-radius:999px;padding:4px 10px;text-transform:uppercase;letter-spacing:.06em}
+.day.priv{background:var(--ink);color:#fff;box-shadow:none}
+.day.priv .h,.day.priv .pl small{color:#ffffffaa}
+.day .mini{display:flex;gap:8px;margin-top:10px}
+.day .mini a{font-size:12.5px;font-weight:700;border-radius:999px;padding:7px 12px;background:var(--ink);color:#fff}
+.alert{margin-top:16px;display:flex;align-items:center;gap:18px;background:var(--soft);border-radius:26px;padding:18px 22px}
+.alert i{width:48px;height:48px;border-radius:16px;background:var(--surface);display:grid;place-items:center;color:var(--acc-deep);flex:0 0 auto}
+.alert b{display:block;font-size:16px}.alert span{color:var(--mut);font-size:14px}
+.alert .btn{margin-left:auto;height:48px}
+section.s{margin-top:90px}
+.rail{display:flex;gap:14px;overflow:hidden}
+.pz{flex:0 0 260px;background:var(--surface);border-radius:28px;box-shadow:0 0 0 1px var(--line);overflow:hidden}
+.pz img{width:100%;height:220px;object-fit:cover}
+.pz .b{padding:14px 16px 16px}
+.pz h4{font-size:17px}.pz p{font-size:13px;color:var(--mut);line-height:1.4;height:36px;overflow:hidden}
+.pz .f{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-weight:800}
+.pz .f a{width:38px;height:38px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:grid;place-items:center;font-size:22px}
+.pz.big{flex-basis:380px}.pz.big img{height:220px}
+.priv2{display:grid;grid-template-columns:420px 1fr;gap:0;background:var(--ink);color:#fff;border-radius:40px;overflow:hidden}
+.priv2 img{width:100%;height:100%;object-fit:cover;min-height:360px}
+.priv2 .in{padding:44px}
+.priv2 h2{font-size:40px;line-height:1.02}
+.priv2 p{color:#ffffffbb;margin:14px 0 22px;max-width:520px}
+.priv2 .facts{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.priv2 .facts span{border-radius:999px;padding:8px 14px;background:#ffffff14;font-size:13.5px;font-weight:600}
+@media(max-width:760px){
+ .tonight{min-height:0;border-radius:28px;display:block}
+ .tonight > img{position:relative;height:300px}
+ .tonight:after{bottom:auto;height:300px}
+ .tonight .in{position:absolute;left:0;right:0;top:0;height:300px;padding:20px;display:block}
+ .tonight .txt{position:absolute;left:20px;right:20px;bottom:20px}
+ .tonight h1{font-size:36px}
+ .tonight .sub{display:none}
+ .stop{position:relative;width:auto;margin:-18px 0 0;border-radius:26px;box-shadow:0 0 0 1px var(--line),0 20px 40px #26121c1a;padding:18px}
+ .wrapm{position:relative;z-index:3}
+ .mapc{height:96px}
+ .mapc .eta{top:10px;bottom:auto}
+ .mapc .pinx{left:70%;top:26%}
+ .stop .row .btn.acc{display:none}
+ .timeline{margin-top:48px}
+ .sh{display:block}.sh h2{font-size:28px;margin-bottom:8px}
+ .week{grid-template-columns:1fr 1fr;gap:10px}
+ .day{min-height:150px;padding:16px;border-radius:22px}
+ .day.now{grid-column:span 2}
+ .day.priv{grid-column:span 2}
+ .alert{flex-wrap:wrap}.alert .btn{margin-left:0;width:100%}
+ section.s{margin-top:60px}
+ .rail{overflow-x:auto;margin:0 -18px;padding:0 18px;scrollbar-width:none}
+ .pz,.pz.big{flex-basis:220px}.pz img,.pz.big img{height:170px}
+ .priv2{grid-template-columns:1fr;border-radius:28px}
+ .priv2 img{min-height:0;height:200px}
+ .priv2 .in{padding:24px}
+ .priv2 h2{font-size:28px}
+}
+.mstopw{display:none}@media(max-width:760px){.mstopw{display:block;position:relative;z-index:3}}</style></head><body>
+<div class="wrap">
+<header class="top"><a class="brand" href="#"><span class="badge">Pizza<br>Eddy</span><span>Pizza Eddy<small>Pizzeria ambulante · Pléchâtel</small></span></a><nav class="d-only"><a href="#tournee">La tournée</a><a href="#carte">La carte</a><a href="#prive">Soirées privées</a></nav><span class="sp"></span>
+<a class="icbtn d-only" href="sms:+33640276337" aria-label="SMS"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></a><a class="btn acc d-only" href="#carte"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 12.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> Précommander</a></header>
+<section class="tonight"><img src="assets/cheese-wide.jpg" alt="Part de pizza qui file">
+ <div class="in"><div class="txt"><h1 class="disp">Le camion bouge.<br><em>Vous, non.</em></h1><p class="sub">Où est Pizza Eddy ce soir, jusqu’à quelle heure, et votre commande prête à l’arrivée. Plus besoin de chercher.</p></div>
+ <div class="stop d-only">
+  <div class="top"><span class="live"><i></i>&nbsp;Ce soir · vendredi</span><span>18h – 21h</span></div>
+  <h3>Pléchâtel</h3><div class="adr">2 rue de Bellevue · devant le labo</div>
+  <div class="mapc"><svg viewBox="0 0 400 130" preserveAspectRatio="xMidYMid slice"><path d="M-10 90 C80 70 150 110 230 80 S360 40 420 60" stroke="#fff" stroke-width="14" fill="none"/><path d="M120 -10 C140 40 160 80 150 140" stroke="#fff" stroke-width="10" fill="none"/><path d="M280 -10 L300 140" stroke="#fff" stroke-width="8" fill="none"/><path d="M-10 30 C100 40 200 20 420 25" stroke="#fff" stroke-width="6" fill="none"/><circle cx="60" cy="40" r="14" fill="#E3F0E4"/><rect x="320" y="80" width="60" height="40" rx="10" fill="#E3F0E4"/></svg><span class="pinx"><span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h11v10H2zM13 9h4l4 4v3h-8z"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></span></span><span class="eta">Le camion est en place</span></div>
+  <div class="row"><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=2+rue+de+Bellevue+35470+Pl%C3%A9ch%C3%A2tel"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg> Itinéraire</a><a class="btn acc" href="#carte">Précommander</a></div>
+ </div></div>
+</section>
+
+</div>
+<div class="wrap mstopw"><div class="stop m-only2">
+  <div class="top"><span class="live"><i></i>&nbsp;Ce soir · vendredi</span><span>18h – 21h</span></div>
+  <h3>Pléchâtel</h3><div class="adr">2 rue de Bellevue · devant le labo</div>
+  <div class="mapc"><svg viewBox="0 0 400 130" preserveAspectRatio="xMidYMid slice"><path d="M-10 90 C80 70 150 110 230 80 S360 40 420 60" stroke="#fff" stroke-width="14" fill="none"/><path d="M120 -10 C140 40 160 80 150 140" stroke="#fff" stroke-width="10" fill="none"/><path d="M280 -10 L300 140" stroke="#fff" stroke-width="8" fill="none"/><path d="M-10 30 C100 40 200 20 420 25" stroke="#fff" stroke-width="6" fill="none"/><circle cx="60" cy="40" r="14" fill="#E3F0E4"/><rect x="320" y="80" width="60" height="40" rx="10" fill="#E3F0E4"/></svg><span class="pinx"><span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h11v10H2zM13 9h4l4 4v3h-8z"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></span></span><span class="eta">Le camion est en place</span></div>
+  <div class="row"><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=2+rue+de+Bellevue+35470+Pl%C3%A9ch%C3%A2tel"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg> Itinéraire</a></div></div></div>
+<div class="wrap">
+<section class="timeline" id="tournee">
+<div class="sh"><h2 class="disp">La tournée de la semaine</h2><p>Chaque arrêt, chaque horaire, au même endroit. Les congés et changements s’affichent ici en premier.</p></div>
+<div class="week">
+ <div class="day"><span class="d">Mar.</span><span class="h">18h – 20h30</span><span class="pl">Val d’Anast<small>Place de l’Église</small></span></div>
+ <div class="day off"><span class="d">Mer.</span><span class="h">Repos</span><span class="pl">Le four souffle<small>À jeudi !</small></span></div>
+ <div class="day"><span class="d">Jeu.</span><span class="h">18h – 20h30</span><span class="pl">Pléchâtel bourg<small>Place de l’Église</small></span></div>
+ <div class="day now"><span class="tag">Ce soir</span><span class="d">Ven.</span><span class="h">18h – 21h</span><span class="pl">Pléchâtel<small>2 rue de Bellevue · labo</small></span><div class="mini"><a href="#carte">Précommander</a><a href="https://www.google.com/maps/search/?api=1&query=2+rue+de+Bellevue+35470+Pl%C3%A9ch%C3%A2tel">Itinéraire</a></div></div>
+ <div class="day priv" id="prive"><span class="d">Sam.</span><span class="h">Sur réservation</span><span class="pl">Soirées privées<small>Mariage, anniversaire, EVG/EVJF…</small></span></div>
+</div>
+<div class="alert"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></i><div><b>Prévenez-moi quand le camion change de place</b><span>Un SMS la veille en cas de congé ou de nouvel emplacement. Rien d’autre.</span></div><a class="btn dark" href="#">M’inscrire</a></div>
+</section>
+
+<section class="s" id="carte">
+<div class="sh"><h2 class="disp">Précommandez pour l’arrêt du soir</h2><p>26 ou 33 cm, toute la carte 2026. Vous choisissez l’arrêt et l’heure, Eddy enfourne.</p></div>
+<div class="rail"><div class="pz big"><img src="assets/5-fromages.jpg" alt="Pizza 5 Fromages"><div class="b"><h4>5 Fromages<span class="new">new</span></h4><p>tomate, chèvre, raclette, reblochon, gorgonzola, mozza</p><div class="f"><span>11,50 € · 13,50 €</span><a href="#">+</a></div></div></div><div class="pz"><img src="assets/reine.jpg" alt="Pizza Reine"><div class="b"><h4>Reine</h4><p>tomate, champignons, jambon, olives, mozza</p><div class="f"><span>10 € · 12 €</span><a href="#">+</a></div></div></div><div class="pz"><img src="assets/flammekueche.jpg" alt="Pizza Flammekueche"><div class="b"><h4>Flammekueche</h4><p>crème, oignons, lardons, mozza</p><div class="f"><span>10,50 € · 12,50 €</span><a href="#">+</a></div></div></div><div class="pz"><img src="assets/norvegienne.jpg" alt="Pizza Norvégienne"><div class="b"><h4>Norvégienne</h4><p>crème, saumon, tomates cerises, olives, citron, mozza</p><div class="f"><span>12 € · 14 €</span><a href="#">+</a></div></div></div><div class="pz"><img src="assets/kebab.jpg" alt="Pizza Kebab"><div class="b"><h4>Kebab</h4><p>crème, oignons, lamelles de kebab, tomates, sauce kebab, mozza</p><div class="f"><span>10,50 € · 12,50 €</span><a href="#">+</a></div></div></div><div class="pz"><img src="assets/margherita.jpg" alt="Pizza Margherita"><div class="b"><h4>Margherita</h4><p>tomate, olives, origan, mozza</p><div class="f"><span>9 € · 11 €</span><a href="#">+</a></div></div></div></div>
+</section>
+
+<section class="s"><div class="priv2"><img src="assets/eddy-pizza.jpg" alt="Pizza Eddy">
+<div class="in"><h2 class="disp">Le camion chez vous, le samedi</h2><p>Mariage, anniversaire, baptême, soirée entre amis : le camion s’installe, Eddy fait les pizzas sur place.</p>
+<div class="facts"><span>De 40 à 130 convives</span><span>Samedis réservés aux événements</span><span>Autres dates : on en parle</span></div>
+<a class="btn acc" href="#">Demander une date <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></section>
+</div>
+<footer class="f"><div class="in">
+<div><h4>Pizza Eddy</h4><p>Pizzeria ambulante — Eddy Lucas</p><p>Labo : 2 rue de Bellevue, 35470 Pléchâtel</p><p><a href="https://www.google.com/maps/search/?api=1&query=2+rue+de+Bellevue+35470+Pl%C3%A9ch%C3%A2tel">Itinéraire →</a></p></div>
+<div><h4>Contact</h4><p><a href="tel:+33640276337">06 40 27 63 37</a> · SMS bienvenus</p><p><a href="mailto:lecric.lucas@orange.fr">lecric.lucas@orange.fr</a></p></div>
+<div><h4>La maison</h4><p>Pâte fine maison</p><p>Produits frais et locaux</p><p>Soirées privées le samedi</p></div>
+<p class="note">Démo · octobre 2026</p></div></footer>
+<div class="mbar"><a class="icbtn" href="https://www.google.com/maps/search/?api=1&query=2+rue+de+Bellevue+35470+Pl%C3%A9ch%C3%A2tel" aria-label="Itinéraire"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></a><a class="btn acc" href="#carte"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h11v10H2zM13 9h4l4 4v3h-8z"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg> Précommander pour ce soir</a></div></body></html>
