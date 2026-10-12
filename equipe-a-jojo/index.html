@@ -1,0 +1,257 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>L’équipe à Jojo — Commandez votre burger, choisissez votre heure</title><style>
+@font-face{font-family:'Inter';src:url('assets/Inter.ttf') format('truetype');font-weight:100 900;font-display:block}
+:root{--bg:#FFFAF0;--surface:#fff;--ink:#14214B;--mut:#5F6683;--line:#EEE4CC;--soft:#FFF0C8;--acc:#FFB71B;--acc-deep:#9A6300;--on-acc:#14214B;--acc-shadow:#ffb71b55}
+*{box-sizing:border-box;margin:0;padding:0}
+button,input{font:inherit;color:inherit;background:none;border:0}button{cursor:pointer}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.006em;overflow-x:hidden}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border-radius:999px;font-weight:750;font-size:15px;white-space:nowrap}
+.btn.acc{background:var(--acc);color:var(--on-acc);box-shadow:0 10px 24px var(--acc-shadow)}
+.btn.ghost{background:var(--surface);box-shadow:0 0 0 1px var(--line);color:var(--ink)}
+.btn.dark{background:var(--ink);color:#fff}
+.icbtn{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--surface);box-shadow:0 0 0 1px var(--line);color:var(--ink);flex:0 0 auto}
+.chip{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:999px;background:var(--surface);box-shadow:0 0 0 1px var(--line);font-size:13.5px;font-weight:650;white-space:nowrap}
+.chip.on{background:var(--ink);box-shadow:none;color:#fff}
+.chip.y{background:var(--acc);box-shadow:none;color:var(--on-acc)}
+.live{display:inline-flex;align-items:center;gap:8px}.live i{width:8px;height:8px;border-radius:50%;background:#2FB872;box-shadow:0 0 0 4px #2fb87230}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:16px;letter-spacing:-.02em;line-height:1.1}
+.brand img{width:48px;height:48px;border-radius:50%;box-shadow:0 0 0 3px var(--acc)}
+.brand small{display:block;font-weight:600;font-size:12px;color:var(--mut);letter-spacing:0}
+header.top{display:flex;align-items:center;gap:22px;height:86px}
+header.top nav{display:flex;gap:26px;font-size:14.5px;font-weight:600;color:var(--mut);margin-left:22px}
+header.top nav a.on{color:var(--ink)}
+header.top .sp{flex:1}
+footer.f{margin-top:100px;background:var(--ink);color:#E9ECF6}
+footer.f .in{max-width:1240px;margin:0 auto;padding:46px 32px 56px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;font-size:14px}
+footer.f h4{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--acc);margin-bottom:10px}
+footer.f p{margin-bottom:4px}
+footer.f .note{grid-column:1/-1;font-size:11px;opacity:.55}
+.mbar{display:none}
+@media(max-width:760px){
+ .wrap{padding:0 18px}
+ .d-only{display:none!important}
+ header.top{height:68px;gap:10px}
+ .brand{font-size:15px}.brand img{width:42px;height:42px}
+ footer.f{margin-top:70px}
+ footer.f .in{grid-template-columns:1fr;padding:32px 18px 130px}
+ .mbar{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:50;gap:10px;align-items:center;padding:10px;border-radius:24px;background:var(--surface);box-shadow:0 12px 34px #14214b38,0 0 0 1px var(--line)}
+ .mbar .btn{flex:1;height:52px;padding:0 16px;font-size:14.5px}
+ .mbar .icbtn{width:52px;height:52px}
+}
+@font-face{font-family:'Paytone';src:url('assets/PaytoneOne.ttf') format('truetype');font-display:block}
+.disp{font-family:Paytone,sans-serif;font-weight:400;letter-spacing:-.015em}
+.hero{padding:8px 0 0}
+.stage{position:relative;border-radius:44px;overflow:hidden;height:560px}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.stage::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#14214Bf2 0%,#14214Bc8 36%,#14214B10 68%),linear-gradient(0deg,#14214B66,transparent 40%)}
+.stage .ov{position:absolute;left:48px;top:44px;z-index:2;color:#fff;max-width:760px}
+.kick{display:inline-flex;gap:8px;align-items:center;height:36px;padding:0 14px;border-radius:999px;background:#ffffff1c;font-size:13px;font-weight:700}
+.kick i{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.stage h1{font-size:74px;line-height:.96;margin:16px 0 14px}
+.stage h1 span{color:var(--acc)}
+.stage .lede{font-size:17px;color:#dfe3f1;max-width:480px}
+.stage .b{position:absolute;z-index:2;background:#fffffff0;color:var(--ink);border-radius:999px;padding:10px 18px;font-weight:750;font-size:14px;box-shadow:0 10px 26px #0003;display:flex;gap:8px;align-items:center}
+.stage .b2{right:30px;top:30px}.stage .b3{right:30px;top:84px;background:var(--acc)}
+.qb{position:relative;z-index:3;margin:-128px 36px 0;background:var(--surface);border-radius:34px;box-shadow:0 26px 60px #14214b30,0 0 0 1px var(--line);padding:24px 24px 20px}
+.qb .lbl{font-size:12px;font-weight:750;text-transform:uppercase;letter-spacing:.07em;color:var(--mut);margin:0 0 10px 4px;display:flex;align-items:center;gap:8px}
+.qb .lbl b{width:22px;height:22px;border-radius:50%;background:var(--soft);color:var(--acc-deep);display:grid;place-items:center;font-size:11.5px;letter-spacing:0}
+.qrow{display:grid;grid-template-columns:1.6fr 1fr auto;gap:22px;align-items:end}
+.qrow>*{min-width:0}
+.where{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.where span{display:flex;gap:10px;align-items:center;border-radius:20px;padding:11px 12px;background:var(--bg);box-shadow:0 0 0 1px var(--line);font-weight:750;font-size:14.5px;line-height:1.2}
+.where span i{width:34px;height:34px;border-radius:12px;background:var(--soft);color:var(--acc-deep);display:grid;place-items:center;flex:0 0 auto;font-style:normal}
+.where span small{display:block;font-weight:550;font-size:12px;color:var(--mut);margin-top:2px}
+.where span.on{background:var(--acc);box-shadow:none}.where span.on i{background:#ffffff8a;color:var(--ink)}.where span.on small{color:var(--ink)}
+.slots{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+.slots span{display:grid;place-items:center;height:40px;border-radius:14px;background:var(--surface);box-shadow:0 0 0 1px var(--line);font-weight:700;font-size:14px}
+.slots span.on{background:var(--ink);color:#fff;box-shadow:none}
+.qb .go{min-height:64px;border-radius:22px;padding:0 28px;font-size:16px;height:auto;align-self:stretch}
+.qb .foot{display:flex;gap:18px;align-items:center;margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-size:13px;color:var(--mut);flex-wrap:wrap}
+.qb .foot span{display:inline-flex;gap:6px;align-items:center}
+.qb .foot svg{color:var(--acc-deep)}
+section.s{margin-top:96px}
+.sh{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:24px}
+.sh h2{font-size:54px;line-height:1}
+.sh p{color:var(--mut);max-width:440px}
+.tabs{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.menu{display:grid;grid-template-columns:1.05fr 1fr;gap:16px;align-items:start}
+.menu>*{min-width:0}
+.big{position:relative;border-radius:32px;overflow:hidden;height:100%;min-height:520px;box-shadow:0 0 0 1px var(--line)}
+.big img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.big .t{position:absolute;left:16px;right:16px;bottom:16px;background:#fffffff2;border-radius:24px;padding:18px 20px;display:flex;gap:14px;align-items:center}
+.big .t h3{font-family:Paytone;font-weight:400;font-size:26px;line-height:1}
+.big .t p{font-size:13.5px;color:var(--mut);margin-top:4px}
+.big .badge{position:absolute;left:16px;top:16px;background:var(--acc);border-radius:999px;padding:8px 14px;font-weight:750;font-size:13px}
+.pr{font-weight:800;font-size:16px;white-space:nowrap}
+.add{width:40px;height:40px;border-radius:50%;background:var(--acc);color:var(--on-acc);display:grid;place-items:center;font-size:22px;font-weight:700;flex:0 0 auto}
+.add.in{background:var(--ink);color:#fff}
+.board{background:var(--surface);border-radius:32px;box-shadow:0 0 0 1px var(--line);padding:6px 22px}
+.row{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px dashed var(--line)}
+.row:last-child{border-bottom:0}
+.row img{width:54px;height:54px;border-radius:16px;object-fit:cover;flex:0 0 auto}
+.row .ph{width:54px;height:54px;border-radius:16px;background:var(--soft);display:grid;place-items:center;font-family:Paytone;color:var(--acc-deep);font-size:18px;flex:0 0 auto}
+.row .tx{flex:1;min-width:0}
+.row h4{font-size:15.5px}.row p{font-size:12.8px;color:var(--mut);line-height:1.4}
+.row .add{width:34px;height:34px;font-size:19px}
+.sides{display:grid;grid-template-columns:1fr 1fr 1fr 1.6fr;gap:12px;margin-top:16px}
+.sd{background:var(--surface);border-radius:24px;padding:12px;box-shadow:0 0 0 1px var(--line);display:flex;gap:12px;align-items:center}
+.sd img{width:64px;height:64px;border-radius:16px;object-fit:cover;flex:0 0 auto}
+.sd h4{font-size:14.5px}.sd p{font-size:12px;color:var(--mut);line-height:1.35}
+.sd .pr{font-size:14px}
+.sd.drk{background:var(--ink);color:#fff;box-shadow:none;display:block;padding:16px 18px}
+.sd.drk h4{color:var(--acc);font-size:15px}.sd.drk p{color:#cfd4e6}
+.sd.drk .sc{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.sd.drk .sc span{background:#ffffff17;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:650}
+.ticket{position:sticky;bottom:18px;margin:24px auto 0;max-width:860px;background:var(--ink);color:#fff;border-radius:999px;padding:10px 10px 10px 26px;display:flex;align-items:center;gap:18px;box-shadow:0 20px 40px #14214b45;z-index:5}
+.ticket .w{font-size:13px;opacity:.75}.ticket b{font-size:15px}.ticket .sp{flex:1}.ticket .btn{height:50px}
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));background:var(--surface);border-radius:32px;box-shadow:0 0 0 1px var(--line);overflow:hidden}
+.day{padding:20px 16px 22px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:8px;min-height:240px}
+.day:last-child{border-right:0}
+.day .d{font-weight:800;font-size:15px}.day .d small{display:block;font-weight:600;font-size:12px;color:var(--mut)}
+.day .st{align-self:flex-start;border-radius:999px;padding:4px 10px;font-size:11.5px;font-weight:750;background:var(--soft);color:var(--acc-deep)}
+.day p{font-size:13px;line-height:1.4}
+.day p.alt{color:var(--mut);font-size:12.5px}
+.day.off{background:repeating-linear-gradient(135deg,#fbf6ea 0 10px,#f7f0de 10px 20px)}
+.day.off .st{background:#e9e4d6;color:#6b6b78}
+.day.off p{color:var(--mut)}
+.day.bp{background:var(--soft)}.day.bp .st{background:var(--acc);color:var(--ink)}
+.day .ft{margin-top:auto;display:flex;gap:6px;align-items:center;font-size:12px;font-weight:750;background:var(--ink);color:#fff;border-radius:12px;padding:7px 9px}
+.wk-note{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-top:14px;font-size:13.5px;color:var(--mut);flex-wrap:wrap}
+.wk-note b{color:var(--ink)}
+.ev{display:grid;grid-template-columns:.9fr 1.25fr;gap:0;background:var(--surface);border-radius:40px;box-shadow:0 26px 60px #14214b1a,0 0 0 1px var(--line);overflow:hidden}
+.ev>*{min-width:0}
+.ev .side{position:relative;background:var(--ink);color:#fff;padding:36px 34px;display:flex;flex-direction:column;gap:14px;overflow:hidden}
+.ev .side>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 50%;opacity:.35}
+.ev .side>*:not(img){position:relative}
+.ev .side h2{font-size:44px;line-height:1.02}
+.ev .side h2 span{color:var(--acc)}
+.ev .side p{color:#dfe3f1;font-size:15px}
+.ev .side ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:auto;font-size:14px}
+.ev .side li{display:flex;gap:10px;align-items:flex-start}
+.ev .side li i{width:22px;height:22px;border-radius:50%;background:var(--acc);color:var(--ink);display:grid;place-items:center;flex:0 0 auto;margin-top:1px}
+.thumbs{display:flex;gap:8px;flex:0 0 auto;min-height:64px}.thumbs img{width:64px;height:64px;flex:0 0 64px;border-radius:16px;object-fit:cover;box-shadow:0 0 0 2px #ffffff40}
+.form{padding:32px 34px 30px}
+.form .lbl{font-size:12px;font-weight:750;text-transform:uppercase;letter-spacing:.07em;color:var(--mut);margin:0 0 10px 4px}
+.types{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:20px}
+.types span{border-radius:20px;padding:13px 12px;background:var(--bg);box-shadow:0 0 0 1px var(--line);font-weight:750;font-size:14px;line-height:1.2;display:flex;flex-direction:column;gap:8px}
+.types span i{width:32px;height:32px;border-radius:11px;background:var(--soft);color:var(--acc-deep);display:grid;place-items:center;font-style:normal}
+.types span.on{background:var(--acc);box-shadow:none}.types span.on i{background:#ffffff8a;color:var(--ink)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid2>*{min-width:0}
+.fld{background:var(--bg);border-radius:20px;box-shadow:0 0 0 1px var(--line);padding:11px 14px;display:flex;align-items:center;gap:12px;min-height:62px}
+.fld i{width:36px;height:36px;border-radius:12px;background:var(--soft);color:var(--acc-deep);display:grid;place-items:center;font-style:normal;flex:0 0 auto}
+.fld>div{min-width:0}
+.fld small{display:block;font-size:12px;color:var(--mut);font-weight:600}
+.fld b{font-size:15px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fld b.ph{color:#a3a7b8;font-weight:550}
+.fld.msg{grid-column:1/-1;align-items:flex-start;min-height:96px}
+.fld.msg b{white-space:normal;font-weight:550;color:#a3a7b8;line-height:1.45}
+.send{display:flex;align-items:center;gap:16px;margin-top:18px;flex-wrap:wrap}
+.send .fine{font-size:12.5px;color:var(--mut);max-width:330px}
+@media(max-width:760px){
+ .stage{height:400px;border-radius:30px}
+ .stage img{object-position:72% 50%}
+ .stage::after{background:linear-gradient(180deg,#14214Bf2 0%,#14214Bdd 58%,#14214B40 100%)}
+ .stage .ov{left:20px;right:20px;top:20px}
+ .kick{font-size:12px;height:32px}
+ .stage h1{font-size:44px;margin:12px 0 10px}
+ .stage .lede{font-size:14.5px}
+ .stage .b2,.stage .b3{display:none}
+ .qb{margin:-128px 10px 0;padding:16px;border-radius:26px}
+ .qrow{grid-template-columns:1fr;gap:14px}
+ .where{gap:6px}
+ .where span{flex-direction:column;align-items:flex-start;gap:6px;padding:10px;font-size:13px;border-radius:16px}
+ .where span i{width:28px;height:28px;border-radius:10px}
+ .where span small{font-size:11px}
+ .slots{display:flex;flex-wrap:nowrap;overflow:hidden;margin-right:-16px}
+ .slots span{min-width:60px;height:40px;font-size:13.5px;flex:0 0 auto}
+ .qb .go,.qb .foot{display:none}
+ section.s{margin-top:64px}
+ .sh{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:18px}.sh h2{font-size:34px}
+ .tabs{flex-wrap:nowrap;overflow:hidden;margin-right:-18px}
+ .menu{grid-template-columns:1fr}
+ .big{min-height:300px;height:300px;border-radius:26px}
+ .big .t{padding:14px}.big .t h3{font-size:21px}
+ .board{padding:2px 14px;border-radius:26px}
+ .row .hide-m{display:none}
+ .sides{grid-template-columns:1fr}
+ .ticket{display:none}
+ .week{grid-template-columns:1fr;border-radius:26px}
+ .day{border-right:0;border-bottom:1px solid var(--line);min-height:0;display:grid;grid-template-columns:86px 1fr;column-gap:12px;row-gap:4px;padding:14px 16px}
+ .day>*{grid-column:2}.day .d{grid-column:1;grid-row:1/span 4}
+ .day .st{justify-self:start}
+ .ev{grid-template-columns:1fr;border-radius:30px}
+ .ev .side{padding:26px 22px}.ev .side h2{font-size:30px}
+ .ev .side ul{margin-top:6px}
+ .form{padding:22px 16px 24px}
+ .types{grid-template-columns:1fr 1fr}
+ .grid2{grid-template-columns:1fr}
+ .send .btn{width:100%}
+}
+</style></head><body>
+<div class="wrap"><header class="top"><a class="brand" href="#"><img src="assets/logo-badge.png" alt="L’équipe à Jojo"><span>L’équipe à Jojo<small>Traiteur · Food truck · Guipry-Messac</small></span></a><nav class="d-only"><a class="on" href="#carte">Burgers</a><a href="#semaine">La semaine</a><a href="#evenement">Traiteur &amp; food truck</a><a href="#">Le camion</a></nav><span class="sp"></span>
+<a class="icbtn d-only" href="tel:+33625410342" aria-label="Appeler"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a><a class="btn acc d-only" href="#commande"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 12.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> Commander</a></header>
+<section class="hero" id="commande">
+ <div class="stage"><img src="assets/van-stage.jpg" alt="Jojo, le Citroën HY de 1972">
+  <div class="ov"><span class="kick"><i></i>Food truck vendredi &amp; dimanche · 18h30–21h</span>
+  <h1 class="disp">Votre burger,<br><span>à l’heure qui vous arrange.</span></h1>
+  <p class="lede">Choisissez vos burgers et votre heure de passage, au camion le soir ou à la boutique le midi. Vous arrivez, c’est prêt.</p></div>
+  <span class="b b2">Jojo · Citroën HY de 1972</span><span class="b b3">Il ne roule pas vite. Votre commande, si.</span>
+ </div>
+ <div class="qb">
+  <div class="qrow">
+   <div><div class="lbl"><b>1</b>Où récupérez-vous ?</div>
+    <div class="where"><span><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M4 9v11h16V9M3 9h18M9 20v-6h6v6"/></svg></i><div>Boutique<small>le midi · selon programme</small></div></span><span class="on"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h11v10H2zM13 9h4l4 4v3h-8z"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></i><div>Ven. 16 oct.<small>Food truck · halles</small></div></span><span><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h11v10H2zM13 9h4l4 4v3h-8z"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></i><div>Dim. 18 oct.<small>Food truck · cour</small></div></span></div></div>
+   <div><div class="lbl"><b>2</b>À quelle heure ?</div><div class="slots"><span class="">18:30</span><span class="">18:45</span><span class="">19:00</span><span class="on">19:15</span><span class="">19:30</span><span class="">19:45</span><span class="">20:00</span><span class="">20:15</span><span class="">20:30</span></div></div>
+   <a class="btn acc go" href="#carte">Choisir mes burgers <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+  <div class="foot"><span><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg> 30 place de l’Église Saint-Pierre, Guipry-Messac</span><span><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg> Vous payez sur place : CB, titres-restaurant, chèques</span><span><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Food truck vendredi et dimanche, 18h30–21h</span></div>
+ </div>
+</section>
+<section class="s" id="carte">
+ <div class="sh"><h2 class="disp">La carte burgers 2026</h2><p>Steaks hachés préparés par Robert, de la boucherie de Lohéac. Tomme de la ferme de la Sablonnière, à Guipry-Messac.</p></div>
+ <div class="tabs"><span class="chip on">Burgers</span><span class="chip">Jojottes &amp; Jojettes</span><span class="chip">Petits creux</span><span class="chip">Boissons</span></div>
+ <div class="menu">
+  <div class="big"><img src="assets/burger-maison.jpg" alt="Burger maison de l’équipe à Jojo"><span class="badge">Le plus gourmand</span><div class="t"><div style="flex:1;min-width:0"><h3>Jojobacon</h3><p>Bœuf haché, tomates, oignons, béarnaise, bacon, cheddar</p></div><span class="pr">8,50 €</span><span class="add">+</span></div></div>
+  <div class="board"><div class="row"><div class="tx"><h4>Double Jojo</h4><p>Double bœuf haché (2×130 g), double cheddar, sauce au choix</p></div><span class="pr">10,50 €</span><span class="add in"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span></div><div class="row"><div class="tx"><h4>Double Jojo Bacon</h4><p>Le Double Jojo + 2 tranches de bacon</p></div><span class="pr">11 €</span><span class="add">+</span></div><div class="row"><div class="tx"><h4>Jojochèvre</h4><p>Bœuf haché, confit d’oignons, bûche de chèvre</p></div><span class="pr">8,50 €</span><span class="add">+</span></div><div class="row"><div class="tx"><h4>Jojobiquette</h4><p>Bœuf haché, tomme de biquette, oignons rouges, salade, sauce blanche</p></div><span class="pr">8,50 €</span><span class="add">+</span></div><div class="row"><div class="tx"><h4>Jojochorizo</h4><p>Bœuf haché, chorizo, compotée de poivrons, tomme de la Sablonnière</p></div><span class="pr">8,50 €</span><span class="add">+</span></div><div class="row"><div class="tx"><h4>Jojocochon</h4><p>Effiloché de cochon, sauce BBQ, poitrine fumée, camembert</p></div><span class="pr">8,50 €</span><span class="add">+</span></div><div class="row"><div class="tx"><h4>Jojopoulet</h4><p>Poulet pané halal, mayonnaise, tomates, salade, oignons crispy, cheddar</p></div><span class="pr">8 €</span><span class="add">+</span></div><div class="row hide-m"><div class="tx"><h4>Jojokebab</h4><p>Viande kebab halal, tomates, sauce blanche, oignons, cheddar</p></div><span class="pr">8 €</span><span class="add">+</span></div><div class="row hide-m"><div class="tx"><h4>Jojofish</h4><p>Filet de colin frit, sauce tartare, légumes grillés, cheddar, salade</p></div><span class="pr">8 €</span><span class="add">+</span></div><div class="row hide-m"><div class="tx"><h4>Jojoveggie</h4><p>Galette de pomme de terre, confit d’oignons, légumes grillés</p></div><span class="pr">8 €</span><span class="add">+</span></div><div class="row hide-m"><div class="tx"><h4>Big Jojo</h4><p>Bœuf haché (130 g), double cheddar, sauce burger</p></div><span class="pr">7,50 €</span><span class="add">+</span></div></div>
+ </div>
+ <div class="sides"><div class="sd"><img src="assets/jojottes.jpg" alt="Jojottes"><div style="flex:1;min-width:0"><h4>Jojottes</h4><p>Frites fraîches assaisonnées</p><span class="pr">2 €</span></div><span class="add in" style="width:32px;height:32px"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span></div><div class="sd"><img src="assets/jojettes.jpg" alt="Jojettes"><div style="flex:1;min-width:0"><h4>Jojettes</h4><p>Nuggets de poulet frits · 6, 9 ou 12 pièces</p><span class="pr">4 / 5,50 / 7 €</span></div><span class="add" style="width:32px;height:32px;font-size:18px">+</span></div><div class="sd"><img src="assets/big-jojo.jpg" alt="Jojo"><div style="flex:1;min-width:0"><h4>Jojo</h4><p>Petit pain, bœuf haché (65 g), cheddar, ketchup</p><span class="pr">4 €</span></div><span class="add" style="width:32px;height:32px;font-size:18px">+</span></div><div class="sd drk"><h4>Boissons 2 € · Jojocroc 4 €</h4><p>Sauce au choix, ingrédient supplémentaire 0,50 €</p><div class="sc"><span>Ketchup</span><span>Mayonnaise</span><span>Blanche</span><span>BBQ</span><span>Béarnaise</span><span>Samouraï</span><span>Moutarde</span><span>Poivre</span><span>Burger</span></div></div></div>
+ <div class="ticket d-only"><div><span class="w">Vendredi 16 oct. · retrait 19:15 au camion</span><br><b>Double Jojo + Jojottes</b></div><span class="sp"></span><b>12,50 €</b><a class="btn acc" href="#">Valider ma commande <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+</section>
+<section class="s" id="semaine">
+ <div class="sh"><h2 class="disp">La semaine de Jojo</h2><p>Le programme jour par jour, avec les jours fermés et les prestations extérieures bien visibles, pour ne jamais trouver porte close.</p></div>
+ <div class="week"><div class="day off"><div class="d">Lundi<small>5 oct.</small></div><span class="st">Fermé</span><p class="">Boutique fermée</p></div><div class="day off"><div class="d">Mardi<small>6 oct.</small></div><span class="st">Fermé</span><p class="">Boutique fermée</p></div><div class="day bp"><div class="d">Mercredi<small>7 oct.</small></div><span class="st">Burger Party</span><p class="">5 burgers au choix : beef, bacon, poulet, cochon, VG</p><p class="alt">ou médaillon de cochon au piment d’Espelette, écrasé de butternut</p></div><div class="day "><div class="d">Jeudi<small>8 oct.</small></div><span class="st">Midi</span><p class="">Baeckeoffe au bœuf et au porc, vin blanc et légumes</p><p class="alt">ou burger de la semaine, ou plat végétal du jour</p></div><div class="day off"><div class="d">Vendredi<small>9 oct.</small></div><span class="st">Fermé</span><p class="">Prestation extérieure</p></div><div class="day off"><div class="d">Samedi<small>10 oct.</small></div><span class="st">Fermé</span><p class="">Prestation extérieure</p></div><div class="day "><div class="d">Dimanche<small>11 oct.</small></div><span class="st">Midi</span><p class="">Rôtisserie</p></div></div>
+ <div class="wk-note"><span>Programme du <b>5 au 11 octobre</b>, tel que publié sur l’écran de la boutique. Celui de la semaine du 12 octobre s’affichera ici dès sa mise en ligne.</span><span>Food truck : <b>vendredi et dimanche soir, 18h30–21h</b></span></div>
+</section>
+<section class="s" id="evenement">
+ <div class="ev">
+  <div class="side"><img src="assets/van-wide.jpg" alt="Jojo, le Citroën HY de 1972">
+   <h2 class="disp">Jojo à votre<br><span>fête&nbsp;?</span></h2>
+   <p>Anniversaires, mariages, fêtes de famille, repas d’entreprise : en livraison ou préparé sur place, à partir de 20 personnes. Devis personnalisé.</p>
+   <div class="thumbs"><img src="assets/mignardises.jpg" alt="Mignardises"><img src="assets/galette.jpg" alt="Galette"><img src="assets/paella.jpg" alt="Paëlla"><img src="assets/tarte.jpg" alt="Tartelette"></div>
+   <ul><li><i><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i>Food truck dans un rayon de 30 à 40 km</li><li><i><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i>Traiteur de 40 à 60 km selon la formule</li><li><i><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></i>Vaisselle, nappes, chaises et personnel de service sur demande</li></ul>
+  </div>
+  <div class="form">
+   <div class="lbl">Type de prestation</div>
+   <div class="types"><span class="on"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h11v10H2zM13 9h4l4 4v3h-8z"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></i>Food truck</span><span><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg></i>Traiteur sur place</span><span><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 12.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></i>Traiteur en livraison</span><span><i>+</i>Autres</span></div>
+   <div class="grid2">
+    <div class="fld"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i><div><small>Date de l’événement</small><b>Samedi 12 juin 2027</b></div></div>
+    <div class="fld"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg></i><div><small>Nombre de personnes</small><b>60 personnes</b></div></div>
+    <div class="fld"><i><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></i><div><small>Lieu</small><b>Bain-de-Bretagne</b></div></div>
+    <div class="fld"><i><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></i><div><small>Votre téléphone</small><b class="ph">06 …</b></div></div>
+    <div class="fld"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg></i><div><small>Nom</small><b class="ph">Votre nom</b></div></div>
+    <div class="fld"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></i><div><small>E-mail</small><b class="ph">vous@exemple.fr</b></div></div>
+    <div class="fld msg"><div><small>Votre message</small><b>Anniversaire en extérieur, burgers au camion pour les enfants, formule cocktail pour l’apéritif…</b></div></div>
+   </div>
+   <div class="send"><a class="btn acc" href="#">Envoyer ma demande <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><span class="fine">René et Charles vous rappellent pour caler les détails, puis vous envoient un devis personnalisé.</span></div>
+  </div>
+ </div>
+</section>
+</div>
+<footer class="f"><div class="in">
+<div><h4>L’équipe à Jojo</h4><p>Traiteur, boutique du midi et food truck</p><p>30 place de l'Église Saint-Pierre, 35480 Guipry-Messac</p><p><a href="https://www.google.com/maps/search/?api=1&query=30+place+de+l%27Eglise+Saint-Pierre+35480+Guipry-Messac">Itinéraire →</a></p></div>
+<div><h4>Contact</h4><p><a href="tel:+33625410342">06 25 41 03 42</a></p><p><a href="mailto:contact@lequipeajojo.fr">contact@lequipeajojo.fr</a></p></div>
+<div><h4>Les voisins</h4><p>Steaks hachés : Robert, boucherie de Lohéac</p><p>Tomme : ferme de la Sablonnière</p></div>
+<p class="note">Démo · octobre 2026</p></div></footer>
+<div class="mbar"><a class="btn acc" href="#commande"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 12.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> Commander mon burger</a><a class="icbtn" href="tel:+33625410342" aria-label="Appeler"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a></div></body></html>
