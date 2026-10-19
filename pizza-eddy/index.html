@@ -174,4 +174,11 @@ section.s{margin-top:90px}
 <div><h4>Contact</h4><p><a href="tel:+33640276337">06 40 27 63 37</a> · SMS bienvenus</p><p><a href="mailto:lecric.lucas@orange.fr">lecric.lucas@orange.fr</a></p></div>
 <div><h4>La maison</h4><p>Pâte fine maison</p><p>Produits frais et locaux</p><p>Soirées privées le samedi</p></div>
 <p class="note">Démo · octobre 2026</p></div></footer>
-<div class="mbar"><a class="icbtn" href="https://www.google.com/maps/search/?api=1&query=2+rue+de+Bellevue+35470+Pl%C3%A9ch%C3%A2tel" aria-label="Itinéraire"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></a><a class="btn acc" href="#carte"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h11v10H2zM13 9h4l4 4v3h-8z"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg> Précommander pour ce soir</a></div></body></html>
+<div class="mbar"><a class="icbtn" href="https://www.google.com/maps/search/?api=1&query=2+rue+de+Bellevue+35470+Pl%C3%A9ch%C3%A2tel" aria-label="Itinéraire"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></a><a class="btn acc" href="#carte"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h11v10H2zM13 9h4l4 4v3h-8z"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg> Précommander pour ce soir</a></div><script>
+/* Chargement des photos via fetch (aperçu htmlpreview) */
+function fixImgs(){if(location.protocol=='file:')return;document.querySelectorAll('img').forEach(i=>{if(i.dataset.fx)return;i.dataset.fx=1;const s=i.src;if(location.hostname.indexOf('htmlpreview')<0&&i.complete&&i.naturalWidth)return;fetch(s,{mode:'cors'}).then(r=>r.ok?r.blob():Promise.reject()).then(bl=>{i.src=URL.createObjectURL(bl)}).catch(()=>{});});}
+document.addEventListener('error',e=>{if(e.target.tagName=='IMG'){delete e.target.dataset.fx;fixImgs();}},true);
+new MutationObserver(fixImgs).observe(document.body,{childList:true,subtree:true});
+fixImgs();
+</script>
+</body></html>
