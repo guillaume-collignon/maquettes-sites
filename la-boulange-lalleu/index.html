@@ -177,4 +177,11 @@ h1 em{font-style:normal;color:var(--acc-deep)}
  <div class="foot"><span>La Boulange. · 10 rue des Violettes, 35320 Lalleu</span><span>Maquette — proposition de Guillaume Collignon · photos d’illustration · données d’exemple</span><a href="tel:+33950205936">09 50 20 59 36</a></div>
 </div>
 <div class="bar"><span>Réserver · 3 pains</span><small>Sam. 16h30 ↻</small></div>
+<script>
+/* Chargement des photos via fetch (aperçu htmlpreview) */
+function fixImgs(){if(location.protocol=='file:')return;document.querySelectorAll('img').forEach(i=>{if(i.dataset.fx)return;i.dataset.fx=1;const s=i.src;if(location.hostname.indexOf('htmlpreview')<0&&i.complete&&i.naturalWidth)return;fetch(s,{mode:'cors'}).then(r=>r.ok?r.blob():Promise.reject()).then(bl=>{i.src=URL.createObjectURL(bl)}).catch(()=>{});});}
+document.addEventListener('error',e=>{if(e.target.tagName=='IMG'){delete e.target.dataset.fx;fixImgs();}},true);
+new MutationObserver(fixImgs).observe(document.body,{childList:true,subtree:true});
+fixImgs();
+</script>
 </body></html>
