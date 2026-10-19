@@ -423,7 +423,7 @@ document.addEventListener('click',e=>{
 document.getElementById('selClass').addEventListener('change',e=>{st.c=e.target.value;update();});
 renderPanes();renderOpts();update();
 /* Chargement des photos via fetch (aperçu htmlpreview) */
-function fixImgs(){document.querySelectorAll('img').forEach(i=>{if(i.dataset.fx)return;i.dataset.fx=1;const s=i.src;if(location.hostname.indexOf('htmlpreview')<0&&i.complete&&i.naturalWidth)return;fetch(s,{mode:'cors'}).then(r=>r.ok?r.blob():Promise.reject()).then(bl=>{i.src=URL.createObjectURL(bl)}).catch(()=>{});});}
+function fixImgs(){if(location.protocol=='file:')return;document.querySelectorAll('img').forEach(i=>{if(i.dataset.fx)return;i.dataset.fx=1;const s=i.src;if(location.hostname.indexOf('htmlpreview')<0&&i.complete&&i.naturalWidth)return;fetch(s,{mode:'cors'}).then(r=>r.ok?r.blob():Promise.reject()).then(bl=>{i.src=URL.createObjectURL(bl)}).catch(()=>{});});}
 document.addEventListener('error',e=>{if(e.target.tagName=='IMG'){delete e.target.dataset.fx;fixImgs();}},true);
 new MutationObserver(fixImgs).observe(document.body,{childList:true,subtree:true});
 fixImgs();
