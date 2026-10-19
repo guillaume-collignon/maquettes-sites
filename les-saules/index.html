@@ -142,4 +142,11 @@ h1,h2,h3,.disp{font-family:'Unbounded',sans-serif;letter-spacing:-.02em}
 <div><h4>Contact</h4><p><a href="tel:+33299441065">02 99 44 10 65</a></p><p>commandes@lessaules.fr</p><p style="margin-top:8px">Facebook · Instagram</p></div>
 <div><h4>Boutique de Corps-Nuds</h4><div class="hr"><span>Lun – Jeu</span><span>10:00 – 18:00</span><span>Vendredi</span><span>10:00 – 19:00</span><span>Samedi</span><span>10:00 – 12:00</span><span>Dimanche</span><span>Fermé</span></div><p style="margin-top:12px;color:#9FAAB8">Aussi aux Halles centrales et aux Lices (Rennes), à Saint-Servan, Rocabey et Paramé (Saint-Malo).</p></div>
 </div></footer>
-<div class="mbar"><div class="meta"><b>Retrait 12h45</b>Formule 3 plats</div><a class="btn acc" href="#menu">Valider mon midi <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></body></html>
+<div class="mbar"><div class="meta"><b>Retrait 12h45</b>Formule 3 plats</div><a class="btn acc" href="#menu">Valider mon midi <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div><script>
+/* Chargement des photos via fetch (aperçu htmlpreview) */
+function fixImgs(){if(location.protocol=='file:')return;document.querySelectorAll('img').forEach(i=>{if(i.dataset.fx)return;i.dataset.fx=1;const s=i.src;if(location.hostname.indexOf('htmlpreview')<0&&i.complete&&i.naturalWidth)return;fetch(s,{mode:'cors'}).then(r=>r.ok?r.blob():Promise.reject()).then(bl=>{i.src=URL.createObjectURL(bl)}).catch(()=>{});});}
+document.addEventListener('error',e=>{if(e.target.tagName=='IMG'){delete e.target.dataset.fx;fixImgs();}},true);
+new MutationObserver(fixImgs).observe(document.body,{childList:true,subtree:true});
+fixImgs();
+</script>
+</body></html>
