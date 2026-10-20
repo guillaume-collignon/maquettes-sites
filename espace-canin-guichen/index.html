@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Espace Canin · Salon de toilettage à Guichen</title>
+<meta name="description" content="Réservez le toilettage de votre chien à Guichen : bain, coupe, épilation, griffes. Confirmation et rappel par SMS.">
+<style>
+@font-face{font-family:Inter;src:url(assets/Inter.ttf) format("truetype");font-weight:100 900;font-display:swap}
+@font-face{font-family:Baloo;src:url(assets/Baloo2.ttf) format("truetype");font-weight:400 800;font-display:swap}
+:root{--bg:#f4f8fb;--card:#fff;--ink:#13212c;--muted:#5d6b77;--line:#e3eaf0;--acc:#62bdf2;--acc-soft:#e3f3fd;--red:#e0352b;--ok:#2f9e6a;--r:20px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+h1,h2,h3,.disp{font-family:Baloo,Inter,sans-serif;line-height:1.05;letter-spacing:-.01em}
+/* top bar */
+.top{position:sticky;top:0;z-index:20;background:rgba(244,248,251,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:18px}
+.logo{display:flex;align-items:center;gap:10px;font-family:Baloo;font-weight:800;font-size:24px}
+.logo .paw{width:38px;height:38px;border-radius:12px;background:var(--acc);display:grid;place-items:center;font-size:20px}
+.logo b{color:var(--red);font-weight:800}
+.logo small{display:block;font-family:Inter;font-weight:500;font-size:12px;color:var(--muted);letter-spacing:0;margin-top:-4px}
+.nav{display:flex;gap:26px;font-weight:500;font-size:15px;color:var(--muted)}
+.nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:600 15px Inter;border-radius:14px;padding:13px 20px;background:var(--acc);color:var(--ink);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(98,189,242,.45)}
+.btn.ghost{background:#fff;border:1px solid var(--line)}
+.btn.big{font-size:17px;padding:16px 26px;border-radius:16px}
+/* hero */
+.hero{padding:46px 0 26px;text-align:center}
+.pill{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:99px;padding:6px 14px;font-size:13.5px;font-weight:500;color:var(--muted)}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--ok);display:inline-block}
+.hero h1{font-size:62px;font-weight:800;margin:16px auto 10px;max-width:880px}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--acc-soft) 62%);padding:0 4px}
+.hero p.lede{font-size:19px;color:var(--muted);max-width:640px;margin:0 auto}
+/* booking */
+.book{margin:30px auto 0;background:var(--card);border:1px solid var(--line);border-radius:28px;box-shadow:0 24px 60px -30px rgba(19,33,44,.28);text-align:left;overflow:hidden}
+.steps{display:grid;grid-template-columns:1fr 1.15fr 1.25fr}
+.step{padding:24px 24px 22px;border-right:1px solid var(--line)}
+.step:last-child{border-right:0}
+.step h3{font-size:20px;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.step h3 span{width:26px;height:26px;border-radius:9px;background:var(--acc-soft);font:700 13px Inter;display:grid;place-items:center}
+.lab{font-size:12.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:12px 0 7px}
+.lab:first-of-type{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 12px;font:500 14px Inter;color:var(--ink);cursor:pointer}
+.chip.on{background:var(--acc-soft);border-color:var(--acc);font-weight:600}
+.field{width:100%;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font:500 14.5px Inter;background:#fbfdfe}
+.svc{display:flex;flex-direction:column;gap:8px}
+.svc label{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:14px;padding:10px 12px;cursor:pointer;font-size:14.5px;font-weight:500}
+.svc label small{display:block;color:var(--muted);font-weight:400;font-size:12.5px}
+.svc input{accent-color:#2d8fd0;width:17px;height:17px}
+.svc label.on{border-color:var(--acc);background:#f6fbff}
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.day{border:1px solid var(--line);border-radius:12px;padding:7px 0;text-align:center;cursor:pointer;background:#fff}
+.day b{display:block;font:700 17px Baloo}
+.day small{font-size:11.5px;color:var(--muted)}
+.day.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.day.on small{color:#cfe3f1}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.slot{border:1px solid var(--line);border-radius:11px;padding:8px 0;text-align:center;font:600 14px Inter;cursor:pointer;background:#fff}
+.slot.full{color:#b3bec7;background:#f3f6f8;text-decoration:line-through;cursor:not-allowed}
+.slot.on{background:var(--acc);border-color:var(--acc)}
+.bookfoot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 24px;background:#f8fbfd;border-top:1px solid var(--line)}
+.recap{font-size:14.5px;color:var(--muted)}
+.recap b{color:var(--ink)}
+.auto{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin:18px 0 0;font-size:14px;color:var(--muted)}
+.auto span{display:flex;gap:7px;align-items:center}
+/* sections */
+section{padding:70px 0}
+.kick{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#2d8fd0;margin-bottom:8px}
+h2{font-size:42px;font-weight:800;margin-bottom:12px}
+.sub{color:var(--muted);font-size:17px;max-width:620px}
+/* how it works */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px}
+.fcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.fcard .n{font:800 30px Baloo;color:var(--acc)}
+.fcard h3{font-size:20px;margin:4px 0 6px}
+.fcard p{font-size:14.5px;color:var(--muted)}
+.sms{margin-top:14px;background:var(--acc-soft);border-radius:16px 16px 16px 4px;padding:10px 12px;font-size:13.5px;line-height:1.4}
+.sms small{display:block;color:var(--muted);font-size:11px;margin-top:4px}
+/* services */
+.svcgrid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px;margin-top:30px}
+.photo{border-radius:var(--r);overflow:hidden;position:relative;min-height:300px;grid-row:span 2}
+.photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.photo .tag{position:absolute;left:14px;bottom:14px;background:#fff;border-radius:12px;padding:8px 12px;font-size:13.5px;font-weight:600}
+.scard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.scard .ico{font-size:24px}
+.scard h3{font-size:21px;margin:6px 0 4px}
+.scard p{font-size:14.5px;color:var(--muted)}
+.note{margin-top:16px;font-size:14px;color:var(--muted)}
+/* dog card + faq */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px}
+.dog{display:flex;gap:16px;align-items:center}
+.dog .av{width:70px;height:70px;border-radius:20px;overflow:hidden;flex:none}
+.dog .av img{width:100%;height:100%;object-fit:cover}
+.dog h3{font-size:26px}
+.dog p{color:var(--muted);font-size:14px}
+.hist{margin:18px 0 16px;border-top:1px dashed var(--line)}
+.hist div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.hist div span:last-child{color:var(--muted)}
+.chat{display:flex;flex-direction:column;gap:10px}
+.q{align-self:flex-end;background:var(--ink);color:#fff;border-radius:16px 16px 4px 16px;padding:10px 14px;font-size:14.5px;max-width:80%}
+.a{align-self:flex-start;background:var(--acc-soft);border-radius:16px 16px 16px 4px;padding:10px 14px;font-size:14.5px;max-width:88%}
+.qs{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+/* infos */
+.infos{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;align-items:stretch}
+.shop{border-radius:24px;overflow:hidden;min-height:320px;position:relative}
+.shop img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:10px 0 18px}
+td{padding:9px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-weight:600}
+td.off{color:var(--muted);font-weight:500}
+.today td{color:#2d8fd0}
+footer{padding:30px 0 40px;color:var(--muted);font-size:13.5px;text-align:center}
+.bar{display:none}
+/* sheet */
+.sheet{position:fixed;inset:0;background:rgba(19,33,44,.45);display:none;align-items:flex-end;justify-content:center;z-index:50}
+.sheet.show{display:flex}
+.sheet .in{background:#fff;width:100%;max-width:460px;border-radius:26px 26px 0 0;padding:24px 22px 28px}
+@media(min-width:861px){.sheet{align-items:center}.sheet .in{border-radius:26px}}
+.sheet h3{font-size:28px;margin-bottom:6px}
+.sheet .ok{width:54px;height:54px;border-radius:18px;background:#e2f5ec;display:grid;place-items:center;font-size:26px;margin-bottom:12px}
+/* responsive */
+@media(max-width:860px){
+ .wrap{padding:0 18px}
+ .nav,.top .btn{display:none}
+ .logo{white-space:nowrap;font-size:22px}
+ .pill{font-size:12.5px}
+ .hero h1{margin-top:12px}
+ .top .wrap{height:60px}
+ .hero{padding:24px 0 10px}
+ .hero h1{font-size:40px}
+ .hero p.lede{font-size:16px}
+ .book{border-radius:22px;margin-top:20px}
+ .steps{grid-template-columns:1fr}
+ .step{border-right:0;border-bottom:1px solid var(--line);padding:18px}
+ .bookfoot{display:none}
+ .auto{justify-content:flex-start;gap:8px 14px;font-size:13px}
+ section{padding:46px 0}
+ h2{font-size:32px}
+ .flow{grid-template-columns:1fr 1fr;gap:12px}
+ .svcgrid,.duo,.infos{grid-template-columns:1fr}
+ .photo{min-height:220px;grid-row:auto}
+ .shop{min-height:220px}
+ .bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(19,33,44,.08)}
+ .bar .btn{flex:1}
+ .bar .btn.ghost{flex:0 0 56px;padding:13px 0}
+ footer{padding-bottom:100px}
+}
+@media(max-width:420px){.flow{grid-template-columns:1fr}.hero h1{font-size:34px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+ <a class="logo" href="#"><span class="paw">🐾</span><span>Espace <b>Canin</b><small>Salon de toilettage · Guichen</small></span></a>
+ <nav class="nav"><a href="#reserver">Réserver</a><a href="#comment">Comment ça marche</a><a href="#prestations">Prestations</a><a href="#infos">Horaires</a></nav>
+ <div style="display:flex;gap:10px"><a class="btn ghost" href="tel:0299520735">📞 02 99 52 07 35</a><a class="btn" href="#reserver">Prendre rendez-vous</a></div>
+</div></header>
+
+<main>
+<div class="hero" id="reserver"><div class="wrap">
+ <span class="pill"><i></i>Prochain créneau libre : mardi 27 oct., 13h30</span>
+ <h1>Un chien tout beau,<br><em>réservé en une minute.</em></h1>
+ <p class="lede">Choisissez la prestation et le créneau qui vous arrangent : on vous confirme par SMS, et on vous prévient dès qu'il est prêt à rentrer.</p>
+
+ <div class="book">
+  <div class="steps">
+   <div class="step">
+    <h3><span>1</span>Votre chien</h3>
+    <div class="lab">Son prénom</div>
+    <input class="field" value="Biscotte" aria-label="Prénom du chien">
+    <div class="lab">Sa taille</div>
+    <div class="chips" data-group="taille"><button class="chip">Petit</button><button class="chip on">Moyen</button><button class="chip">Grand</button></div>
+    <div class="lab">Son poil</div>
+    <div class="chips" data-group="poil"><button class="chip">Court</button><button class="chip on">Long</button><button class="chip">Dur (à épiler)</button></div>
+   </div>
+   <div class="step">
+    <h3><span>2</span>La prestation</h3>
+    <div class="svc">
+     <label class="on"><input type="checkbox" checked><span>Bain &amp; séchage<small>Shampooing adapté, brossage</small></span></label>
+     <label class="on"><input type="checkbox" checked><span>Coupe aux ciseaux<small>Selon la race ou votre envie</small></span></label>
+     <label><input type="checkbox"><span>Épilation<small>Pour les poils durs</small></span></label>
+     <label><input type="checkbox"><span>Coupe des griffes<small>Chiens et chats</small></span></label>
+    </div>
+   </div>
+   <div class="step">
+    <h3><span>3</span>Le créneau de dépôt</h3>
+    <div class="days">
+     <div class="day on"><small>Mar</small><b>27</b></div><div class="day"><small>Mer</small><b>28</b></div><div class="day"><small>Jeu</small><b>29</b></div><div class="day"><small>Ven</small><b>30</b></div><div class="day"><small>Sam</small><b>31</b></div>
+    </div>
+    <div class="lab" style="margin-top:14px">Horaires disponibles</div>
+    <div class="slots">
+     <div class="slot full">9h30</div><div class="slot full">10h30</div><div class="slot full">11h00</div>
+     <div class="slot on" data-s="13h30">13h30</div><div class="slot" data-s="14h30">14h30</div><div class="slot full">15h30</div>
+    </div>
+    <p style="font-size:12.5px;color:var(--muted);margin-top:10px">Les créneaux pris se grisent tout seuls. Le tarif dépend de la taille et du pelage : il vous est confirmé avec le rendez-vous.</p>
+   </div>
+  </div>
+  <div class="bookfoot">
+   <div class="recap"><b>Biscotte</b> · moyen, poil long · bain &amp; séchage + coupe · <b>mardi 27, 13h30</b></div>
+   <button class="btn big" data-open>Demander ce rendez-vous</button>
+  </div>
+ </div>
+ <div class="auto"><span>✅ Confirmation par SMS</span><span>⏰ Rappel automatique la veille</span><span>🛁 SMS dès que votre chien est prêt</span></div>
+</div></div>
+
+<section id="comment"><div class="wrap">
+ <div class="kick">Comment ça marche</div>
+ <h2>Moins de coups de fil, plus de shampooing.</h2>
+ <p class="sub">Les petites tâches répétitives se font toutes seules. Au salon, on garde les mains pour les chiens.</p>
+ <div class="flow">
+  <div class="fcard"><div class="n">1</div><h3>Vous demandez</h3><p>En ligne, à toute heure, même le dimanche soir sur le canapé.</p></div>
+  <div class="fcard"><div class="n">2</div><h3>On valide d'un clic</h3><p>La demande arrive triée (taille, poil, prestation). Un clic et le créneau est bloqué.</p><div class="sms">C'est noté pour Biscotte mardi 27 à 13h30 🐾<small>SMS automatique</small></div></div>
+  <div class="fcard"><div class="n">3</div><h3>Rappel la veille</h3><p>Un petit message pour éviter les oublis, avec un lien pour décaler si besoin.</p><div class="sms">Demain 13h30, on attend Biscotte ! Un empêchement ? Décalez ici.<small>SMS automatique</small></div></div>
+  <div class="fcard"><div class="n">4</div><h3>Il est prêt !</h3><p>Vous venez le récupérer à l'heure convenue, ou dès que le SMS arrive.</p><div class="sms">Le toilettage de Biscotte est terminé, vous pouvez venir ✨<small>Envoyé d'un clic depuis le salon</small></div></div>
+ </div>
+</div></section>
+
+<section id="prestations" style="padding-top:10px"><div class="wrap">
+ <div class="kick">Les prestations</div>
+ <h2>Un salon vaste et lumineux pour le chouchouter.</h2>
+ <div class="svcgrid">
+  <div class="photo"><img src="assets/bain.jpg" alt="Chien au bain"><span class="tag">🛁 Bon bain, séchage, bonne coupe</span></div>
+  <div class="scard"><div class="ico">🐩</div><h3>Petits chiens</h3><p>Bain, séchage, coupe aux ciseaux, pour les petits gabarits.</p></div>
+  <div class="scard"><div class="ico">🐕</div><h3>Grands chiens</h3><p>Le même soin, avec la place qu'il faut pour les grands gabarits.</p></div>
+  <div class="scard"><div class="ico">✂️</div><h3>Épilation</h3><p>Pour les poils durs qui se travaillent à la main.</p></div>
+  <div class="scard"><div class="ico">🐾</div><h3>Griffes chiens &amp; chats</h3><p>Une coupe rapide, même pour les félins.</p></div>
+ </div>
+ <p class="note">À la boutique : shampooings pour chien, laisses et colliers.</p>
+</div></section>
+
+<section style="padding-top:10px"><div class="wrap">
+ <div class="kick">Pratique</div>
+ <h2>Sa fiche, et vos réponses tout de suite.</h2>
+ <div class="duo">
+  <div class="panel">
+   <div class="dog"><div class="av"><img src="assets/bain.jpg" alt=""></div><div><h3>Biscotte</h3><p>Moyen · poil long · dernière visite en août</p></div></div>
+   <div class="hist">
+    <div><span>Bain &amp; séchage + coupe aux ciseaux</span><span>août</span></div>
+    <div><span>Coupe des griffes</span><span>mai</span></div>
+    <div><span>Bain &amp; séchage + coupe aux ciseaux</span><span>mars</span></div>
+   </div>
+   <button class="btn" data-open>↻ Même chose que la dernière fois</button>
+  </div>
+  <div class="panel">
+   <div class="chat">
+    <div class="q">Je dois rester pendant le toilettage ?</div>
+    <div class="a">Pas besoin : vous déposez votre chien et vous revenez le chercher à l'heure convenue. On vous envoie un SMS s'il est prêt plus tôt.</div>
+    <div class="q">Vous prenez les chats ?</div>
+    <div class="a">Oui, pour la coupe des griffes 🐱</div>
+   </div>
+   <div class="qs"><span class="chip">Vos horaires ?</span><span class="chip">Où se garer ?</span><span class="chip">Vous vendez des colliers ?</span></div>
+   <p style="font-size:12.5px;color:var(--muted);margin-top:12px">Les questions fréquentes répondues 24h/24, avec vos propres réponses.</p>
+  </div>
+ </div>
+</div></section>
+
+<section id="infos" style="padding-top:10px"><div class="wrap">
+ <div class="infos">
+  <div class="shop"><img src="assets/salon.jpg" alt="La devanture d'Espace Canin à Guichen"></div>
+  <div class="panel">
+   <div class="kick">Horaires &amp; accès</div>
+   <h2 style="font-size:34px">2 rue du Maréchal de Lattre de Tassigny, Guichen</h2>
+   <table>
+    <tr><td>Lundi</td><td class="off">Fermé</td></tr>
+    <tr class="today"><td>Mardi</td><td>9h30 – 12h · 13h30 – 17h30</td></tr>
+    <tr><td>Mercredi</td><td>9h30 – 12h · 13h30 – 17h30</td></tr>
+    <tr><td>Jeudi</td><td>9h30 – 12h · 13h30 – 17h30</td></tr>
+    <tr><td>Vendredi</td><td>9h30 – 12h · 13h30 – 17h30</td></tr>
+    <tr><td>Samedi</td><td>9h – 12h30</td></tr>
+    <tr><td>Dimanche</td><td class="off">Fermé</td></tr>
+   </table>
+   <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#reserver">Prendre rendez-vous</a><a class="btn ghost" href="tel:0299520735">📞 02 99 52 07 35</a></div>
+  </div>
+ </div>
+</div></section>
+</main>
+
+<footer>Espace Canin · Salon de toilettage · 2 rue du Maréchal de Lattre de Tassigny, 35580 Guichen · 02 99 52 07 35</footer>
+
+<div class="bar"><a class="btn ghost" href="tel:0299520735" aria-label="Appeler">📞</a><button class="btn" data-open>Réserver un toilettage</button></div>
+
+<div class="sheet" id="sheet"><div class="in">
+ <div class="ok">✅</div>
+ <h3>Demande envoyée !</h3>
+ <p style="color:var(--muted)" id="sumtxt">Biscotte · bain &amp; séchage + coupe · mardi 27 octobre à 13h30.</p>
+ <div class="sms" style="margin:16px 0 18px">Merci ! Votre demande pour Biscotte est bien arrivée. Vous recevez la confirmation par SMS dès qu'elle est validée 🐾<small>SMS automatique</small></div>
+ <button class="btn" style="width:100%" id="close">Parfait</button>
+</div></div>
+
+<script>
+document.querySelectorAll('.chips[data-group]').forEach(g=>g.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;g.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));c.classList.add('on');upd()}));
+document.querySelectorAll('.svc input').forEach(i=>i.addEventListener('change',()=>{i.parentElement.classList.toggle('on',i.checked);upd()}));
+document.querySelectorAll('.day').forEach(d=>d.addEventListener('click',()=>{document.querySelectorAll('.day').forEach(x=>x.classList.remove('on'));d.classList.add('on');upd()}));
+document.querySelectorAll('.slot:not(.full)').forEach(s=>s.addEventListener('click',()=>{document.querySelectorAll('.slot').forEach(x=>x.classList.remove('on'));s.classList.add('on');upd()}));
+const days={27:'mardi 27',28:'mercredi 28',29:'jeudi 29',30:'vendredi 30',31:'samedi 31'};
+function upd(){const n=document.querySelector('.field').value||'Votre chien';const t=document.querySelector('[data-group=taille] .on').textContent.toLowerCase();const p=document.querySelector('[data-group=poil] .on').textContent.toLowerCase();const sv=[...document.querySelectorAll('.svc input:checked')].map(i=>i.nextElementSibling.firstChild.textContent.trim().toLowerCase()).join(' + ')||'prestation à choisir';const d=days[document.querySelector('.day.on b').textContent];const s=(document.querySelector('.slot.on')||{}).textContent||'créneau à choisir';
+document.querySelector('.recap').innerHTML='<b>'+n+'</b> · '+t+', poil '+p+' · '+sv+' · <b>'+d+', '+s+'</b>';document.getElementById('sumtxt').textContent=n+' · '+sv+' · '+d+' octobre à '+s+'.'}
+document.querySelector('.field').addEventListener('input',upd);
+document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>{upd();document.getElementById('sheet').classList.add('show')}));
+document.getElementById('close').onclick=()=>document.getElementById('sheet').classList.remove('show');
+document.getElementById('sheet').onclick=e=>{if(e.target.id==='sheet')e.target.classList.remove('show')};
+</script>
+</body>
+</html>
