@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La Marinara · Food-truck pizza · Réservez votre pizza</title>
+<style>
+@font-face{font-family:Inter;src:url(assets/Inter.ttf) format("truetype");font-weight:100 900;font-display:swap}
+@font-face{font-family:Lobster;src:url(assets/Lobster.ttf) format("truetype");font-display:swap}
+:root{--bg:#FFFBF2;--card:#fff;--ink:#231A14;--muted:#7B6C5E;--acc:#F5C542;--acc2:#FDF0C4;--red:#C8312A;--green:#1F6B3A;--line:#EFE5D2;--r:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer;border:0}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+header{position:sticky;top:0;z-index:20;background:rgba(255,251,242,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:14px;height:68px}
+.logo{font-family:Lobster;color:var(--red);font-size:30px;line-height:1}
+.tag{font-size:12px;font-weight:600;color:var(--green);background:#E5F2E8;padding:5px 10px;border-radius:99px}
+nav{margin-left:auto;display:flex;gap:22px;font-size:14px;font-weight:600}
+nav a{color:var(--ink);text-decoration:none;opacity:.75}
+.btn{background:var(--acc);color:var(--ink);font-weight:800;border-radius:14px;padding:14px 20px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 2px 0 #D9A91F}
+.btn:active{transform:translateY(1px)}
+.ghost{background:#fff;border:1.5px solid var(--line);color:var(--ink);font-weight:700;border-radius:14px;padding:12px 16px}
+/* top */
+.top{display:grid;grid-template-columns:1.25fr .9fr;gap:24px;padding:28px 0 8px}
+.now{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:28px;position:relative;overflow:hidden}
+.live{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--green)}
+.live i{width:9px;height:9px;border-radius:50%;background:#2FB45A;box-shadow:0 0 0 4px #D6F2DF}
+.now h1{font-size:44px;line-height:1.05;letter-spacing:-.02em;margin:14px 0 8px;font-weight:850;max-width:520px}
+.now h1 em{font-family:Lobster;font-style:normal;font-weight:400;color:var(--red)}
+.where{display:flex;gap:12px;align-items:center;margin:18px 0 22px;background:var(--acc2);border-radius:18px;padding:14px 16px;max-width:520px}
+.where b{display:block;font-size:17px}.where span{font-size:14px;color:var(--muted)}
+.pin{width:42px;height:42px;border-radius:12px;background:var(--acc);display:grid;place-items:center;font-size:20px;flex:none}
+.now .truck{position:absolute;right:-10px;bottom:-6px;width:230px;opacity:1;border-radius:20px}
+.ctas{display:flex;gap:10px;flex-wrap:wrap}
+.queue{margin-top:16px;font-size:13px;color:var(--muted);max-width:330px}
+.week{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:22px}
+.week h2{font-size:15px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px}
+.stop{display:grid;grid-template-columns:62px 1fr auto;align-items:center;gap:10px;padding:10px 8px;border-radius:14px;font-size:14px}
+.stop .d{font-weight:800}
+.stop small{display:block;color:var(--muted);font-size:12.5px}
+.stop .h{font-weight:600;font-size:13px;color:var(--muted)}
+.stop.on{background:var(--acc2)}
+.stop.on .h{color:var(--ink)}
+/* menu */
+.sec{padding:30px 0 10px}
+.sechead{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:16px}
+.sechead h2{font-size:30px;letter-spacing:-.02em;font-weight:850}
+.sechead h2 em{font-family:Lobster;font-style:normal;font-weight:400;color:var(--red)}
+.sechead p{color:var(--muted);font-size:14px}
+.chips{display:flex;gap:8px;overflow:auto;padding-bottom:4px;margin-bottom:14px}
+.chip{background:#fff;border:1.5px solid var(--line);border-radius:99px;padding:8px 14px;font-weight:700;font-size:13.5px;white-space:nowrap}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.feat{grid-column:span 1;grid-row:span 2;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.feat img{width:100%;height:300px;object-fit:cover;display:block}
+.feat .in{padding:18px}
+.badge{display:inline-block;background:var(--red);color:#fff;font-size:12px;font-weight:700;border-radius:99px;padding:4px 10px;margin-bottom:8px}
+.p{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 16px 14px;display:flex;flex-direction:column;gap:6px}
+.p h3{font-family:Lobster;font-weight:400;font-size:22px;color:var(--red)}
+.p .ing{font-size:13.5px;color:var(--muted);line-height:1.45;flex:1}
+.p .row{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.p .pr{font-weight:800}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:36px;height:36px;border-radius:12px;background:var(--acc);color:var(--ink);font-weight:900;font-size:19px}
+.qty .m{background:#F3ECDD}
+.qty span{min-width:16px;text-align:center;font-weight:800}
+.p.sel{border-color:var(--acc);box-shadow:0 0 0 2px var(--acc) inset}
+.supp{font-size:13px;color:var(--muted);margin-top:14px}
+.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:26px 0 40px}
+.perk{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.perk b{display:block;font-size:16px;margin:8px 0 4px}.perk p{font-size:14px;color:var(--muted);line-height:1.5}
+.stamps{display:flex;gap:6px;margin-top:10px}.stamps i{width:22px;height:22px;border-radius:50%;border:2px dashed #E2C878}.stamps i.f{background:var(--acc);border:0}.stamps i.g{background:var(--red);border:0}
+footer{border-top:1px solid var(--line);padding:24px 0 120px;color:var(--muted);font-size:13px}
+/* bar */
+.bar{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:30;width:min(640px,calc(100% - 24px));background:var(--ink);color:#fff;border-radius:20px;padding:10px 10px 10px 18px;display:flex;align-items:center;gap:12px;box-shadow:0 12px 30px rgba(35,26,20,.25)}
+.bar .t{flex:1;font-size:14px}.bar .t b{display:block;font-size:15px}
+.bar .t span{opacity:.7}
+/* sheet */
+.ov{position:fixed;inset:0;background:rgba(35,26,20,.45);z-index:40;display:none;align-items:flex-end;justify-content:center}
+.ov.on{display:flex}
+.sheet{background:#fff;width:min(560px,100%);border-radius:26px 26px 0 0;padding:22px 22px 28px;max-height:92vh;overflow:auto}
+.sheet h3{font-size:22px;font-weight:850;margin-bottom:4px}
+.sheet .sub{color:var(--muted);font-size:14px;margin-bottom:14px}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0 16px}
+.slot{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:10px 0;font-weight:700;font-size:14px}
+.slot.on{background:var(--acc);border-color:var(--acc)}
+.slot.full{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.sum{background:var(--acc2);border-radius:14px;padding:12px 14px;font-size:14px;margin-bottom:12px;line-height:1.6}
+label{display:block;font-size:13px;font-weight:700;margin:10px 0 6px}
+input{width:100%;font:inherit;border:1.5px solid var(--line);border-radius:12px;padding:12px}
+.sheet .btn{width:100%;justify-content:center;margin-top:16px}
+.ok{display:none;text-align:center;padding:14px 0}
+.ok .big{font-size:52px}
+.x{float:right;background:#F3ECDD;width:34px;height:34px;border-radius:50%;font-weight:800}
+@media(max-width:860px){
+ .wrap{padding:0 16px}
+ nav{display:none}
+ header .wrap{height:58px}.logo{font-size:26px}
+ .top{grid-template-columns:1fr;padding-top:14px;gap:14px}
+ .now{padding:20px}
+ .now h1{font-size:31px;max-width:none;padding-right:0}
+ .now .truck{width:92px;top:12px;right:12px;bottom:auto;border-radius:14px}
+ .now h1{padding-right:70px}
+ .queue{max-width:none}
+ .where{margin:14px 0 16px}
+ .ctas .ghost{display:none}.ctas .btn{width:100%;justify-content:center}
+ .grid{grid-template-columns:1fr}
+ .feat{grid-row:auto;flex-direction:row}.feat img{width:120px;height:auto}
+ .feat .in{padding:14px}
+ .perks{grid-template-columns:1fr}
+ .sechead{flex-direction:column;align-items:start;gap:4px}.sechead h2{font-size:25px}
+ .bar{bottom:0;width:100%;border-radius:18px 18px 0 0;padding:12px 12px 16px 18px}
+}
+</style></head>
+<body>
+<header><div class="wrap"><div class="logo">La Marinara</div><span class="tag">Food-truck pizza</span>
+<nav><a href="#tournee">La tournée</a><a href="#carte">La carte</a><a href="#evenements">Événements</a></nav></div></header>
+
+<main class="wrap">
+<section class="top">
+ <div class="now">
+  <span class="live"><i></i><span id="liveTxt">Ce soir, le four chauffe</span></span>
+  <h1>Votre pizza est prête <em>quand vous arrivez.</em></h1>
+  <div class="where"><div class="pin">📍</div><div><b id="whereTown">—</b><span id="whereSpot">—</span></div></div>
+  <div class="ctas"><button class="btn" data-open>🍕 Réserver ma pizza</button><a class="ghost" href="#carte" style="text-decoration:none">Voir la carte</a></div>
+  <p class="queue">Pâte maison à fermentation lente : elle a attendu des heures, vous n'attendrez pas.</p>
+  <img class="truck" src="assets/camion.jpg" alt="Le camion La Marinara">
+ </div>
+ <div class="week" id="tournee"><h2>La tournée de la semaine</h2><div id="stops"></div></div>
+</section>
+
+<section class="sec" id="carte">
+ <div class="sechead"><h2>La carte <em>Fior di Latte</em></h2><p>Mozzarella Fior di Latte, sauce tomate 100 % italienne maison.</p></div>
+ <div class="chips" id="chips"><button class="chip on" data-f="all">Toutes</button><button class="chip" data-f="tomate">Base tomate</button><button class="chip" data-f="creme">Base crème</button><button class="chip" data-f="veg">Végétarienne</button><button class="chip" data-f="petit">Petite faim</button></div>
+ <div class="grid" id="grid"></div>
+ <p class="supp">Suppléments : Burrata 5 € · Saumon 3,50 € · Viande, charcuterie, fromage 2,50 € · Légumes, œuf 1,50 €</p>
+</section>
+
+<section class="perks" id="evenements">
+ <div class="perk">⭐<b>La 10ᵉ est offerte</b><p>9 pizzas achetées, la dixième offerte : la carte de fidélité suit votre numéro, plus de carton à retrouver au fond du portefeuille.</p><div class="stamps"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i><i></i><i class="g"></i></div></div>
+ <div class="perk">🎉<b>Le camion chez vous</b><p>Retour de mariage, anniversaire, baptême, soirée d'entreprise : décrivez votre événement, Sébastien vous recontacte.</p><button class="ghost" style="margin-top:12px">Demander une date</button></div>
+ <div class="perk">💬<b>Toujours par SMS ?</b><p>Bien sûr : le 06 61 00 44 64 reste là. La réservation en ligne, c'est simplement pour ceux qui préfèrent ne pas appeler pendant le coup de feu.</p></div>
+</section>
+</main>
+<footer><div class="wrap">La Marinara · Food-truck pizza · 5 rue Jean Monnet, 35410 Châteaugiron · 06 61 00 44 64 · Paiement CB, espèces, ticket restaurant</div></footer>
+
+<div class="bar"><div class="t"><b id="barT">Votre commande est vide</b><span id="barS">Choisissez vos pizzas, puis l'heure de passage</span></div><button class="btn" data-open>Choisir l'heure</button></div>
+
+<div class="ov" id="ov"><div class="sheet">
+ <div id="form"><button class="x" data-close>✕</button><h3>À quelle heure passez-vous&nbsp;?</h3><p class="sub" id="shWhere"></p>
+  <div class="sum" id="sum"></div>
+  <div class="slots" id="slots"></div>
+  <label>Prénom</label><input value="Camille">
+  <label>Téléphone (pour le petit SMS « c'est prêt »)</label><input value="06 12 34 56 78">
+  <button class="btn" id="send">Envoyer ma réservation</button></div>
+ <div class="ok" id="ok"><div class="big">🍕</div><h3>C'est noté !</h3><p class="sub" id="okTxt"></p><button class="ghost" data-close>Fermer</button></div>
+</div></div>
+
+<script>
+const PIZ=[
+['Margherita','Tomate, mozzarella, basilic',10,'tomate veg'],
+['Reine','Tomate, mozzarella, origan, champignon, jambon blanc',11.5,'tomate'],
+['Complète','Tomate, mozzarella, origan, dés de jambon blanc, emmental, œuf miroir',12.5,'tomate'],
+['Burger','Tomate, mozzarella, bœuf, poivron, cheddar, sauce BBQ, oignons frits',12.5,'tomate'],
+['Chèvre Miel','Crème, mozzarella, origan, chèvre, miel, speck, noisettes torréfiées, mesclun',12,'creme'],
+['Burrata','Tomate, basilic, burrata, speck, pignons de pin, tomate cerise, crème balsamique',15,'tomate'],
+['Printanière','Tomate, mozzarella, aubergine, poivron, champignon, oignon, tomate cerise',12,'tomate veg'],
+['4 Formaggi','Tomate, mozzarella, taleggio, gorgonzola, parmigiano reggiano',13,'tomate veg'],
+['Calzone','Tomate, mozzarella, jambon blanc, champignon, crème, œuf miroir',12.5,'tomate'],
+['Piccante','Tomate, mozzarella, poivron, oignon, spianata piccante',12.5,'tomate'],
+['Speck','Tomate, mozzarella, aubergine, speck, tomate cerise, crème balsamique',12.5,'tomate'],
+['Forestière','Crème moutarde à l\'ancienne, mozzarella, poulet jaune, champignon, œuf miroir, huile de truffe',13,'creme'],
+['Salmone','Crème et ciboulette, mozzarella, saumon fumé, citron, noisettes torréfiées, mesclun',14.5,'creme'],
+['À la Breizh','Crème moutarde à l\'ancienne, mozzarella, andouille de Bretagne, grenaille, oignon',14,'creme'],
+['Vénitienne','Tomate, mozzarella, artichaut mariné, speck, tomates confites, crème balsamique',13.5,'tomate'],
+['Montagnarde','Mozzarella, taleggio, lardons fumés, pomme de terre grenaille, oignons',12.5,'creme'],
+['Raisonnable','½ pizza au choix (hors Burrata) et sa salade composée',9,'petit'],
+['Pizza enfant','½ pizza : tomate, mozzarella, jambon blanc',6.5,'petit']];
+const STOPS=[[1,'Lun.','midi','11h30–14h','Châteaugiron','Univer — Hyper U'],[1,'Lun.','soir','17h30–21h','La Bouëxière','Place de l\'Europe'],[2,'Mar.','soir','17h30–21h','Saint-Aubin-du-Pavail','Devant la mairie'],[3,'Mer.','soir','17h30–21h','Châteaugiron','Place de l\'Église'],[4,'Jeu.','midi','11h30–14h','Châteaugiron','Univer — Hyper U'],[4,'Jeu.','soir','17h30–21h','Boistrudan','Place de la Mairie'],[5,'Ven.','soir','17h30–21h','Vern-sur-Seiche','Haute-Abbaye (kiosque)'],[0,'Dim.','soir','17h30–21h','Vern-sur-Seiche','Place des Droits de l\'Homme']];
+const q={};let slot=null;let f='all';
+const eur=n=>n.toFixed(2).replace('.',',').replace(',00','')+' €';
+const now=new Date(),dow=now.getDay(),hr=now.getHours();
+let cur=STOPS.find(s=>s[0]==dow&&(s[2]=='soir'||hr<14))||STOPS.find(s=>((s[0]-dow+7)%7)>0&&((s[0]-dow+7)%7)==Math.min(...STOPS.map(x=>(x[0]-dow+7)%7).filter(v=>v>0)));
+document.getElementById('whereTown').textContent=cur[1]+' '+cur[2]+' · '+cur[4];
+document.getElementById('whereSpot').textContent=cur[5]+' · '+cur[3];
+document.getElementById('liveTxt').textContent=cur[0]==dow?(cur[2]=='midi'?'Ce midi, le four chauffe':'Ce soir, le four chauffe'):'Prochain arrêt';
+document.getElementById('stops').innerHTML=STOPS.map(s=>`<div class="stop ${s===cur?'on':''}"><span class="d">${s[1]} ${s[2]}</span><span>${s[4]}<small>${s[5]}</small></span><span class="h">${s[3]}</span></div>`).join('');
+function card(p,i){const n=q[i]||0;return `<div class="p ${n?'sel':''}"><h3>${p[0]}</h3><p class="ing">${p[1]}</p><div class="row"><span class="pr">${eur(p[2])}</span><div class="qty">${n?`<button class="m" data-m="${i}">−</button><span>${n}</span>`:''}<button data-p="${i}" aria-label="Ajouter">+</button></div></div></div>`}
+function render(){const g=document.getElementById('grid');const n=q.f||0;
+ let h=`<div class="feat"><img src="assets/pizza-du-moment.jpg" alt="Pizza du moment de La Marinara"><div class="in"><span class="badge">La pizza du moment</span><h3 style="font-family:Lobster;font-weight:400;font-size:24px;color:var(--red)">Selon le marché et l'inspiration</h3><p style="color:var(--muted);font-size:14px;margin:6px 0 10px">Elle change souvent : la voici en direct, sans passer par Instagram.</p><div class="qty">${n?`<button class="m" data-m="f">−</button><span>${n}</span>`:''}<button data-p="f">+</button></div></div></div>`;
+ PIZ.forEach((p,i)=>{if(f=='all'||p[3].includes(f))h+=card(p,i)});g.innerHTML=h;bar();}
+function tot(){let c=0,s=0;for(const k in q){c+=q[k];s+=q[k]*(k=='f'?13:PIZ[k][2])}return[c,s]}
+function bar(){const[c,s]=tot();document.getElementById('barT').textContent=c?`${c} pizza${c>1?'s':''} · ${eur(s)}`:'Votre commande est vide';document.getElementById('barS').textContent=c?(slot?'Retrait à '+slot+' · '+cur[4]:'Retrait '+cur[1].toLowerCase()+' '+cur[2]+' · '+cur[4]):'Choisissez vos pizzas, puis l\'heure de passage';}
+function slots(){const a=cur[2]=='midi'?['11h30','11h45','12h00','12h15','12h30','12h45','13h00','13h15']:['18h00','18h30','18h45','19h00','19h15','19h30','19h45','20h15'];const full=cur[2]=='midi'?['12h15','12h30']:['19h00','19h15'];
+ document.getElementById('slots').innerHTML=a.map(t=>`<button class="slot ${full.includes(t)?'full':''} ${t==slot?'on':''}" data-s="${t}" ${full.includes(t)?'disabled':''}>${t}</button>`).join('');
+ const[c,s]=tot();const l=Object.keys(q).filter(k=>q[k]).map(k=>q[k]+' × '+(k=='f'?'Pizza du moment':PIZ[k][0])).join('<br>');
+ document.getElementById('sum').innerHTML=c?l+`<br><b>Total : ${eur(s)}</b> · paiement au camion`:'Aucune pizza encore : ajoutez-en depuis la carte (ou choisissez l\'heure d\'abord, on ne juge pas).';
+ document.getElementById('shWhere').textContent=cur[1]+' '+cur[2]+' · '+cur[4]+', '+cur[5]+'. Les créneaux barrés sont déjà complets.';}
+document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+ if(t.dataset.p!==undefined){q[t.dataset.p]=(q[t.dataset.p]||0)+1;render();}
+ else if(t.dataset.m!==undefined){q[t.dataset.m]--;render();}
+ else if(t.dataset.f){f=t.dataset.f;document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c==t));render();}
+ else if('open' in t.dataset){if(!tot()[0]){q[0]=1;q[13]=1;render();}slots();document.getElementById('form').style.display='block';document.getElementById('ok').style.display='none';document.getElementById('ov').classList.add('on');}
+ else if('close' in t.dataset){document.getElementById('ov').classList.remove('on');}
+ else if(t.dataset.s){slot=t.dataset.s;slots();bar();}
+ else if(t.id=='send'){document.getElementById('form').style.display='none';document.getElementById('ok').style.display='block';document.getElementById('okTxt').textContent=`Sébastien a bien reçu votre réservation${slot?' pour '+slot:''}. Un SMS vous prévient quand elle sort du four. Fidélité : +${tot()[0]} tampon${tot()[0]>1?'s':''}.`;}
+});
+document.getElementById('ov').addEventListener('click',e=>{if(e.target.id=='ov')e.target.classList.remove('on')});
+render();
+/* Chargement des photos via fetch (aperçu htmlpreview) */
+function fixImgs(){if(location.protocol=='file:')return;document.querySelectorAll('img').forEach(i=>{if(i.dataset.fx)return;i.dataset.fx=1;const s=i.src;if(location.hostname.indexOf('htmlpreview')<0&&i.complete&&i.naturalWidth)return;fetch(s,{mode:'cors'}).then(r=>r.ok?r.blob():Promise.reject()).then(bl=>{i.src=URL.createObjectURL(bl)}).catch(()=>{});});}
+document.addEventListener('error',e=>{if(e.target.tagName=='IMG'){delete e.target.dataset.fx;fixImgs();}},true);
+new MutationObserver(fixImgs).observe(document.body,{childList:true,subtree:true});
+fixImgs();
+</script>
+</body></html>
