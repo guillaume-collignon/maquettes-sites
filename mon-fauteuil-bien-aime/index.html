@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mon fauteuil bien aimé · Tapisserie d'ameublement & couture · Bain-de-Bretagne</title>
+<meta name="description" content="Virginie Laudrin, tapissière d'ameublement et couturière à Bain-de-Bretagne : rénovation de fauteuils, chaises, coussins, retouches et upcycling. Demande de devis et visite à domicile.">
+<style>
+@font-face{font-family:"Inter";src:url("assets/Inter.ttf") format("truetype");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Yeseva";src:url("assets/Yeseva.ttf") format("truetype");font-weight:400;font-display:swap}
+:root{--bg:#fbf7f2;--card:#fff;--ink:#16263b;--muted:#5d6878;--line:#e9e1d6;--accent:#f0604f;--accent-soft:#fde7e3;--blue:#1f5c99;--blue-soft:#e6eef7;--r:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+h1,h2,.display{font-family:Yeseva,Georgia,serif;font-weight:400;letter-spacing:-.01em;line-height:1.05}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:14px 22px;font:600 15px/1 Inter,sans-serif;cursor:pointer;background:var(--accent);color:#1a1a1a;transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn.blue{background:var(--blue-soft);color:var(--ink)}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:999px;background:var(--blue-soft);color:var(--blue)}
+/* nav */
+.nav{position:sticky;top:0;z-index:30;background:rgba(251,247,242,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:46px;height:46px;border-radius:50%}
+.brand b{font-family:Yeseva,serif;font-weight:400;font-size:21px}
+.brand small{display:block;font-size:12px;color:var(--muted);margin-top:-2px}
+.nav ul{display:flex;gap:28px;list-style:none;font-size:14.5px;font-weight:500;color:var(--muted)}
+.nav .right{display:flex;gap:10px;align-items:center}
+/* hero */
+.hero{padding:34px 0 10px}
+.stage{position:relative;border-radius:34px;overflow:hidden;min-height:600px;background:#d9cbb8}
+.stage>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.stage:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,38,59,.62) 0%,rgba(22,38,59,.25) 45%,rgba(22,38,59,0) 70%)}
+.stage .copy{position:absolute;z-index:2;left:56px;top:56px;max-width:520px;color:#fff}
+.stage h1{font-size:64px;margin:16px 0 18px}
+.stage h1 em{font-style:normal;color:#ffd2c9}
+.stage p.lead{font-size:18px;opacity:.95;max-width:440px}
+.stage .tag{background:rgba(255,255,255,.18);color:#fff;backdrop-filter:blur(6px)}
+.quote{position:absolute;z-index:3;right:40px;bottom:40px;width:410px;background:var(--card);border-radius:26px;padding:24px;box-shadow:0 30px 70px -20px rgba(22,38,59,.45)}
+.quote h3{font-size:18px;font-weight:700;margin-bottom:4px}
+.quote .sub{font-size:13.5px;color:var(--muted);margin-bottom:16px}
+.steps-dots{display:flex;gap:6px;margin-bottom:14px}
+.steps-dots i{flex:1;height:5px;border-radius:9px;background:var(--line)}
+.steps-dots i.on{background:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:9px 12px;font:500 14px Inter,sans-serif;cursor:pointer;color:var(--ink)}
+.chip.on{border-color:var(--ink);background:var(--ink);color:#fff}
+.drop{display:flex;align-items:center;gap:12px;border:1.5px dashed #cdbfae;border-radius:16px;padding:12px 14px;margin-bottom:14px;font-size:13.5px;color:var(--muted)}
+.drop .ic{width:40px;height:40px;border-radius:12px;background:var(--accent-soft);display:grid;place-items:center;font-size:19px;flex:none}
+.drop b{color:var(--ink);display:block;font-size:14px}
+.quote .btn{width:100%}
+.quote .fine{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+.ba{position:absolute;z-index:3;left:56px;bottom:40px;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.95);border-radius:18px;padding:10px 16px 10px 10px;font-size:13.5px}
+.ba .pair{display:flex}
+.ba .pair span{width:44px;height:44px;border-radius:12px;background-size:cover;background-position:center}
+.ba .pair span:first-child{filter:grayscale(1) sepia(.5) brightness(.85);margin-right:4px}
+/* trust strip */
+.strip{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;padding:26px 0 8px;color:var(--muted);font-size:14px}
+.strip span{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px}
+/* sections */
+section.block{padding:80px 0 20px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:34px}
+.head h2{font-size:44px;max-width:640px}
+.head p{color:var(--muted);max-width:380px}
+.kicker{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:block}
+/* how */
+.how{display:grid;grid-template-columns:1.1fr 1.1fr .9fr;gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.num{width:38px;height:38px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;margin-bottom:16px}
+.card h3{font-size:19px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:15px}
+.slots{margin-top:18px}
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px}
+.day{text-align:center;border-radius:12px;padding:8px 0;font-size:12px;color:var(--muted);border:1.5px solid var(--line);cursor:pointer;background:#fff}
+.day b{display:block;font-size:16px;color:var(--ink)}
+.day.on{border-color:var(--ink);background:var(--ink);color:#cfd6df}.day.on b{color:#fff}
+.times{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.time{border:1.5px solid var(--line);border-radius:10px;padding:8px 0;text-align:center;font-size:13.5px;font-weight:600;cursor:pointer;background:#fff}
+.time.off{color:#b9b2a8;text-decoration:line-through;background:#f5f0ea;cursor:default}
+.time.on{background:var(--accent);border-color:var(--accent);color:#1a1a1a}
+.phone{background:var(--ink);color:#fff;border-radius:var(--r);padding:22px;position:relative;overflow:hidden}
+.phone .lbl{font-size:12px;opacity:.7;margin-bottom:10px;display:flex;justify-content:space-between}
+.sms{background:#fff;color:var(--ink);border-radius:16px 16px 16px 4px;padding:12px 14px;font-size:14px;margin-bottom:10px}
+.sms.r{background:var(--accent);color:#1a1a1a;border-radius:16px 16px 4px 16px;margin-left:30px}
+.phone .auto{display:inline-flex;gap:6px;align-items:center;font-size:12px;background:rgba(255,255,255,.12);padding:5px 10px;border-radius:999px;margin-top:6px}
+/* works */
+.works{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:260px 260px;gap:18px}
+.w{position:relative;border-radius:var(--r);overflow:hidden;background:#eee}
+.w img{width:100%;height:100%;object-fit:cover}
+.w .cap{position:absolute;left:14px;right:14px;bottom:14px;background:rgba(255,255,255,.95);border-radius:16px;padding:12px 14px;font-size:14px}
+.w .cap b{display:block;font-size:15px}
+.w.big{grid-row:span 2}
+.w.swatch{background:#1d3f7a;color:#fff;padding:24px;display:flex;flex-direction:column;justify-content:space-between}
+.w.swatch .chips2{display:flex;gap:8px}
+.w.swatch .chips2 i{width:34px;height:34px;border-radius:10px;border:2px solid rgba(255,255,255,.6)}
+.w.swatch h4{font-family:Yeseva,serif;font-weight:400;font-size:26px;line-height:1.1}
+.w.swatch p{font-size:14px;opacity:.85}
+.w.text{background:var(--accent-soft);padding:24px;display:flex;flex-direction:column;justify-content:space-between}
+.w.text h4{font-family:Yeseva,serif;font-weight:400;font-size:24px;line-height:1.15}
+.w.text p{font-size:14px;color:var(--muted)}
+/* services */
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.svc .card{padding:22px}
+.svc .ico{font-size:26px;margin-bottom:12px}
+.svc ul{list-style:none;margin-top:10px;font-size:14px;color:var(--muted)}
+.svc li{padding:4px 0;border-top:1px dashed var(--line)}
+/* about + faq */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.about{display:grid;grid-template-columns:200px 1fr;gap:22px;align-items:start}
+.about img{border-radius:18px;height:260px;width:100%;object-fit:cover}
+.about blockquote{font-family:Yeseva,serif;font-size:22px;line-height:1.3;margin:6px 0 14px}
+.bot{display:flex;flex-direction:column;gap:10px}
+.bot .top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.bot .top img{width:38px;height:38px;border-radius:50%}
+.bot .top b{font-size:15px}.bot .top small{display:block;color:#2e9b5d;font-size:12px}
+.q{align-self:flex-end;background:var(--ink);color:#fff;border-radius:16px 16px 4px 16px;padding:10px 14px;font-size:14px;max-width:85%}
+.a{background:var(--blue-soft);border-radius:16px 16px 16px 4px;padding:10px 14px;font-size:14px;max-width:90%}
+.sugg{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.sugg button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font:500 13px Inter,sans-serif;cursor:pointer;color:var(--ink)}
+/* footer */
+footer{margin-top:80px;background:var(--ink);color:#d6dde7;padding:56px 0 110px}
+footer .grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+footer h4{color:#fff;font-size:15px;margin-bottom:10px}
+footer p,footer li{font-size:14px;list-style:none;line-height:1.8}
+footer .big{font-family:Yeseva,serif;font-size:30px;color:#fff;line-height:1.15;margin-bottom:14px}
+footer .credits{margin-top:36px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:11.5px;opacity:.6}
+.bar{display:none}
+@media (max-width:900px){
+ .wrap{padding:0 16px}
+ .nav ul,.nav .right .ghost{display:none}
+ .nav .wrap{height:62px}
+ .brand img{width:38px;height:38px}.brand b{font-size:18px}
+ .nav .right .btn{padding:10px 14px;font-size:13.5px}
+ .hero{padding:14px 0 0}
+ .stage{min-height:auto;border-radius:24px;display:flex;flex-direction:column}
+ .stage>img{position:relative;height:330px}
+ .stage:after{height:330px;background:linear-gradient(0deg,rgba(22,38,59,.75) 0%,rgba(22,38,59,.1) 70%)}
+ .stage .copy{left:20px;right:20px;top:auto;bottom:auto;position:absolute;top:120px}
+ .stage h1{font-size:38px;margin:10px 0 8px}
+ .stage p.lead{font-size:15px}
+ .ba{display:none}
+ .quote{position:relative;right:auto;bottom:auto;width:auto;margin:-18px 10px 10px;border-radius:22px;padding:20px}
+ .strip{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding:18px 0 0}
+ .strip span{white-space:nowrap}
+ section.block{padding:52px 0 0}
+ .head{flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:22px}
+ .head h2{font-size:32px}
+ .how,.svc,.duo{grid-template-columns:1fr}
+ .works{grid-template-columns:1fr 1fr;grid-template-rows:220px 220px 220px}
+ .w.big{grid-column:span 2;grid-row:auto}
+ .w .cap{font-size:12.5px;padding:10px}.w .cap b{font-size:13.5px}
+ .w.swatch h4,.w.text h4{font-size:19px}.w.swatch,.w.text{padding:16px}
+ .about{grid-template-columns:1fr}.about img{height:200px}
+ footer .grid{grid-template-columns:1fr}
+ .bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;gap:10px;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+ .bar .btn{flex:1;padding:14px 10px}
+ .bar .btn.ghost{flex:0 0 auto;padding:14px 18px}
+ .nav .right{display:none}
+ .brand small{display:none}
+ .stage .copy{top:96px}
+ .stage p.lead{display:none}
+ .stage .tag{font-size:11.5px}
+ .works{grid-template-rows:none;grid-auto-rows:auto}
+ .w{min-height:210px}
+ .w.big{min-height:260px}
+ .w.swatch,.w.text{min-height:0;gap:18px}
+ .w.swatch h4,.w.text h4{margin-bottom:6px}
+ .w.swatch p,.w.text p{font-size:13px}
+ .w.cap{position:absolute}
+}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="#"><img src="assets/logo.jpg" alt="Logo Mon fauteuil bien aimé"><span><b>Mon fauteuil bien aimé</b><small>Tapisserie d'ameublement & couture</small></span></a>
+  <ul><li><a href="#comment">Comment ça marche</a></li><li><a href="#realisations">Réalisations</a></li><li><a href="#prestations">Prestations</a></li><li><a href="#questions">Questions</a></li></ul>
+  <div class="right"><a class="btn ghost" href="tel:+33662342053">06 62 34 20 53</a><a class="btn" href="#devis">Demander un devis</a></div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="stage">
+    <img src="assets/fauteuil-velours.jpg" alt="Fauteuil en velours vert dans un salon lumineux">
+    <div class="copy">
+      <span class="tag">🪡 Bain-de-Bretagne · visite à domicile</span>
+      <h1>Il était fatigué.<br>Il sera <em>bien aimé.</em></h1>
+      <p class="lead">Fauteuils, chaises, coussins, vêtements : Virginie leur redonne vie. Envoyez une photo, elle passe chez vous avec ses tissus.</p>
+    </div>
+    <div class="ba"><div class="pair"><span style="background-image:url(assets/fauteuil-cabriolet.jpg)"></span><span style="background-image:url(assets/fauteuil-cabriolet.jpg)"></span></div><div><b>Avant / après</b><br>Rénover plutôt que remplacer</div></div>
+
+    <form class="quote" id="devis" onsubmit="return false">
+      <div class="steps-dots"><i class="on"></i><i></i><i></i></div>
+      <h3>Votre demande de devis</h3>
+      <div class="sub">Étape 1 sur 3 · environ 1 minute</div>
+      <div class="chips" data-group="piece">
+        <button type="button" class="chip on">🪑 Fauteuil</button>
+        <button type="button" class="chip">Chaise(s)</button>
+        <button type="button" class="chip">Coussins</button>
+        <button type="button" class="chip">Voilages</button>
+        <button type="button" class="chip">Retouche couture</button>
+        <button type="button" class="chip">Upcycling</button>
+      </div>
+      <label class="drop"><span class="ic">📷</span><span><b>Ajoutez 1 à 3 photos</b>Face, profil, et le détail qui vous chagrine</span></label>
+      <a class="btn" href="#comment">Continuer · choisir un créneau</a>
+      <div class="fine">Confirmation par SMS dès l'envoi de votre demande</div>
+    </form>
+  </div>
+  <div class="strip">
+    <span>📍 3 rue de l'Hôtel de Ville, Bain-de-Bretagne</span>
+    <span>🕙 Du lundi au vendredi, 10 h – 19 h</span>
+    <span>🚗 Je me déplace chez vous avec mes collections de tissus</span>
+    <span>♻️ Rénover plutôt que remplacer</span>
+  </div>
+</div></header>
+
+<section class="block" id="comment"><div class="wrap">
+  <div class="head"><div><span class="kicker">Comment ça marche</span><h2>Trois étapes, et votre fauteuil retrouve le sourire.</h2></div><p>Plus besoin de rappeler trois fois : la demande arrive complète, avec les photos, et le rendez-vous se cale tout seul.</p></div>
+  <div class="how">
+    <div class="card">
+      <div class="num">1</div>
+      <h3>Vous envoyez une photo</h3>
+      <p>Fauteuil, chaises, coussins, voilages ou vêtement : vous dites ce que vous aimeriez (nouveau tissu, garnissage, transformation…). La demande arrive triée, prête à être étudiée.</p>
+      <div class="drop" style="margin:18px 0 0"><span class="ic">🪑</span><span><b>Fauteuil médaillon · 1 pièce</b>« Assise affaissée, j'aimerais un tissu plus gai »</span></div>
+    </div>
+    <div class="card">
+      <div class="num">2</div>
+      <h3>Virginie passe avec ses tissus</h3>
+      <p>Choisissez un créneau : elle vient voir votre déco et vous aide à choisir le tissu sur place.</p>
+      <div class="slots">
+        <div class="days" id="days">
+          <div class="day">lun.<b>26</b></div><div class="day">mar.<b>27</b></div><div class="day on">mer.<b>28</b></div><div class="day">jeu.<b>29</b></div><div class="day">ven.<b>30</b></div>
+        </div>
+        <div class="times" id="times">
+          <div class="time off">10:00</div><div class="time">11:30</div><div class="time on">14:00</div><div class="time">15:30</div><div class="time off">17:00</div><div class="time">18:00</div>
+        </div>
+      </div>
+    </div>
+    <div class="phone">
+      <div class="lbl"><span>3 · Confirmation automatique</span><span>SMS</span></div>
+      <div class="sms">Bonjour Mme Le Goff, c'est noté ! Virginie passe <b>mercredi 28 à 14 h</b> avec ses échantillons de tissus. 🪡</div>
+      <div class="sms r">Parfait, merci !</div>
+      <div class="sms">Petit rappel : visite demain à 14 h. Pensez à dégager le fauteuil… et le chat. 🐈</div>
+      <span class="auto">⚡ Envoyés tout seuls · rappel la veille</span>
+    </div>
+  </div>
+</div></section>
+
+<section class="block" id="realisations"><div class="wrap">
+  <div class="head"><div><span class="kicker">Réalisations</span><h2>Ils sont repartis avec une deuxième vie.</h2></div><p>Chaque pièce est unique. Quelques projets récents de l'atelier, comme sur la page Facebook.</p></div>
+  <div class="works">
+    <div class="w big"><img src="assets/fauteuil-graphique.jpg" alt="Fauteuil recouvert d'un tissu graphique"><div class="cap"><b>Le petit fauteuil chiné pour presque rien</b>Il était triste, il devient pimpant et lumineux grâce à un tissu graphique.</div></div>
+    <div class="w swatch"><div class="chips2"><i style="background:#1d3f7a"></i><i style="background:#e9e1d6"></i><i style="background:#2f6e5a"></i></div><div><h4>Chaises bleu profond</h4><p>Ancien revêtement remplacé par un tissu Casal résistant et facile à entretenir. Du peps pour l'espace repas.</p></div></div>
+    <div class="w"><img src="assets/fauteuil-cabriolet.jpg" alt="Fauteuil cabriolet tapissé"><div class="cap"><b>Siège médaillon</b>On oublie les clous : double passepoil contrasté.</div></div>
+    <div class="w text"><span class="tag" style="align-self:flex-start">Nouveau</span><div><h4>Voilages & cantonnière</h4><p>Confection de voilages pour un salon et une chambre, avec une cantonnière qui cache le coffre du store.</p></div></div>
+    <div class="w"><img src="assets/banquette-detail.jpg" alt="Détail d'une banquette tapissée"><div class="cap"><b>Les finitions</b>Garnissage, passepoils, galons : le détail qui change tout.</div></div>
+  </div>
+</div></section>
+
+<section class="block" id="prestations"><div class="wrap">
+  <div class="head"><div><span class="kicker">Prestations</span><h2>Ce que l'atelier peut faire pour vous</h2></div><p>Tout est sur mesure : le prix se précise après la visite, selon la pièce et le tissu choisi.</p></div>
+  <div class="svc">
+    <div class="card"><div class="ico">🪑</div><h3>Tapisserie d'ameublement</h3><ul><li>Fauteuils et chaises</li><li>Garnissage, sangles, passepoils</li><li>Coussins personnalisés</li></ul></div>
+    <div class="card"><div class="ico">🪡</div><h3>Couture & retouches</h3><ul><li>Retouches de vêtements</li><li>Travaux sur mesure</li><li>Restauration de vêtements</li></ul></div>
+    <div class="card"><div class="ico">♻️</div><h3>Upcycling</h3><ul><li>Transformation de vêtements</li><li>Personnalisation</li><li>Meubles chinés relookés</li></ul></div>
+    <div class="card"><div class="ico">🪟</div><h3>Confection maison</h3><ul><li>Voilages</li><li>Cantonnières</li><li>Projets sur mesure, parlons-en</li></ul></div>
+  </div>
+</div></section>
+
+<section class="block" id="questions"><div class="wrap">
+  <div class="duo">
+    <div class="card about">
+      <img src="assets/atelier-outils.jpg" alt="Outils de couture et de tapisserie">
+      <div>
+        <span class="kicker">L'atelier</span>
+        <blockquote>« Je me déplace chez les clients. Cela me permet de voir la décoration et de m'adapter. »</blockquote>
+        <p style="color:var(--muted);font-size:15px">Virginie Laudrin, CAP tapissier d'ameublement et CAP couture, a ouvert son atelier à Bain-de-Bretagne en avril 2026. Elle se déplace aussi pour les personnes qui ne peuvent pas venir jusqu'à l'atelier.</p>
+      </div>
+    </div>
+    <div class="card bot">
+      <div class="top"><img src="assets/logo.jpg" alt=""><div><b>Une question ? Réponse tout de suite</b><small>● Disponible 24 h/24</small></div></div>
+      <div class="q">Vous venez chez moi pour le devis ?</div>
+      <div class="a">Oui ! Virginie se déplace avec ses collections de tissus, pour voir votre intérieur et vous conseiller. Choisissez un créneau, la confirmation arrive par SMS.</div>
+      <div class="q">Et pour un vêtement à transformer ?</div>
+      <div class="a">Bien sûr : retouches, personnalisation, upcycling. Un vêtement peut être transformé plutôt que racheté. Ajoutez une photo à votre demande.</div>
+      <div class="sugg"><button>Horaires de l'atelier ?</button><button>Combien de temps ça prend ?</button><button>Je fournis mon tissu ?</button></div>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="grid">
+    <div><div class="big">Mon fauteuil bien aimé</div><p>Tapisserie d'ameublement, couture, upcycling.<br>Virginie Laudrin</p><a class="btn" style="margin-top:18px" href="#devis">Demander un devis</a></div>
+    <div><h4>Atelier</h4><p>3 rue de l'Hôtel de Ville<br>35470 Bain-de-Bretagne<br>06 62 34 20 53</p></div>
+    <div><h4>Horaires</h4><p>Du lundi au vendredi<br>10 h – 19 h<br>Visites à domicile sur rendez-vous</p></div>
+  </div>
+  <div class="credits">Photos d'illustration : Shixart1985 (CC BY 2.0), Bzg (CC BY-SA 4.0), musée Carnavalet / Paris Musées (CC0), via Wikimedia Commons.</div>
+</div></footer>
+
+<div class="bar"><a class="btn ghost" href="tel:+33662342053">📞</a><a class="btn" href="#devis">Demander un devis</a></div>
+
+<script>
+document.querySelectorAll('.chips').forEach(g=>g.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;b.classList.toggle('on')}));
+document.getElementById('days').addEventListener('click',e=>{const d=e.target.closest('.day');if(!d)return;document.querySelectorAll('.day').forEach(x=>x.classList.remove('on'));d.classList.add('on')});
+document.getElementById('times').addEventListener('click',e=>{const t=e.target.closest('.time');if(!t||t.classList.contains('off'))return;document.querySelectorAll('.time').forEach(x=>x.classList.remove('on'));t.classList.add('on')});
+const ans={"Horaires de l'atelier ?":"Du lundi au vendredi, de 10 h à 19 h. Pour une visite chez vous, choisissez directement un créneau.","Combien de temps ça prend ?":"Ça dépend de la pièce et du tissu : Virginie vous donne un délai précis avec le devis.","Je fournis mon tissu ?":"C'est possible d'en parler ! Sinon, Virginie apporte ses collections lors de la visite."};
+document.querySelector('.sugg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const bot=document.querySelector('.bot');const q=document.createElement('div');q.className='q';q.textContent=b.textContent;const a=document.createElement('div');a.className='a';a.textContent=ans[b.textContent];bot.insertBefore(q,bot.querySelector('.sugg'));bot.insertBefore(a,bot.querySelector('.sugg'));b.remove()});
+</script>
+</body>
+</html>
