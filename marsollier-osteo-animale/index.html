@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Morgane Marsollier · Ostéopathie animale à domicile · Prendre rendez-vous</title>
+<style>
+@font-face{font-family:"Inter";src:url("assets/Inter.ttf") format("truetype");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Fraunces";src:url("assets/Fraunces.ttf") format("truetype");font-weight:100 900;font-display:swap}
+:root{--acc:#e6ac70;--acc-soft:#f8ead9;--acc-deep:#9a5f24;--ink:#1d2333;--mut:#646a78;--bg:#f7f6f2;--card:#fff;--line:#e7e3da;--ok:#3f7a5a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;letter-spacing:-.015em;line-height:1.08;font-weight:600}
+h2{font-size:40px}
+.kick{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--acc-deep)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--acc);color:var(--ink);font-weight:700;border:0;border-radius:14px;padding:14px 22px;font-size:15px;cursor:pointer;font-family:inherit;white-space:nowrap}
+.btn.ghost{background:#fff;border:1px solid var(--line)}
+.btn.dark{background:var(--ink);color:#fff}
+.chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap}
+.chip.on{background:var(--acc-soft);border-color:var(--acc);color:#5d3a12}
+nav{position:sticky;top:0;z-index:20;background:rgba(247,246,242,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:11px}
+.logo i{width:38px;height:38px;border-radius:12px;background:var(--acc);display:grid;place-items:center;font-style:normal;font-size:19px}
+.logo b{font-family:Fraunces;font-size:19px;font-weight:600;display:block;line-height:1.1}
+.logo small{display:block;font-size:12px;color:var(--mut)}
+nav ul{display:flex;gap:26px;list-style:none;font-size:14.5px;font-weight:500;color:#3b4150}
+nav .right{display:flex;gap:14px;align-items:center}
+nav .tel{font-weight:600;font-size:14.5px}
+/* hero */
+.hero{position:relative;max-width:1376px;margin:18px auto 0;height:600px;border-radius:30px;overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,18,28,.05) 20%,rgba(15,18,28,.62) 100%)}
+.hero .copy{position:absolute;left:52px;bottom:150px;z-index:2;color:#fff;max-width:680px}
+.hero h1{font-size:64px;text-shadow:0 2px 18px rgba(0,0,0,.3)}
+.hero p{font-size:18.5px;margin-top:14px;max-width:560px;opacity:.96;text-shadow:0 1px 10px rgba(0,0,0,.35)}
+.pill{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.9);color:var(--ink);border-radius:999px;padding:6px 13px;font-size:13px;font-weight:600;margin-bottom:16px}
+.pill b{width:8px;height:8px;border-radius:50%;background:var(--ok)}
+/* booking card */
+.book{position:relative;z-index:5;max-width:1120px;margin:-110px auto 0;background:#fff;border-radius:24px;box-shadow:0 24px 60px rgba(20,24,40,.14);padding:26px 28px;display:grid;grid-template-columns:1.25fr 1fr auto;gap:22px;align-items:end}
+.book label{display:block;font-size:12.5px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.field{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:14px;padding:13px 15px;font-size:15px;background:#fbfaf7}
+.field span{color:var(--mut)}
+.book .btn{height:52px;padding:0 26px;font-size:16px}
+/* slots */
+section{padding:88px 0 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:28px}
+.head p{color:var(--mut);max-width:520px}
+.days{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.day{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px}
+.day .d{font-weight:700;font-size:15px}
+.day .z{font-size:13.5px;color:var(--mut);margin:3px 0 14px;min-height:42px}
+.slots{display:flex;flex-wrap:wrap;gap:7px}
+.slot{border:1px solid var(--line);border-radius:10px;padding:7px 11px;font-size:14px;font-weight:600}
+.slot.pick{background:var(--acc);border-color:var(--acc)}
+.slot.full{color:#b3b0a8;text-decoration:line-through;border-style:dashed}
+.day.near{border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
+.near-tag{display:inline-block;background:var(--acc-soft);color:#6b4316;font-size:12px;font-weight:700;border-radius:999px;padding:3px 9px;margin-left:6px}
+.note{font-size:13px;color:var(--mut);margin-top:14px}
+/* steps / automation */
+.flow{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:stretch}
+.steps{display:grid;gap:14px}
+.step{display:flex;gap:16px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px 22px}
+.step .n{flex:none;width:38px;height:38px;border-radius:12px;background:var(--acc-soft);display:grid;place-items:center;font-weight:800;color:var(--acc-deep)}
+.step h3{font-family:Inter;font-size:17px;font-weight:700;letter-spacing:0}
+.step p{color:var(--mut);font-size:15px;margin-top:3px}
+.phone{background:var(--ink);border-radius:26px;padding:26px;color:#fff;display:flex;flex-direction:column;gap:12px}
+.phone .t{font-size:12.5px;opacity:.65;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.sms{background:#2b3346;border-radius:16px 16px 16px 4px;padding:13px 15px;font-size:14.5px;max-width:92%}
+.sms small{display:block;opacity:.55;font-size:12px;margin-top:6px}
+.sms.me{align-self:flex-end;background:var(--acc);color:var(--ink);border-radius:16px 16px 4px 16px}
+.auto{display:inline-flex;gap:6px;align-items:center;font-size:12px;font-weight:700;color:#cdd3e0;margin-top:2px}
+.auto b{width:7px;height:7px;border-radius:50%;background:#7fd1a4}
+/* animals */
+.animals{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.an{background:#fff;border-radius:22px;overflow:hidden;border:1px solid var(--line)}
+.an img{width:100%;height:210px;object-fit:cover}
+.an div{padding:16px 18px 20px}
+.an h3{font-size:21px}
+.an p{color:var(--mut);font-size:14.5px;margin-top:4px}
+/* about */
+.about{display:grid;grid-template-columns:420px 1fr;gap:56px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:30px;padding:34px}
+.about img{border-radius:22px;width:100%;aspect-ratio:1/1;object-fit:cover}
+.about p{color:#41475a;margin-top:14px;font-size:16.5px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+.facts div{background:var(--bg);border-radius:16px;padding:14px 16px;font-size:14px;color:var(--mut)}
+.facts b{display:block;font-size:17px;color:var(--ink)}
+/* faq */
+.faqgrid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.qa{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px;margin-bottom:12px}
+.qa h3{font-family:Inter;font-size:16px;font-weight:700;letter-spacing:0}
+.qa p{color:var(--mut);font-size:15px;margin-top:5px}
+.bot{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.bot .top{display:flex;align-items:center;gap:10px;font-weight:700}
+.bot .top i{width:34px;height:34px;border-radius:50%;background:var(--acc-soft);display:grid;place-items:center;font-style:normal}
+.bot .top small{display:block;font-weight:500;color:var(--mut);font-size:12.5px}
+.b{background:var(--bg);border-radius:16px 16px 16px 4px;padding:12px 14px;font-size:14.5px;max-width:90%}
+.b.u{align-self:flex-end;background:var(--acc-soft);border-radius:16px 16px 4px 16px}
+.ask{display:flex;gap:8px;margin-top:4px}
+.ask div{flex:1;border:1px solid var(--line);border-radius:12px;padding:11px 13px;color:var(--mut);font-size:14.5px}
+.ask .btn{padding:0 16px;height:44px}
+/* cta + footer */
+.cta{margin:88px auto 0;max-width:1200px;background:var(--acc-soft);border-radius:30px;padding:44px 48px;display:flex;justify-content:space-between;align-items:center;gap:30px}
+.cta h2{font-size:36px}
+.cta p{color:#5d4a36;margin-top:8px}
+footer{padding:44px 0 60px;color:var(--mut);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.mbar{display:none}
+@media(max-width:820px){
+ .wrap{padding:0 18px}
+ nav ul,nav .tel{display:none}
+ nav .wrap{height:60px}
+ nav .btn{padding:10px 14px;font-size:14px}
+ .hero{margin:10px 10px 0;height:520px;border-radius:24px}
+ .hero .copy{left:20px;right:20px;bottom:120px}
+ .hero h1{font-size:36px;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+ .hero:after{background:linear-gradient(180deg,rgba(15,18,28,.25) 0%,rgba(15,18,28,.75) 100%)}
+ .logo small{display:none}
+ .logo b{font-size:17px}
+ .hero p{font-size:16px}
+ .book{margin:-90px 12px 0;grid-template-columns:1fr;padding:20px;gap:16px}
+ .book .btn{width:100%}
+ h2{font-size:30px}
+ section{padding:60px 0 0}
+ .head{flex-direction:column;align-items:flex-start;gap:8px}
+ .days{grid-template-columns:1fr;gap:12px}
+ .day .z{min-height:0}
+ .flow,.faqgrid{grid-template-columns:1fr}
+ .animals{grid-template-columns:1fr 1fr;gap:12px}
+ .an img{height:140px}
+ .an h3{font-size:18px}
+ .an p{font-size:13.5px}
+ .about{grid-template-columns:1fr;padding:18px;gap:20px}
+ .facts{grid-template-columns:1fr}
+ .cta{margin:60px 12px 0;flex-direction:column;align-items:flex-start;padding:28px 22px}
+ .cta h2{font-size:28px}
+ footer{padding-bottom:110px}
+ .mbar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:1px solid var(--line);padding:12px 14px calc(12px + env(safe-area-inset-bottom))}
+ .mbar .btn{flex:1;height:50px}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+ <a class="logo" href="#"><i>🐾</i><span><b>Morgane Marsollier</b><small>Ostéopathie animale · à domicile</small></span></a>
+ <ul><li><a href="#passages">Prochains passages</a></li><li><a href="#animaux">Animaux soignés</a></li><li><a href="#morgane">Qui suis-je</a></li><li><a href="#questions">Questions</a></li></ul>
+ <div class="right"><a class="tel" href="tel:+33638395916">06 38 39 59 16</a><a class="btn" href="#passages">Prendre rendez-vous</a></div>
+</div></nav>
+
+<header class="hero">
+ <img src="assets/cheval.jpg" alt="Cheval au box">
+ <div class="copy">
+  <span class="pill"><b></b>Je me déplace en Ille-et-Vilaine et en Loire-Atlantique</span>
+  <h1>L'ostéopathe qui vient jusqu'à l'écurie, la ferme ou le canapé.</h1>
+  <p>Chiens, chats, chevaux, NAC et animaux de rente. Choisissez un passage près de chez vous en deux minutes, sans attendre que je puisse décrocher.</p>
+ </div>
+</header>
+
+<div class="book" id="rdv">
+ <div><label>Pour qui ?</label>
+  <div class="chips"><span class="chip">🐕 Chien</span><span class="chip">🐈 Chat</span><span class="chip on">🐎 Cheval / âne</span><span class="chip">🐐 Animaux de rente</span><span class="chip">🐇 NAC</span></div></div>
+ <div><label>Où est l'animal ?</label><div class="field">📍 <strong>Pléchâtel</strong> <span>· 35470</span></div></div>
+ <a class="btn" href="#passages">Voir les passages →</a>
+</div>
+
+<section id="passages"><div class="wrap">
+ <div class="head"><div><div class="kick">Prochains passages</div><h2>Je passe peut-être déjà près de chez vous</h2></div>
+ <p>Les journées sont organisées par secteur : les créneaux proposés sont ceux où je suis déjà dans le coin, ce qui limite les kilomètres pour tout le monde.</p></div>
+ <div class="days">
+  <div class="day"><div class="d">Mardi 27 oct.</div><div class="z">Secteur Bain-de-Bretagne, Le Sel-de-Bretagne</div><div class="slots"><span class="slot">9h00</span><span class="slot full">10h30</span><span class="slot">14h00</span><span class="slot full">16h00</span></div></div>
+  <div class="day near"><div class="d">Mercredi 28 oct. <span class="near-tag">Près de chez vous</span></div><div class="z">Secteur Guichen, Pléchâtel, Bourg-des-Comptes</div><div class="slots"><span class="slot full">8h30</span><span class="slot pick">10h00</span><span class="slot">11h30</span><span class="slot">15h30</span></div></div>
+  <div class="day"><div class="d">Jeudi 29 oct.</div><div class="z">Secteur Châteaubriant, Derval (44)</div><div class="slots"><span class="slot">9h30</span><span class="slot">11h00</span><span class="slot full">14h30</span></div></div>
+  <div class="day"><div class="d">Samedi 31 oct.</div><div class="z">Secteur Grand-Fougeray, Saint-Sulpice-des-Landes</div><div class="slots"><span class="slot">9h00</span><span class="slot">10h30</span><span class="slot full">12h00</span></div></div>
+ </div>
+ <p class="note">Créneaux donnés à titre d'exemple. Une séance dure de 45 minutes à 1 heure ; les disponibilités se mettent à jour toutes seules dès qu'un rendez-vous est pris.</p>
+</div></section>
+
+<section><div class="wrap flow">
+ <div>
+  <div class="kick">Comment ça se passe</div><h2 style="margin-bottom:24px">Simple pour vous, tranquille pour moi</h2>
+  <div class="steps">
+   <div class="step"><div class="n">1</div><div><h3>Vous choisissez un passage</h3><p>L'animal, la commune, le créneau. Pas besoin d'attendre que je sois sortie de l'écurie pour me joindre.</p></div></div>
+   <div class="step"><div class="n">2</div><div><h3>Une petite fiche avant la visite</h3><p>Âge, gêne observée (boiterie, raideur, changement de comportement), suivi vétérinaire en cours. Je la lis avant d'arriver.</p></div></div>
+   <div class="step"><div class="n">3</div><div><h3>Confirmation et rappel automatiques</h3><p>Un SMS confirme le rendez-vous, un autre la veille avec l'heure de passage et un petit conseil de préparation.</p></div></div>
+   <div class="step"><div class="n">4</div><div><h3>Des nouvelles après la séance</h3><p>Quelques jours plus tard, un message vous demande comment va votre animal. Vous répondez si vous voulez, je suis prévenue.</p></div></div>
+  </div>
+ </div>
+ <div class="phone">
+  <div class="t">Ce que reçoit le propriétaire</div>
+  <div class="sms">C'est noté ✅ Séance pour <b>Caramel</b> (cheval) mercredi 28 oct. à 10h00, écurie à Pléchâtel. Morgane<small>Envoyé tout de suite</small></div>
+  <div class="sms">Petit rappel : je passe demain vers 10h00. Si possible, Caramel au calme, au box ou attaché 🐴<small>La veille, 18h00</small></div>
+  <div class="sms me">Parfait, il sera prêt !</div>
+  <div class="sms">Bonjour ! Comment va Caramel depuis la séance ? Répondez simplement par 👍, 😐 ou un petit mot.<small>5 jours après</small></div>
+  <div class="auto"><b></b>Envoyés automatiquement, sans y penser</div>
+ </div>
+</div></section>
+
+<section id="animaux"><div class="wrap">
+ <div class="head"><div><div class="kick">Animaux soignés</div><h2>Des chats aux vaches, sans spécialité imposée</h2></div><p>En préventif pour le confort de vie toute l'année, ou en curatif quand quelque chose ne va pas. L'ostéopathie complète le suivi vétérinaire, elle ne le remplace pas.</p></div>
+ <div class="animals">
+  <div class="an"><img src="assets/chien.jpg" alt="Chien couché dans l'herbe"><div><h3>Chiens</h3><p>Raideurs, boiteries, sportifs, seniors.</p></div></div>
+  <div class="an"><img src="assets/chat.jpg" alt="Chat endormi sur un plaid"><div><h3>Chats</h3><p>Oui, les chats aussi ont le droit d'avoir mal au dos.</p></div></div>
+  <div class="an"><img src="assets/chevre.jpg" alt="Chèvre à la ferme"><div><h3>Animaux de rente</h3><p>Vaches, chèvres, moutons, volailles.</p></div></div>
+  <div class="an"><img src="assets/lapin.jpg" alt="Lapin"><div><h3>NAC</h3><p>Lapins et autres petits compagnons.</p></div></div>
+ </div>
+</div></section>
+
+<section id="morgane"><div class="wrap">
+ <div class="about">
+  <img src="assets/morgane-chat.jpg" alt="Morgane Marsollier en séance avec un chat">
+  <div>
+   <div class="kick">Qui suis-je</div>
+   <h2>Morgane, ostéopathe animalier à Saint-Sulpice-des-Landes</h2>
+   <p>Fille d'éleveuse, j'ai suivi cinq ans de formation en ostéopathie animale à Caen avant de m'installer en 2020. Mon but : apporter du bien-être et du confort de vie aux animaux, en regardant l'animal dans sa globalité, pas seulement le symptôme.</p>
+   <div class="facts"><div><b>45 min à 1 h</b>par séance</div><div><b>À domicile</b>écurie, ferme ou maison</div><div><b>35 et 44</b>zone de déplacement</div></div>
+  </div>
+ </div>
+</div></section>
+
+<section id="questions"><div class="wrap">
+ <div class="head"><div><div class="kick">Questions fréquentes</div><h2>Les réponses, même à 23h</h2></div><p>Un petit assistant répond aux questions qui reviennent tout le temps. Pour le reste, il vous propose un rendez-vous ou un rappel.</p></div>
+ <div class="faqgrid">
+  <div>
+   <div class="qa"><h3>Faut-il passer chez le vétérinaire avant ?</h3><p>L'ostéopathie vient en complément du suivi vétérinaire.</p></div>
+   <div class="qa"><h3>Combien de temps dure une séance ?</h3><p>Entre 45 minutes et 1 heure, selon l'animal.</p></div>
+   <div class="qa"><h3>Vous vous déplacez jusqu'où ?</h3><p>En Ille-et-Vilaine et en Loire-Atlantique, en regroupant les visites par secteur.</p></div>
+  </div>
+  <div class="bot">
+   <div class="top"><i>🐾</i><span>L'assistant de Morgane<small>répond tout de suite, 7j/7</small></span></div>
+   <div class="b u">Vous venez pour un mouton ?</div>
+   <div class="b">Oui ! Chiens, chats, chevaux, NAC et animaux de rente : vaches, chèvres, moutons, volailles. Le prochain passage près de chez vous est proposé juste au-dessus 👆</div>
+   <div class="b u">Et si j'ai plusieurs animaux ?</div>
+   <div class="b">Indiquez-les dans la fiche, Morgane prévoit alors le temps qu'il faut sur place.</div>
+   <div class="ask"><div>Posez votre question…</div><span class="btn">Envoyer</span></div>
+  </div>
+ </div>
+</div></section>
+
+<div class="cta"><div><h2>Un animal un peu raide en ce moment ?</h2><p>Choisissez un passage, ou appelez si vous préférez parler de vive voix.</p></div><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#passages">Prendre rendez-vous</a><a class="btn ghost" href="tel:+33638395916">06 38 39 59 16</a></div></div>
+
+<footer><div class="wrap"><span>Morgane Marsollier · Ostéopathie animale · La Bellefrie, 35390 Saint-Sulpice-des-Landes</span><span>06 38 39 59 16 · marsollier.osteoanimale@gmail.com</span></div></footer>
+
+<div class="mbar"><a class="btn ghost" href="tel:+33638395916">📞 Appeler</a><a class="btn" href="#passages">Prendre RDV</a></div>
+</body>
+</html>
