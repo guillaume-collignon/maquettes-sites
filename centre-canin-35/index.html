@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centre Canin 35 — Pension canine et féline · Réserver un séjour</title>
+<style>
+@font-face{font-family:"Inter";src:url("assets/Inter.ttf") format("truetype");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Bricolage";src:url("assets/Bricolage.ttf") format("truetype");font-weight:200 800;font-display:swap}
+:root{--acc:#dda838;--acc-soft:#f7ecd0;--acc-deep:#a87a14;--ink:#1d1b16;--mut:#6b665b;--bg:#fbf8f2;--card:#fff;--line:#ece5d6;--ok:#4f7a3a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+h1,h2,h3{font-family:Bricolage,Inter,sans-serif;letter-spacing:-.02em;line-height:1.05}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--acc);color:var(--ink);font-weight:700;border:0;border-radius:12px;padding:14px 20px;font-size:15px;cursor:pointer;font-family:inherit}
+.btn.ghost{background:#fff;border:1px solid var(--line)}
+.tag{display:inline-flex;align-items:center;gap:6px;background:var(--acc-soft);color:#6d5210;font-weight:600;font-size:12.5px;border-radius:999px;padding:5px 11px}
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(251,248,242,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{display:flex;align-items:center;gap:10px;font-family:Bricolage;font-weight:800;font-size:20px}
+.logo i{width:34px;height:34px;border-radius:10px;background:var(--acc);display:grid;place-items:center;font-style:normal;font-size:18px}
+.logo small{display:block;font-family:Inter;font-weight:500;font-size:11.5px;color:var(--mut);letter-spacing:.02em}
+nav ul{display:flex;gap:22px;white-space:nowrap;list-style:none;font-size:14.5px;font-weight:500;color:#3d3a33}
+nav .right{display:flex;gap:10px;align-items:center}
+nav .tel{font-weight:600;font-size:14.5px;white-space:nowrap}
+nav .btn{white-space:nowrap}
+/* hero */
+.hero{position:relative;margin:18px auto 0;max-width:1376px;height:640px;border-radius:28px;overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,18,10,.55) 0%,rgba(20,18,10,.15) 55%,rgba(20,18,10,0) 75%),linear-gradient(180deg,rgba(20,18,10,0) 40%,rgba(20,18,10,.45) 100%)}
+.hero .copy{position:absolute;left:48px;bottom:178px;z-index:2;color:#fff;max-width:620px}
+.hero h1{font-size:68px;font-weight:800}
+.hero p{text-shadow:0 1px 8px rgba(0,0,0,.4);font-size:18px;margin-top:14px;opacity:.95;max-width:520px}
+.hero .chips{display:flex;gap:8px;flex-wrap:wrap;position:absolute;left:48px;top:36px;z-index:2}
+.hero .chips span{background:rgba(255,255,255,.92);color:var(--ink);font-size:13px;font-weight:600;padding:7px 12px;border-radius:999px}
+.book{position:absolute;z-index:3;left:48px;right:48px;bottom:36px;background:#fff;border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.18);display:grid;grid-template-columns:1.45fr 1fr 1fr .8fr auto;align-items:stretch}
+.book .f{padding:16px 22px;border-right:1px solid var(--line)}
+.book label{display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);font-weight:600}
+.book .v{font-weight:700;font-size:17px;margin-top:3px}
+.seg{display:flex;gap:6px;margin-top:6px}
+.seg b{white-space:nowrap;font-size:14px;padding:6px 12px;border-radius:9px;border:1px solid var(--line);font-weight:600}
+.seg b.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.book .go{padding:12px}
+.book .go .btn{height:100%;padding:0 26px;font-size:16px}
+.avail{position:absolute;z-index:4;right:48px;bottom:150px;background:#fff;border-radius:16px;padding:14px 16px;width:280px;box-shadow:0 14px 40px rgba(0,0,0,.2);font-size:13.5px}
+.avail .row{display:flex;align-items:center;gap:10px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--ok);flex:none}
+.avail strong{font-size:15px}
+.bar{height:7px;background:#eee6d4;border-radius:9px;margin-top:10px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--acc);width:74%}
+/* sections */
+section{padding:96px 0 0}
+.kick{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--acc-deep)}
+.h2{font-size:50px;font-weight:800;margin-top:10px;max-width:760px}
+.lead{color:var(--mut);font-size:17.5px;max-width:640px;margin-top:14px}
+/* calendar */
+.cal-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:28px;margin-top:40px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px}
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.cal-head h3{font-size:24px}
+.cal-head .nav2{display:flex;gap:6px}
+.cal-head .nav2 b{width:36px;height:36px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center}
+.days .dn{font-size:12px;color:var(--mut);font-weight:600;padding-bottom:4px}
+.d{border-radius:12px;padding:9px 0 7px;font-weight:600;font-size:15px;background:#f6f1e5;position:relative}
+.d small{display:block;font-size:10.5px;font-weight:600;color:var(--ok);margin-top:1px}
+.d.low small{color:#b5620f}
+.d.full{background:#efeae0;color:#b3ab9b}
+.d.full small{color:#b3ab9b}
+.d.sel{background:var(--acc);color:var(--ink)}
+.d.sel small{color:var(--ink)}
+.d.mid{background:var(--acc-soft)}
+.d.mid small{color:#6d5210}
+.d.e{background:transparent}
+.legend{display:flex;gap:18px;margin-top:18px;font-size:13px;color:var(--mut);flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:7px}
+.legend i{width:12px;height:12px;border-radius:4px;display:inline-block}
+.recap h3{font-size:22px}
+.recap .line{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.recap .line span{color:var(--mut)}
+.auto{margin-top:18px;background:#f4f7ef;border:1px solid #dfe8d3;border-radius:14px;padding:14px 16px;font-size:14px;display:flex;gap:12px}
+.auto b{font-size:18px}
+/* steps fiche */
+.fiche{display:grid;grid-template-columns:420px 1fr;gap:40px;margin-top:44px;align-items:start}
+.pet{position:relative;border-radius:24px;overflow:hidden;height:520px}
+.pet img{width:100%;height:100%;object-fit:cover}
+.pet .card{position:absolute;left:18px;right:18px;bottom:18px;background:#fff;border-radius:16px;padding:16px 18px}
+.pet .card h4{font-family:Bricolage;font-size:24px}
+.pet .card p{font-size:13.5px;color:var(--mut)}
+.pet .card .ok{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.in{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.in label{font-size:12px;color:var(--mut);font-weight:600}
+.in div{font-weight:600;margin-top:2px}
+.in.full{grid-column:1/-1}
+.check{grid-column:1/-1;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.check h4{font-size:15px;margin-bottom:10px}
+.check ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:9px 20px;font-size:14.5px}
+.check li{display:flex;gap:10px;align-items:flex-start}
+.check li:before{content:"✓";flex:none;width:20px;height:20px;border-radius:6px;background:var(--acc);color:var(--ink);font-weight:800;font-size:12px;display:grid;place-items:center;margin-top:1px}
+.check li.todo:before{content:"";background:#fff;border:1.5px solid #cfc6b2}
+.upload{grid-column:1/-1;border:1.5px dashed #d8cdb4;border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;font-size:14.5px;background:#fffdf8}
+/* sms */
+.sms-sec{background:#1f1d18;color:#f4efe4;border-radius:32px;margin:96px auto 0;max-width:1376px;padding:80px 0}
+.sms-sec .kick{color:var(--acc)}
+.sms-sec .lead{color:#bdb6a6}
+.sms-grid{display:grid;grid-template-columns:1fr 360px;gap:60px;align-items:center;margin-top:30px}
+.timeline{list-style:none;display:grid;gap:4px}
+.timeline li{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:16px 0;border-bottom:1px solid #35322b}
+.timeline .when{color:var(--acc);font-weight:700;font-size:14px}
+.timeline h4{font-size:17px;font-family:Bricolage;font-weight:700}
+.timeline p{color:#bdb6a6;font-size:14.5px}
+.phone{background:#f4efe4;border-radius:38px;padding:14px;box-shadow:0 30px 60px rgba(0,0,0,.4)}
+.screen{background:#fff;border-radius:28px;padding:20px 14px;color:var(--ink);min-height:520px}
+.screen .who{text-align:center;font-size:12px;color:var(--mut);margin-bottom:14px}
+.screen .who b{display:block;color:var(--ink);font-size:14px}
+.bub{background:#f1ede4;border-radius:18px 18px 18px 6px;padding:10px 13px;font-size:13.5px;margin-bottom:10px;max-width:88%}
+.bub.me{background:var(--acc);margin-left:auto;border-radius:18px 18px 6px 18px}
+.bub img{border-radius:12px;margin-top:8px;height:120px;width:100%;object-fit:cover}
+.bub small{display:block;color:var(--mut);font-size:11px;margin-top:3px}
+/* essai + offers */
+.split3{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:20px;margin-top:40px}
+.tile{border-radius:22px;overflow:hidden;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column}
+.tile img{height:230px;width:100%;object-fit:cover}
+.tile .b{padding:20px 22px 24px}
+.tile h3{font-size:24px}
+.tile p{color:var(--mut);font-size:14.5px;margin-top:6px}
+.slots{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.slots b{font-size:13.5px;border:1px solid var(--line);border-radius:10px;padding:7px 11px;font-weight:600}
+.slots b.on{background:var(--acc);border-color:var(--acc)}
+.slots b.off{color:#bbb;text-decoration:line-through}
+.essai{grid-row:span 2;background:var(--acc-soft);border-color:#eedcab}
+.essai img{height:300px}
+.litters{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.litters div{display:flex;justify-content:space-between;font-size:14px;background:#faf6ec;border-radius:10px;padding:9px 12px}
+.litters em{font-style:normal;color:var(--mut)}
+/* admin */
+.admin{display:grid;grid-template-columns:1fr 1.5fr;gap:44px;align-items:center;margin-top:30px}
+.board{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 20px 40px rgba(60,45,10,.06)}
+.board .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.board h4{font-family:Bricolage;font-size:20px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.kpis div{background:#faf6ec;border-radius:12px;padding:12px}
+.kpis b{font-family:Bricolage;font-size:26px;display:block}
+.kpis span{font-size:12.5px;color:var(--mut)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--mut);padding:8px 6px;border-bottom:1px solid var(--line)}
+td{padding:11px 6px;border-bottom:1px solid #f3eee3}
+.pill{font-size:12px;font-weight:600;border-radius:999px;padding:3px 9px;background:#eef4e7;color:var(--ok)}
+.pill.w{background:#fff1dc;color:#a0600c}
+.pill.n{background:#f0ede6;color:#6b665b}
+/* faq */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px}
+.chat{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px}
+.chat .q{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chat .q b{font-size:13.5px;background:#faf6ec;border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-weight:600}
+.qa{display:grid;gap:12px}
+.qa div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.qa h4{font-size:15.5px}
+.qa p{font-size:14.5px;color:var(--mut);margin-top:4px}
+/* gamelles + footer */
+.band{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:26px;overflow:hidden;margin-top:96px;background:#fff;border:1px solid var(--line)}
+.band img{height:100%;width:100%;object-fit:cover;min-height:340px}
+.band .t{padding:46px}
+.band h3{font-size:36px}
+.band p{color:var(--mut);margin-top:12px}
+footer{margin-top:96px;padding:56px 0 120px;border-top:1px solid var(--line)}
+footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:30px;font-size:14.5px}
+footer h5{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--mut);margin-bottom:10px}
+.mbar{display:none}
+@media (max-width:900px){
+ .wrap{padding:0 18px}
+ nav ul,nav .tel,nav .right .btn{display:none}
+ nav .wrap{height:58px}
+ .hero{margin:10px 10px 0;height:auto;border-radius:22px;padding-bottom:16px;background:#2a2617}
+ .hero>img{position:relative;height:340px}
+ .hero:after{height:340px;bottom:auto}
+ .hero .chips{left:14px;top:14px;gap:6px}
+ .hero .chips span{font-size:11.5px;padding:5px 9px}
+ .hero .chips span:nth-child(n+3){display:none}
+ .hero .copy{left:18px;right:18px;bottom:auto;top:170px}
+ .hero h1{font-size:40px}
+ .hero p{display:none}
+ .avail{display:none}
+ .book{position:relative;left:auto;right:auto;bottom:auto;margin:-26px 12px 0;grid-template-columns:1fr 1fr}
+ .book .f{border-right:0;border-bottom:1px solid var(--line);padding:12px 16px}
+ .book .f:first-child{grid-column:1/-1}
+ .book .f:nth-child(4){display:none}
+ .book .go{grid-column:1/-1}
+ .book .go .btn{width:100%;justify-content:center;padding:14px}
+ section{padding-top:64px}
+ .h2{font-size:32px}
+ .lead{font-size:15.5px}
+ .cal-grid,.fiche,.sms-grid,.split3,.admin,.faq,.band{grid-template-columns:1fr}
+ .panel{padding:18px}
+ .d{font-size:13px;padding:7px 0 5px}
+ .d small{font-size:9px}
+ .pet{height:380px}
+ .form{grid-template-columns:1fr}
+ .check ul{grid-template-columns:1fr}
+ .upload{flex-direction:column;align-items:flex-start;gap:10px}
+ .sms-sec{margin:64px 10px 0;padding:56px 0;border-radius:24px}
+ .timeline li{grid-template-columns:1fr;gap:4px}
+ .phone{max-width:330px;margin:0 auto}
+ .essai{grid-row:auto}
+ .kpis b{font-size:21px}
+ table{font-size:13px}
+ th:nth-child(3),td:nth-child(3){display:none}
+ .band{margin-top:64px}
+ .band .t{padding:26px}
+ .band h3{font-size:28px}
+ footer .wrap{grid-template-columns:1fr}
+ td{white-space:nowrap;padding:10px 4px}
+ .board{padding:16px;overflow:hidden}
+ .pill{font-size:11px;padding:3px 7px}
+ .pet{height:440px}
+ .pet img{object-position:center 20%}
+ .mbar{display:grid;grid-template-columns:auto 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--line);padding:10px 14px 14px}
+ .mbar .btn{justify-content:center}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+ <a class="logo" href="#"><i>🐾</i><span>Centre Canin 35<small>Pension canine &amp; féline</small></span></a>
+ <ul><li><a href="#dispos">Disponibilités</a></li><li><a href="#sejour">Préparer le séjour</a></li><li><a href="#essai">Heure d'essai</a></li><li><a href="#elevage">Élevage</a></li><li><a href="#questions">Questions</a></li></ul>
+ <div class="right"><a class="tel" href="tel:0672901481">06 72 90 14 81</a><a class="btn" href="#dispos">Réserver un séjour</a></div>
+</div></nav>
+
+<header class="hero">
+ <img src="assets/chien-pre.jpg" alt="Chien qui court dans les hautes herbes">
+ <div class="chips"><span>🌿 1 hectare de verdure</span><span>🏠 Box individuels</span><span>⭐ 28 ans d'expérience</span><span>🩹 Premiers secours animalier</span></div>
+ <div class="copy">
+  <h1>Vous partez en vacances.<br>Lui aussi.</h1>
+  <p>Pension pour chiens et chats en pleine nature, près de Bain-de-Bretagne. Vérifiez les places et envoyez votre demande en 2 minutes, même à 23 h.</p>
+ </div>
+ <div class="avail">
+  <div class="row"><span class="dot"></span><strong>Places libres du 19 au 27 déc.</strong></div>
+  <div style="color:var(--mut);margin-top:4px">Il reste 6 box sur 21 · mis à jour automatiquement</div>
+  <div class="bar"><i></i></div>
+ </div>
+ <form class="book" onsubmit="return false">
+  <div class="f"><label>Pensionnaire</label><div class="seg"><b class="on">🐕 Chien</b><b>🐈 Chat</b><b>Les deux</b></div></div>
+  <div class="f"><label>Arrivée</label><div class="v">Sam. 19 déc.</div></div>
+  <div class="f"><label>Départ</label><div class="v">Dim. 27 déc.</div></div>
+  <div class="f"><label>Animaux</label><div class="v">1 chien</div></div>
+  <div class="go"><button class="btn">Voir les places →</button></div>
+ </form>
+</header>
+
+<section id="dispos"><div class="wrap">
+ <div class="kick">01 · Disponibilités en direct</div>
+ <h2 class="h2">Les places libres, visibles avant même de décrocher.</h2>
+ <p class="lead">21 box pour 23 chiens, et des box chats à part. Le calendrier se met à jour tout seul à chaque séjour confirmé : plus besoin d'appeler pour savoir s'il reste de la place à Noël.</p>
+ <div class="cal-grid">
+  <div class="panel">
+   <div class="cal-head"><h3>Décembre 2026</h3><div class="nav2"><b>‹</b><b>›</b></div></div>
+   <div class="days">
+    <div class="dn">lun</div><div class="dn">mar</div><div class="dn">mer</div><div class="dn">jeu</div><div class="dn">ven</div><div class="dn">sam</div><div class="dn">dim</div>
+    <div class="d e"></div>
+    <div class="d">1<small>15 libres</small></div><div class="d">2<small>15 libres</small></div><div class="d">3<small>14 libres</small></div><div class="d">4<small>12 libres</small></div><div class="d">5<small>10 libres</small></div><div class="d">6<small>11 libres</small></div>
+    <div class="d">7<small>13 libres</small></div><div class="d">8<small>13 libres</small></div><div class="d">9<small>12 libres</small></div><div class="d">10<small>12 libres</small></div><div class="d">11<small>9 libres</small></div><div class="d">12<small>8 libres</small></div><div class="d">13<small>9 libres</small></div>
+    <div class="d">14<small>10 libres</small></div><div class="d">15<small>9 libres</small></div><div class="d">16<small>8 libres</small></div><div class="d low">17<small>5 libres</small></div><div class="d low">18<small>4 libres</small></div><div class="d sel">19<small>arrivée</small></div><div class="d mid">20<small>6 libres</small></div>
+    <div class="d mid">21<small>6 libres</small></div><div class="d mid">22<small>6 libres</small></div><div class="d mid">23<small>6 libres</small></div><div class="d mid">24<small>6 libres</small></div><div class="d mid">25<small>6 libres</small></div><div class="d mid">26<small>6 libres</small></div><div class="d sel">27<small>départ</small></div>
+    <div class="d low">28<small>3 libres</small></div><div class="d full">29<small>complet</small></div><div class="d full">30<small>complet</small></div><div class="d full">31<small>complet</small></div><div class="d e"></div><div class="d e"></div><div class="d e"></div>
+   </div>
+   <div class="legend"><span><i style="background:#f6f1e5"></i>Places libres</span><span><i style="background:#fbe3c4"></i>Dernières places</span><span><i style="background:#efeae0"></i>Complet (liste d'attente)</span><span><i style="background:var(--acc)"></i>Votre séjour</span></div>
+  </div>
+  <div class="panel recap">
+   <h3>Votre demande</h3>
+   <div class="line"><span>Pensionnaire</span><b>Rocky, 1 chien</b></div>
+   <div class="line"><span>Arrivée</span><b>sam. 19 déc. · 10 h – 12 h</b></div>
+   <div class="line"><span>Départ</span><b>dim. 27 déc. · 14 h – 19 h</b></div>
+   <div class="line"><span>Formule</span><b>avec repas</b></div>
+   <div class="line"><span>Sortie individuelle &amp; jeux</span><b>inclus 🎾</b></div>
+   <div class="line" style="border:0"><span>Box</span><b>individuel</b></div>
+   <button class="btn" style="width:100%;justify-content:center;margin-top:14px">Envoyer ma demande de séjour</button>
+   <div class="auto"><b>⚡</b><div><strong>Automatique :</strong> la place est bloquée le temps que Laëtitia valide, vous recevez un SMS de confirmation, et la date passe en « dernières places » toute seule si besoin.</div></div>
+  </div>
+ </div>
+</div></section>
+
+<section id="sejour"><div class="wrap">
+ <div class="kick">02 · Préparer le séjour</div>
+ <h2 class="h2">La fiche de votre compagnon, remplie une fois pour toutes.</h2>
+ <p class="lead">Carnet de vaccination, habitudes, nourriture, traitement : tout arrive avant le jour J, et reste enregistré pour le prochain séjour.</p>
+ <div class="fiche">
+  <div class="pet"><img src="assets/malinois.jpg" alt="Berger belge malinois dans un pré">
+   <div class="card"><h4>Rocky</h4><p>Berger belge malinois · 4 ans · déjà venu 3 fois</p>
+    <div class="ok"><span class="tag">✓ Vaccins à jour</span><span class="tag">✓ Toux du chenil</span><span class="tag">Aime la balle</span></div></div></div>
+  <div class="form">
+   <div class="in"><label>Nom de l'animal</label><div>Rocky</div></div>
+   <div class="in"><label>Race / gabarit</label><div>Berger belge malinois · grand</div></div>
+   <div class="in"><label>Repas</label><div>J'apporte sa nourriture habituelle</div></div>
+   <div class="in"><label>Traitement en cours</label><div>Non</div></div>
+   <div class="in full"><label>Ses petites habitudes</label><div>Dort mieux avec sa couverture, adore les sorties du matin. Un peu bavard au départ, puis très sage.</div></div>
+   <div class="upload"><span>📎 <strong>Carnet de vaccination</strong> — une photo depuis le téléphone suffit</span><span class="tag">carnet-rocky.jpg · reçu ✓</span></div>
+   <div class="check"><h4>Avant l'arrivée</h4><ul>
+    <li>Carnet de vaccination à jour, dont la toux du chenil</li>
+    <li>Vermifuge fait avant le séjour</li>
+    <li class="todo">Traitement antipuce (rappel envoyé J-3)</li>
+    <li class="todo">Ordonnance du vétérinaire si traitement</li>
+    <li>Couverture, jouets, ses affaires</li>
+    <li>Pour un chat : plaid ou pull avec votre odeur</li>
+   </ul></div>
+  </div>
+ </div>
+</div></section>
+
+<div class="sms-sec"><div class="wrap">
+ <div class="kick">03 · Les messages partent tout seuls</div>
+ <h2 class="h2">Moins de coups de fil, plus de temps au parc.</h2>
+ <p class="lead">Confirmations et rappels sont envoyés automatiquement. Le téléphone reste là pour ceux qui préfèrent, mais il sonne surtout pour les vraies questions.</p>
+ <div class="sms-grid">
+  <ol class="timeline">
+   <li><div class="when">À la demande</div><div><h4>Accusé de réception immédiat</h4><p>« Bien reçu ! Laëtitia vous confirme le séjour très vite. » Fini les messages laissés sur répondeur.</p></div></li>
+   <li><div class="when">Validation</div><div><h4>Séjour confirmé en un clic</h4><p>Laëtitia valide depuis son téléphone : le client reçoit dates, horaires d'arrivée et adresse.</p></div></li>
+   <li><div class="when">J-3</div><div><h4>Rappel des papiers</h4><p>Carnet de vaccination, vermifuge, antipuce, couverture et jouets. Personne n'arrive sans le carnet.</p></div></li>
+   <li><div class="when">Pendant</div><div><h4>Des nouvelles, si vous le souhaitez</h4><p>Une photo ou une vidéo envoyée sur simple demande, comme aujourd'hui, mais sans chercher le numéro.</p></div></li>
+   <li><div class="when">Retour</div><div><h4>« Il vous attend ! »</h4><p>Rappel du créneau de départ, puis un petit mot pour laisser un avis.</p></div></li>
+  </ol>
+  <div class="phone"><div class="screen">
+   <div class="who"><b>Centre Canin 35</b>SMS · aujourd'hui</div>
+   <div class="bub">Bonjour ! Le séjour de Rocky du 19 au 27 décembre est confirmé 🐾 Arrivée entre 10 h et 12 h, 4 La Maladrie à Saint-Sulpice-des-Landes.<small>09:42</small></div>
+   <div class="bub">Petit rappel : carnet de vaccination (toux du chenil), vermifuge et antipuce avant l'arrivée. Pensez à sa couverture !<small>J-3 · 10:00</small></div>
+   <div class="bub me">Tout est prêt, il a même préparé sa valise 😄<small>10:12</small></div>
+   <div class="bub">Des nouvelles de Rocky : sortie au parc ce matin, il a trouvé SA balle.<img src="assets/parc-jeux.jpg" alt="Chiens qui jouent dans un parc clôturé"><small>mer. · 11:30</small></div>
+  </div></div>
+ </div>
+</div></div>
+
+<section id="essai"><div class="wrap">
+ <div class="kick">04 · Et aussi</div>
+ <h2 class="h2">Une heure d'essai offerte, un box pour les chats, des chiots élevés en famille.</h2>
+ <div class="split3">
+  <div class="tile essai"><img src="assets/copains.jpg" alt="Deux chiens qui jouent"><div class="b">
+   <h3>Réservez l'heure d'essai gratuite</h3>
+   <p>Pour vérifier que votre chien ou votre chat se sent bien chez nous avant le grand séjour. Choisissez un créneau, il est confirmé par SMS.</p>
+   <div class="slots"><b class="off">sam. 10 h</b><b>sam. 11 h</b><b class="on">sam. 14 h</b><b>sam. 16 h</b><b>dim. 10 h</b><b>dim. 15 h</b><b>lun. 17 h</b></div>
+   <button class="btn" style="margin-top:18px">Réserver sam. 14 h</button>
+  </div></div>
+  <div class="tile"><img src="assets/chat-plaid.jpg" alt="Chat endormi sur un plaid" style="object-position:center 58%"><div class="b">
+   <h3>Pension féline</h3>
+   <p>Box individuel lumineux et calme, chauffé sur demande. Avec ou sans repas, et ses petites affaires pour se sentir chez lui.</p></div></div>
+  <div class="tile" id="elevage"><img src="assets/spitz.jpg" alt="Chiot petit spitz"><div class="b">
+   <h3>Élevage familial</h3>
+   <p>Une seule portée par race et par an. Laissez votre contact, vous êtes prévenu dès la prochaine portée.</p>
+   <div class="litters"><div><b>Berger belge malinois</b><em>LOF</em></div><div><b>Petit spitz</b><em>non LOF</em></div><div><b>Yorkshire</b><em>non LOF</em></div></div></div></div>
+ </div>
+</div></section>
+
+<section><div class="wrap">
+ <div class="admin">
+  <div>
+   <div class="kick">05 · Côté pension</div>
+   <h2 class="h2" style="font-size:44px">Votre planning, sans carnet ni post-it.</h2>
+   <p class="lead">Les arrivées et départs du jour, les box occupés, les papiers manquants : tout est rangé automatiquement. Vous validez, le reste suit.</p>
+  </div>
+  <div class="board">
+   <div class="top"><h4>Samedi 19 décembre</h4><span class="tag">3 demandes à valider</span></div>
+   <div class="kpis"><div><b>15 / 21</b><span>box occupés</span></div><div><b>4</b><span>arrivées</span></div><div><b>2</b><span>départs</span></div></div>
+   <table><thead><tr><th>Pensionnaire</th><th>Créneau</th><th>Séjour</th><th>Statut</th></tr></thead><tbody>
+    <tr><td>🐕 Rocky</td><td>Arrivée 10 h</td><td>8 nuits</td><td><span class="pill">Carnet reçu</span></td></tr>
+    <tr><td>🐈 Mimine</td><td>Arrivée 11 h</td><td>5 nuits</td><td><span class="pill w">Carnet manquant</span></td></tr>
+    <tr><td>🐕 Câline &amp; Oslo</td><td>Arrivée 14 h</td><td>10 nuits</td><td><span class="pill">Box double</span></td></tr>
+    <tr><td>🐕 Pistache</td><td>Départ 17 h</td><td>—</td><td><span class="pill n">SMS envoyé</span></td></tr>
+   </tbody></table>
+  </div>
+ </div>
+</div></section>
+
+<section id="questions"><div class="wrap">
+ <div class="kick">06 · Réponses 24 h/24</div>
+ <h2 class="h2">Les questions qu'on vous pose dix fois par semaine.</h2>
+ <div class="faq">
+  <div class="chat">
+   <div class="bub me">Vous prenez les chats ?</div>
+   <div class="bub">Oui ! Box individuel lumineux et calme, chauffé sur demande. Vous pouvez apporter son plaid ou un pull avec votre odeur 🐈 Voulez-vous voir les places libres ?</div>
+   <div class="bub me">Et on peut venir quand ?</div>
+   <div class="bub">Uniquement sur rendez-vous, du lundi au dimanche (et les jours fériés), de 10 h à 12 h et de 14 h à 19 h.</div>
+   <div class="q"><b>Quels vaccins ?</b><b>Il a un régime spécial</b><b>Il est sous traitement</b><b>Voir les places à Noël</b></div>
+  </div>
+  <div class="qa">
+   <div><h4>Quels papiers faut-il ?</h4><p>Un carnet de vaccination à jour, en particulier le vaccin contre la toux du chenil. Pensez au vermifuge et à l'antipuce avant le séjour.</p></div>
+   <div><h4>Il a un régime particulier, je peux apporter sa nourriture ?</h4><p>Bien sûr : formule avec ou sans repas, et vous pouvez apporter sa nourriture habituelle (régime, maladie, croissance…).</p></div>
+   <div><h4>Il est sous traitement ?</h4><p>Apportez l'ordonnance de votre vétérinaire : nous nous occupons de ses soins (avec un supplément).</p></div>
+   <div><h4>Il n'est jamais allé en pension…</h4><p>Venez tester une heure gratuitement. Il fera le tour du propriétaire, et vous aussi.</p></div>
+  </div>
+ </div>
+</div></section>
+
+<div class="wrap"><div class="band">
+ <img src="assets/yorkshire.jpg" alt="Yorkshire dans l'herbe">
+ <div class="t"><div class="kick">Engagés</div><h3>Partenaire de Gamelles Pleines</h3><p>Le Centre Canin 35 accueille aussi les chiens de l'association Gamelles Pleines, qui vient en aide aux personnes sans domicile fixe ou en situation de précarité.</p><a class="btn ghost" style="margin-top:22px" href="#dispos">Réserver un séjour</a></div>
+</div></div>
+
+<footer><div class="wrap">
+ <div><a class="logo" href="#"><i>🐾</i><span>Centre Canin 35<small>Laëtitia et son équipe</small></span></a><p style="color:var(--mut);margin-top:12px">Pension canine et féline, éducation et élevage familial, à quelques minutes de Bain-de-Bretagne.</p></div>
+ <div><h5>Adresse</h5>4 La Maladrie<br>35390 Saint-Sulpice-des-Landes</div>
+ <div><h5>Accueil</h5>Uniquement sur rendez-vous<br>Lun – dim et jours fériés<br>10 h – 12 h · 14 h – 19 h</div>
+ <div><h5>Contact</h5><a href="tel:0672901481">06 72 90 14 81</a><br>centrecanin35@orange.fr</div>
+</div></footer>
+
+<div class="mbar"><a class="btn ghost" href="tel:0672901481">📞</a><a class="btn" href="#dispos">Voir les places libres</a></div>
+</body>
+</html>
