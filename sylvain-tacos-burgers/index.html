@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sylvain Tacos & Burgers · Commandez avant de venir au camion</title>
+<meta name="description" content="Tacos, burgers, paninis et petites faims faits maison par Sylvain et Éloïse. Commandez en ligne pour l'heure de votre choix, retrouvez le camion soir par soir, réservez-le pour vos événements.">
+<style>
+@font-face{font-family:"Inter";src:url("assets/Inter.ttf") format("truetype");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Bowlby";src:url("assets/BowlbyOne.ttf") format("truetype");font-weight:400;font-display:swap}
+:root{--bg:#f6f7f1;--card:#fff;--ink:#15170f;--muted:#5f6457;--line:#e3e6d8;--lime:#c6e42b;--lime-soft:#eef6cc;--lime-deep:#4f6b00;--red:#d0261b;--red-soft:#fde6e3;--r:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+.disp{font-family:Bowlby,Impact,sans-serif;font-weight:400;letter-spacing:.005em;line-height:1.02;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:14px;padding:14px 22px;font:800 15px/1 Inter,sans-serif;cursor:pointer;background:var(--lime);color:var(--ink);transition:transform .15s,box-shadow .15s;box-shadow:0 2px 0 #9fb91a}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:#fff;box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn.dark{background:var(--ink);color:#fff;box-shadow:none}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;padding:6px 11px;border-radius:999px;background:var(--lime-soft);color:var(--lime-deep);letter-spacing:.02em}
+.tag.red{background:var(--red-soft);color:var(--red)}
+.dot{width:8px;height:8px;border-radius:50%;background:#2fb344;box-shadow:0 0 0 4px rgba(47,179,68,.18)}
+/* nav */
+.nav{position:sticky;top:0;z-index:30;background:rgba(246,247,241,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:46px;height:46px;border-radius:12px;object-fit:cover;background:#000}
+.brand b{font-family:Bowlby,sans-serif;font-weight:400;font-size:18px;display:block;line-height:1.05;text-transform:uppercase}
+.brand small{display:block;font-size:12px;color:var(--muted)}
+.nav ul{display:flex;gap:28px;list-style:none;font-size:14.5px;font-weight:600;color:var(--muted)}
+.nav .right{display:flex;gap:10px;align-items:center}
+/* hero */
+.hero{padding:22px 0 0}
+.poster{position:relative;border-radius:32px;overflow:hidden;min-height:600px;background:#222}
+.poster>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.poster:before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(10,12,6,.86) 0%,rgba(10,12,6,.62) 38%,rgba(10,12,6,.08) 70%);z-index:1}
+.poster .copy{position:relative;z-index:2;padding:56px 54px;max-width:640px;color:#fff}
+.poster h1{font-size:68px;margin:18px 0 18px}
+.poster h1 em{font-style:normal;color:var(--lime)}
+.poster p{font-size:18.5px;color:#e6e9dc;max-width:500px}
+.poster .mini{display:flex;gap:18px;margin-top:26px;flex-wrap:wrap;font-size:14px;color:#dfe3d2}
+.poster .mini span{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border-radius:12px;padding:8px 12px}
+.order{position:absolute;z-index:3;right:34px;top:34px;bottom:34px;width:410px;background:var(--card);border-radius:26px;padding:24px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);display:flex;flex-direction:column}
+.order .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.order .top b{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lbl{font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:14px 0 8px;display:block}
+.spot{display:flex;gap:12px;align-items:center;width:100%;border:1.5px solid var(--line);background:#fff;border-radius:16px;padding:11px 12px;margin-bottom:8px;cursor:pointer;text-align:left}
+.spot .ic{width:40px;height:40px;border-radius:12px;background:var(--bg);display:grid;place-items:center;font-size:19px;flex:none}
+.spot strong{display:block;font-size:15px}
+.spot small{font-size:12.5px;color:var(--muted)}
+.spot.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.spot.on .ic{background:var(--lime)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.slot{border:1.5px solid var(--line);background:#fff;border-radius:11px;padding:9px 4px;font-weight:700;font-size:13.5px;cursor:pointer;text-align:center}
+.slot.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.slot.full{color:#b0b4a6;text-decoration:line-through;cursor:not-allowed;background:var(--bg)}
+.cartline{margin-top:auto;border-top:1.5px dashed var(--line);padding-top:14px}
+.cartline .row{display:flex;justify-content:space-between;font-size:14px;padding:2px 0}
+.cartline .btn{width:100%;margin-top:12px;padding:16px}
+.cartline .fine{font-size:12px;color:var(--muted);text-align:center;margin-top:9px}
+/* strip */
+.strip{display:flex;gap:12px;margin:18px 0 0;overflow:hidden}
+.strip .it{flex:1;display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;font-size:14px}
+.strip .it b{display:block;font-size:15px}
+.strip .it .e{font-size:22px}
+/* sections */
+section.block{padding:84px 0 8px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:30px}
+.head h2{font-size:42px;max-width:700px}
+.head p{color:var(--muted);max-width:420px}
+.kick{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--lime-deep);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.kick:before{content:"";width:18px;height:4px;border-radius:3px;background:var(--lime)}
+/* menu */
+.menu{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:22px;align-items:start}
+.tabs{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.tabs button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:10px 16px;font-weight:700;font-size:14.5px;cursor:pointer}
+.tabs button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.tabs button span{font-weight:500;opacity:.6;margin-left:4px}
+.items{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.item .ph{height:170px;position:relative;background:#1a1a1a}
+.item .ph img{width:100%;height:100%;object-fit:cover}
+.item .ph .tag{position:absolute;left:12px;top:12px}
+.item .ph.veg{background:var(--lime-soft);display:grid;place-items:center}
+.item .ph.veg .big{font-size:46px;letter-spacing:6px}
+.item .bd{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.item h3{font-size:16.5px;font-weight:800}
+.item p{font-size:13.5px;color:var(--muted);flex:1}
+.item .add{align-self:flex-start;margin-top:6px;border:0;background:var(--lime-soft);color:var(--ink);border-radius:11px;padding:9px 13px;font-weight:800;font-size:13.5px;cursor:pointer}
+.item .add.done{background:var(--lime)}
+.item.txt{background:var(--ink);color:#fff;padding:22px;justify-content:space-between}
+.item.txt h3{font-family:Bowlby,sans-serif;font-weight:400;font-size:24px;line-height:1.1;text-transform:uppercase}
+.item.txt p{color:#cfd3c4}
+.pane{display:none}.pane.on{display:block}
+.bag{position:sticky;top:92px;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:22px}
+.bag h3{font-size:18px;font-weight:800;display:flex;justify-content:space-between;align-items:center}
+.bag .where{font-size:13.5px;color:var(--muted);margin:4px 0 14px}
+.bag ul{list-style:none;display:grid;gap:8px;margin-bottom:14px}
+.bag li{display:flex;justify-content:space-between;align-items:center;font-size:14.5px;background:var(--bg);border-radius:12px;padding:10px 12px}
+.bag li b{font-weight:800}
+.bag .note{font-size:13px;background:var(--lime-soft);border-radius:14px;padding:11px 12px;margin-bottom:12px}
+.bag .btn{width:100%;padding:16px}
+.bag .fine{font-size:12px;color:var(--muted);text-align:center;margin-top:9px}
+/* tour */
+.tour{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.d{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px 14px;min-height:220px;display:flex;flex-direction:column;gap:10px}
+.d .w{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.d .n{font:400 26px/1 Bowlby,sans-serif}
+.d .stop{background:var(--bg);border-radius:14px;padding:10px 11px;font-size:13px}
+.d .stop b{display:block;font-size:14.5px}
+.d.today{background:var(--ink);color:#fff;border-color:var(--ink)}
+.d.today .w{color:#c9cdbd}
+.d.today .stop{background:rgba(255,255,255,.09)}
+.d.today .tag{align-self:flex-start;background:var(--lime);color:var(--ink)}
+.d.off{background:transparent;border-style:dashed;color:var(--muted)}
+.d.off .n{color:#c3c7b8}
+.tourfoot{display:flex;gap:14px;align-items:center;margin-top:16px;font-size:14px;color:var(--muted)}
+@media (max-width:900px){.tourfoot{flex-direction:column;align-items:flex-start;gap:8px}}
+/* kitchen */
+.kit{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+.screen{background:var(--ink);color:#fff;border-radius:28px;padding:24px}
+.screen .bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:13px;color:#c9cdbd}
+.screen .bar b{color:#fff;font-size:16px}
+.tickets{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tk{background:#fff;color:var(--ink);border-radius:16px;padding:12px 13px;font-size:13px}
+.tk .h{display:flex;justify-content:space-between;font-weight:800;font-size:14.5px;margin-bottom:6px}
+.tk .h span{background:var(--lime);border-radius:8px;padding:1px 7px;font-size:13px}
+.tk ul{list-style:none;color:var(--muted);display:grid;gap:2px}
+.tk.go{box-shadow:0 0 0 3px var(--lime)}
+.cap{margin-top:16px;display:grid;gap:9px}
+.cap .r{display:grid;grid-template-columns:64px 1fr 92px;gap:12px;align-items:center;font-size:13.5px}
+.cap .tr{height:11px;border-radius:8px;background:rgba(255,255,255,.12);overflow:hidden}
+.cap .tr i{display:block;height:100%;background:var(--lime);border-radius:8px}
+.cap .tr i.f{background:var(--red)}
+.cap .r small{color:#c9cdbd;text-align:right}
+.phone{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:24px}
+.phone .lb{font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:12px}
+.sms{background:var(--bg);border-radius:18px 18px 18px 5px;padding:12px 14px;font-size:14.5px;margin-bottom:10px;max-width:92%}
+.sms small{display:block;font-size:11.5px;color:var(--muted);margin-top:4px}
+.sms.me{background:var(--lime);margin-left:auto;border-radius:18px 18px 5px 18px;max-width:55%}
+.auto{display:flex;gap:8px;align-items:center;font-size:12.5px;font-weight:700;color:var(--lime-deep);background:var(--lime-soft);border-radius:999px;padding:7px 12px;margin-top:6px;width:max-content}
+/* events */
+.ev{display:grid;grid-template-columns:.95fr 1.05fr;gap:20px}
+.evph{position:relative;border-radius:28px;overflow:hidden;min-height:470px}
+.evph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.evph .fl{position:absolute;left:18px;right:18px;bottom:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.evph .fl div{background:rgba(255,255,255,.95);border-radius:16px;padding:11px 12px;font-size:12.5px;color:var(--muted)}
+.evph .fl b{display:block;font:400 21px/1.1 Bowlby,sans-serif;color:var(--ink)}
+.form{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:28px}
+.form h3{font-size:22px;font-weight:800}
+.form .sub{color:var(--muted);font-size:14.5px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:9px 13px;font-weight:600;font-size:14px;cursor:pointer}
+.chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.field{border:1.5px solid var(--line);border-radius:14px;padding:10px 14px;font-size:14.5px}
+.field small{display:block;font-size:11.5px;color:var(--muted)}
+.qty{display:flex;align-items:center;gap:14px}
+.qty input{flex:1;accent-color:#7f9d00}
+.qty b{font:400 24px Bowlby,sans-serif;min-width:66px;text-align:right}
+.form .btn{margin-top:18px}
+.sorted{display:flex;gap:10px;align-items:center;margin-top:14px;font-size:13px;color:var(--lime-deep);background:var(--lime-soft);padding:10px 12px;border-radius:14px}
+/* faq */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.bot{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:24px}
+.bot .tp{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.bot .tp img{width:40px;height:40px;border-radius:11px;object-fit:cover;background:#000}
+.bot .tp small{display:flex;align-items:center;gap:7px;color:#1f8a33;font-size:12.5px;font-weight:600}
+.msg{max-width:84%;padding:11px 14px;border-radius:18px;font-size:14.5px;margin-bottom:10px}
+.msg.q{background:var(--bg);margin-left:auto;border-radius:18px 18px 5px 18px}
+.msg.a{background:var(--lime-soft);border-radius:18px 18px 18px 5px}
+.sugg{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.sugg span{font-size:13px;border:1.5px solid var(--line);border-radius:999px;padding:7px 12px}
+.contact{position:relative;border-radius:28px;overflow:hidden;color:#fff;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end}
+.contact>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.contact:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,6,.15),rgba(10,12,6,.88) 62%);z-index:1}
+.contact .in{position:relative;z-index:2;padding:28px}
+.contact h3{font-size:32px;margin-bottom:10px}
+.contact p{color:#dfe3d2;font-size:15px}
+.contact .lines{display:grid;gap:8px;margin:16px 0;font-size:15px}
+.contact .lines div{background:rgba(255,255,255,.1);border-radius:12px;padding:10px 13px}
+.contact .bt{display:flex;gap:10px;flex-wrap:wrap}
+.contact .btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
+footer{padding:50px 0 40px;color:var(--muted);font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:24px}
+.mbar{display:none}
+@media (max-width:1100px){
+ .order{width:360px}
+ .poster h1{font-size:54px}
+ .items{grid-template-columns:repeat(2,1fr)}
+ .tour{grid-template-columns:repeat(4,1fr)}
+}
+@media (max-width:900px){
+ .wrap{padding:0 16px}
+ .nav ul,.nav .right .ghost{display:none}
+ .nav .wrap{height:62px}
+ .nav .right .btn{padding:10px 14px;font-size:13.5px}
+ .brand img{width:40px;height:40px}
+ .brand b{font-size:15.5px}
+ .hero{padding-top:12px}
+ .poster{min-height:0;border-radius:24px;display:flex;flex-direction:column}
+ .poster>img{height:330px;bottom:auto}
+ .poster:before{height:330px;bottom:auto;background:linear-gradient(180deg,rgba(10,12,6,.25) 0%,rgba(10,12,6,.85) 100%)}
+ .poster .copy{padding:120px 20px 22px;min-height:330px}
+ .poster h1{font-size:34px;margin:12px 0 10px}
+ .poster p{font-size:15.5px}
+ .poster .copy>.tag{font-size:11px;padding:5px 10px}
+ .poster .mini{display:none}
+ .order{position:relative;inset:auto;width:auto;margin:0;border-radius:0 0 24px 24px;box-shadow:none;padding:20px 16px}
+ .slots{grid-template-columns:repeat(4,1fr)}
+ .strip{display:none}
+ section.block{padding:56px 0 6px}
+ .head{display:block;margin-bottom:20px}
+ .head h2{font-size:29px}
+ .head p{margin-top:10px}
+ .menu{grid-template-columns:minmax(0,1fr)}
+ .bag{position:relative;top:0}
+ .items{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+ .menu>div{min-width:0}
+ .item .ph{height:120px}
+ .item .bd{padding:11px 12px 13px}
+ .item h3{font-size:14.5px}
+ .item p{font-size:12.5px}
+ .item.txt{grid-column:span 2}
+ .tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
+ .tabs button{white-space:nowrap}
+ .tour{grid-template-columns:1fr 1fr;gap:8px}
+ .d{min-height:0}
+ .d.off{display:none}
+ .d.offm{display:flex;grid-column:span 2;min-height:0}
+ .kit,.ev,.duo{grid-template-columns:minmax(0,1fr)}
+ .auto{width:auto}
+ .screen .bar span{display:none}
+ .tickets{grid-template-columns:1fr 1fr}
+ .tickets .tk:nth-child(3){display:none}
+ .cap .r{grid-template-columns:52px 1fr 80px}
+ .evph{min-height:320px}
+ .evph .fl{grid-template-columns:1fr 1fr 1fr;gap:6px;left:10px;right:10px;bottom:10px}
+ .evph .fl div{padding:8px;font-size:11px}
+ .evph .fl b{font-size:16px}
+ .g2{grid-template-columns:1fr}
+ .contact h3{font-size:26px}
+ body{padding-bottom:84px}
+ .mbar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:12px 14px calc(12px + env(safe-area-inset-bottom))}
+ .mbar .btn{flex:1;padding:15px 10px}
+ .mbar .btn.ghost{flex:.5}
+}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+ <a class="brand" href="#"><img src="assets/logo.png" alt="Logo Tacos & Burgers"><span><b>Sylvain Tacos & Burgers</b><small>Food truck fait maison · Visseiche</small></span></a>
+ <ul><li><a href="#carte">La carte</a></li><li><a href="#tournee">La tournée</a></li><li><a href="#evenements">Événements</a></li><li><a href="#questions">Questions</a></li></ul>
+ <div class="right"><a class="btn ghost" href="tel:+33780367360">07 80 36 73 60</a><a class="btn" href="#commander">Commander</a></div>
+</div></nav>
+
+<header class="hero" id="commander"><div class="wrap">
+ <div class="poster">
+  <img src="assets/burger-gratine.jpg" alt="Burger gratiné du food truck">
+  <div class="copy">
+   <span class="tag" style="background:rgba(198,228,43,.95);color:#15170f"><span class="dot"></span> Ce soir dès 17h30 · Thourie & La Chapelle-Erbrée</span>
+   <h1 class="disp">Commandez.<br>Passez.<br><em>C'est chaud.</em></h1>
+   <p>Tacos, burgers et paninis faits maison par Sylvain et Éloïse. Choisissez votre heure, on lance la cuisson pour vous&nbsp;: plus besoin d'appeler entre deux rush.</p>
+   <div class="mini"><span>🌮 Tacos XXL & Giga</span><span>🍔 Burgers gratinés</span><span>🌱 Végé & vegan</span></div>
+  </div>
+  <div class="order">
+   <div class="top"><b>Votre commande</b><span class="tag">Jeudi 22 oct.</span></div>
+   <span class="lbl" style="margin-top:0">1 · Où passez-vous&nbsp;?</span>
+   <button class="spot on" data-w="Thourie · Place Pavie"><span class="ic">📍</span><span><strong>Thourie · Place Pavie</strong><small>Rue de la Libération · 17h30 – 21h00</small></span></button>
+   <button class="spot" data-w="La Chapelle-Erbrée · Les Charmilles"><span class="ic">📍</span><span><strong>La Chapelle-Erbrée</strong><small>Résidence Les Charmilles · 17h30 – 21h00</small></span></button>
+   <span class="lbl">2 · À quelle heure&nbsp;?</span>
+   <div class="slots">
+    <button class="slot full">18h45</button><button class="slot full">19h00</button><button class="slot on">19h15</button><button class="slot">19h30</button>
+    <button class="slot">19h45</button><button class="slot">20h00</button><button class="slot">20h15</button><button class="slot">20h30</button>
+   </div>
+   <div class="cartline">
+    <div class="row"><span>1 × Giga tacos</span><b>✓</b></div>
+    <div class="row"><span>1 × Tacos cordon-bleu</span><b>✓</b></div>
+    <div class="row"><span>1 × Burger savoyard</span><b>✓</b></div>
+    <div class="row" style="color:var(--muted)"><span id="ow">Thourie · Place Pavie</span><b id="ot" style="color:var(--ink)">19h15</b></div>
+    <a class="btn" href="#carte">Valider ma commande</a>
+    <p class="fine">Réglée au camion · SMS de confirmation tout de suite</p>
+   </div>
+  </div>
+ </div>
+ <div class="strip">
+  <div class="it"><span class="e">⏱️</span><span><b>Prêt à l'heure choisie</b>Les créneaux se remplissent tout seuls</span></div>
+  <div class="it"><span class="e">📲</span><span><b>Prévenu par SMS</b>Confirmation, puis «&nbsp;c'est prêt&nbsp;!&nbsp;»</span></div>
+  <div class="it"><span class="e">🗺️</span><span><b>Le camion, soir par soir</b>Toujours le bon parking</span></div>
+  <div class="it"><span class="e">🎪</span><span><b>Festivals & fêtes</b>Jusqu'à 500 sandwichs à l'heure</span></div>
+ </div>
+</div></header>
+
+<section class="block" id="carte"><div class="wrap">
+ <div class="head"><div><span class="kick">La carte</span><h2 class="disp">Tout est fait maison, même les sauces</h2></div><p>Choisissez, ajoutez, c'est dans le sac. Le panier se garde au chaud jusqu'à l'heure de passage.</p></div>
+ <div class="menu">
+  <div>
+   <div class="tabs"><button class="on" data-p="tacos">Tacos <span>5</span></button><button data-p="burgers">Burgers <span>10</span></button><button data-p="paninis">Paninis <span>2</span></button><button data-p="petites">Petites faims <span>4</span></button></div>
+   <div class="pane on" id="p-tacos"><div class="items">
+    <div class="item"><div class="ph"><img src="assets/tacos-gratine.jpg" alt="Tacos gratiné"><span class="tag red">Gratiné</span></div><div class="bd"><h3>Tacos cordon-bleu</h3><p>Poulet pané, jambon et fromage fondant.</p><button class="add done">✓ Ajouté</button></div></div>
+    <div class="item"><div class="ph"><img src="assets/tacos-oignons.jpg" alt="Tacos kebab"></div><div class="bd"><h3>Tacos kebab</h3><p>Viande kebab juteuse, légumes frais, sauce épicée.</p><button class="add">+ Ajouter</button></div></div>
+    <div class="item"><div class="ph"><img src="assets/tacos-sauce.jpg" alt="Tacos tenders et sauce maison"></div><div class="bd"><h3>Tacos tenders de poulet</h3><p>Tenders croustillants, légumes croquants, sauce crémeuse.</p><button class="add">+ Ajouter</button></div></div>
+    <div class="item"><div class="ph veg"><span class="tag">🌱 Végé</span><span class="big">🥬🧀🫘</span></div><div class="bd"><h3>Tacos végétarien</h3><p>Légumes grillés, haricots et fromage.</p><button class="add">+ Ajouter</button></div></div>
+    <div class="item"><div class="ph"><img src="assets/panini.jpg" alt="Giga tacos gratiné"><span class="tag red">Grosse faim</span></div><div class="bd"><h3>Le Giga tacos</h3><p>Cordon-bleu, kebab, tenders… tout réuni dans un seul french tacos.</p><button class="add done">✓ Ajouté</button></div></div>
+    <div class="item txt"><h3>Pas sûr de votre faim&nbsp;?</h3><p>Le Giga, c'est pour les grands appétits. Les autres tacos aussi, d'ailleurs.</p></div>
+   </div></div>
+   <div class="pane" id="p-burgers"><div class="items">
+    <div class="item"><div class="ph"><img src="assets/cheeseburger.jpg" alt="Cheeseburger"></div><div class="bd"><h3>Cheeseburger</h3><p>Le classique, fromage fondant.</p><button class="add">+ Ajouter</button></div></div>
+    <div class="item"><div class="ph"><img src="assets/burger-gratine.jpg" alt="Burger savoyard gratiné"><span class="tag red">Gratiné</span></div><div class="bd"><h3>Savoyard burger</h3><p>Une de nos spécialités gratinées.</p><button class="add done">✓ Ajouté</button></div></div>
+    <div class="item"><div class="ph"><img src="assets/cheeseburger.jpg" alt="Bacon burger" style="object-position:30% 50%"></div><div class="bd"><h3>Bacon burger</h3><p>Pain moelleux, bacon, sauce maison.</p><button class="add">+ Ajouter</button></div></div>
+    <div class="item"><div class="ph"><img src="assets/burger-gratine.jpg" alt="Burger saumon-chèvre" style="object-position:50% 80%"></div><div class="bd"><h3>Saumon-chèvre</h3><p>Aussi en espagnol, chicken ou kebab burger.</p><button class="add">+ Ajouter</button></div></div>
+    <div class="item"><div class="ph veg"><span class="tag">🌱 Végé / vegan</span><span class="big">🥔🌱</span></div><div class="bd"><h3>Végétarien ou vegan</h3><p>Galette de pommes de terre, ou galette de lentilles.</p><button class="add">+ Ajouter</button></div></div>
+    <div class="item"><div class="ph"><img src="assets/frites.jpg" alt="Frites"></div><div class="bd"><h3>Burger kids</h3><p>La version petite main.</p><button class="add">+ Ajouter</button></div></div>
+   </div></div>
+   <div class="pane" id="p-paninis"><div class="items">
+    <div class="item"><div class="ph"><img src="assets/panini.jpg" alt="Panini grillé"></div><div class="bd"><h3>Panini viande</h3><p>Viande au choix, croustillant et grillé.</p><button class="add">+ Ajouter</button></div></div>
+    <div class="item"><div class="ph"><img src="assets/tacos-gratine.jpg" alt="Panini viande et fromage"></div><div class="bd"><h3>Panini viande & fromage</h3><p>Pour une pause rapide et savoureuse.</p><button class="add">+ Ajouter</button></div></div>
+    <div class="item txt"><h3>Un panini en 2 minutes&nbsp;?</h3><p>Commandé à 19h10, prêt à 19h15. Le grill fait sa part.</p></div>
+   </div></div>
+   <div class="pane" id="p-petites"><div class="items">
+    <div class="item"><div class="ph"><img src="assets/tenders.jpg" alt="Boîte de nuggets et tenders"></div><div class="bd"><h3>Boîte de nuggets</h3><p>Pour les petites faims, à toute heure.</p><button class="add">+ Ajouter</button></div></div>
+    <div class="item"><div class="ph"><img src="assets/frites.jpg" alt="Bowl frites"></div><div class="bd"><h3>Bowl</h3><p>Frites, viande et sauce au choix.</p><button class="add">+ Ajouter</button></div></div>
+    <div class="item txt"><h3>Croque-monsieur & hot-dog</h3><p>Aussi au camion, pour le petit creux de 18h. Ou de 20h45, on ne juge pas.</p><button class="add" style="background:var(--lime)">+ Ajouter</button></div>
+   </div></div>
+  </div>
+  <aside class="bag">
+   <h3>Votre sac <span class="tag">3 articles</span></h3>
+   <div class="where">📍 Thourie · Place Pavie · jeudi à <b id="bt">19h15</b></div>
+   <ul><li><span>Giga tacos</span><b>× 1</b></li><li><span>Tacos cordon-bleu</span><b>× 1</b></li><li><span>Savoyard burger</span><b>× 1</b></li></ul>
+   <div class="note">💬 Une précision&nbsp;? «&nbsp;Sans oignons&nbsp;», «&nbsp;sauce à part&nbsp;»… Sylvain la voit sur son écran.</div>
+   <a class="btn" href="#commander">Commander pour 19h15</a>
+   <p class="fine">Paiement au camion, comme d'habitude. Aucun compte à créer.</p>
+  </aside>
+ </div>
+</div></section>
+
+<section class="block" id="tournee"><div class="wrap">
+ <div class="head"><div><span class="kick">La tournée</span><h2 class="disp">Où est le camion ce soir&nbsp;?</h2></div><p>Un seul endroit à jour, au lieu de trois annuaires qui se contredisent. Un changement de dernière minute&nbsp;? Le planning et les clients qui ont commandé sont prévenus.</p></div>
+ <div class="tour">
+  <div class="d off"><span class="w">Lundi</span><span class="n">Repos</span></div>
+  <div class="d off"><span class="w">Mardi</span><span class="n">Repos</span></div>
+  <div class="d off"><span class="w">Mercredi</span><span class="n">Hors tournée</span><span style="font-size:13px">Le camion peut venir à votre événement</span></div>
+  <div class="d today"><span class="tag">Ce soir</span><span class="w">Jeudi 22</span><div class="stop"><b>Thourie</b>Place Pavie · 17h30 – 21h</div><div class="stop"><b>La Chapelle-Erbrée</b>Les Charmilles · 17h30 – 21h</div></div>
+  <div class="d"><span class="w">Vendredi 23</span><div class="stop"><b>Marpiré</b>Rue de la Mairie · 17h30 – 21h</div><div class="stop"><b>La Bouëxière</b>Le marché · 17h30 – 21h</div></div>
+  <div class="d off"><span class="w">Samedi</span><span class="n">Hors tournée</span><span style="font-size:13px">Festivals, fêtes, anniversaires</span></div>
+  <div class="d"><span class="w">Dimanche 25</span><div class="stop"><b>Domagné</b>Parking du 8 à Huit · 17h30 – 21h</div></div>
+ </div>
+ <div class="tourfoot"><span class="tag red">⏰ Exemple</span> Un retard ce soir&nbsp;? Un clic, et les clients de Thourie reçoivent&nbsp;: «&nbsp;Le camion arrive à 18h au lieu de 17h30. Votre commande de 19h15 ne bouge pas.&nbsp;»</div>
+</div></section>
+
+<section class="block"><div class="wrap">
+ <div class="head"><div><span class="kick">Côté camion</span><h2 class="disp">Le téléphone ne sonne plus pendant le rush</h2></div><p>Les commandes arrivent rangées par heure de passage. Quand un créneau est plein, il se ferme tout seul&nbsp;: personne n'attend 45 minutes, personne n'est déçu.</p></div>
+ <div class="kit">
+  <div class="screen">
+   <div class="bar"><b>Thourie · jeudi soir</b><span>Écran de préparation · mis à jour en direct</span></div>
+   <div class="tickets">
+    <div class="tk go"><div class="h">Julie M.<span>19h00</span></div><ul><li>1 × Tacos kebab</li><li>1 × Cheeseburger</li><li>sauce à part</li></ul></div>
+    <div class="tk"><div class="h">Famille R.<span>19h15</span></div><ul><li>2 × Burger kids</li><li>1 × Giga tacos</li><li>1 × Savoyard</li></ul></div>
+    <div class="tk"><div class="h">Thomas<span>19h15</span></div><ul><li>1 × Bowl frites</li><li>1 × Panini viande</li></ul></div>
+   </div>
+   <div class="cap">
+    <div class="r"><span>18h45</span><span class="tr"><i class="f" style="width:100%"></i></span><small>complet</small></div>
+    <div class="r"><span>19h00</span><span class="tr"><i class="f" style="width:100%"></i></span><small>complet</small></div>
+    <div class="r"><span>19h15</span><span class="tr"><i style="width:70%"></i></span><small>3 places</small></div>
+    <div class="r"><span>19h30</span><span class="tr"><i style="width:35%"></i></span><small>7 places</small></div>
+   </div>
+  </div>
+  <div class="phone">
+   <div class="lb"><span>SMS · Tacos & Burgers</span><span>envoyés automatiquement</span></div>
+   <div class="sms">C'est noté Julie&nbsp;! 1 tacos kebab + 1 cheeseburger, prêts à 19h00 à Thourie, place Pavie. 🌮<small>Dès la commande</small></div>
+   <div class="sms">Votre commande sort du grill, elle vous attend au camion. Bon appétit&nbsp;!<small>18h58</small></div>
+   <div class="sms me">J'arrive&nbsp;!</div>
+   <div class="auto">⚙️ Confirmation et «&nbsp;c'est prêt&nbsp;» envoyés tout seuls</div>
+  </div>
+ </div>
+</div></section>
+
+<section class="block" id="evenements"><div class="wrap">
+ <div class="head"><div><span class="kick">Festivals, foires, anniversaires</span><h2 class="disp">Le camion vient à votre fête</h2></div><p>Associations, organisateurs, comités, particuliers&nbsp;: une demande complète, triée par date, et une réponse rapide.</p></div>
+ <div class="ev">
+  <div class="evph"><img src="assets/evenement.jpg" alt="Le stand Tacos & Burgers installé sur un événement en plein air">
+   <div class="fl"><div><b>~100</b>sandwichs / h<br>petit food truck</div><div><b>~250</b>sandwichs / h<br>grand food truck</div><div><b>~500</b>sandwichs / h<br>structure barnum</div></div>
+  </div>
+  <div class="form">
+   <h3>Demande pour un événement</h3>
+   <p class="sub">Deux minutes, et vous recevez une réponse avec la formule adaptée.</p>
+   <span class="lbl">C'est pour…</span>
+   <div class="chips"><button class="chip on">Festival de musique</button><button class="chip">Foire / salon</button><button class="chip">Anniversaire</button><button class="chip">Événement sportif</button><button class="chip">Entreprise</button></div>
+   <span class="lbl">Combien de personnes&nbsp;?</span>
+   <div class="qty"><input type="range" min="20" max="3000" value="600" id="r"><b id="rv">600</b></div>
+   <div class="g2">
+    <div class="field"><small>Dates</small>Sam. 13 – dim. 14 juin 2027</div>
+    <div class="field"><small>Formule conseillée</small><span id="fm">Grand food truck</span></div>
+   </div>
+   <button class="btn dark">Envoyer ma demande</button>
+   <div class="sorted">✔︎ Demande classée au 13 juin, avec la jauge et la formule&nbsp;: il ne reste qu'à confirmer.</div>
+  </div>
+ </div>
+</div></section>
+
+<section class="block" id="questions"><div class="wrap">
+ <div class="duo">
+  <div class="bot">
+   <div class="tp"><img src="assets/logo.png" alt=""><div><b>Une question&nbsp;? Réponse tout de suite</b><small><span class="dot"></span> Disponible 24h/24, même en plein service</small></div></div>
+   <div class="msg q">Vous êtes où vendredi soir&nbsp;?</div>
+   <div class="msg a">Vendredi, de 17h30 à 21h&nbsp;: à Marpiré, rue de la Mairie, et à La Bouëxière, au marché. Vous voulez commander pour une heure précise&nbsp;?</div>
+   <div class="msg q">Vous avez quelque chose de vegan&nbsp;?</div>
+   <div class="msg a">Oui&nbsp;! Le burger vegan à la galette de lentilles. Et côté végétarien&nbsp;: le tacos végétarien et le burger à la galette de pommes de terre. 🌱</div>
+   <div class="sugg"><span>Vous venez à un anniversaire&nbsp;?</span><span>C'est quoi le Giga&nbsp;?</span><span>Je peux payer par carte&nbsp;?</span></div>
+  </div>
+  <div class="contact"><img src="assets/caravane-graff.jpg" alt="La caravane graffée Tacos & Burgers">
+   <div class="in">
+    <h3 class="disp">Une faim, une fête, une question&nbsp;?</h3>
+    <p>Sylvain et Éloïse, food truck fait maison depuis 2020.</p>
+    <div class="lines"><div>📞 07 80 36 73 60</div><div>✉️ sylvain.tacosetburger@outlook.fr</div><div>📍 9 rue de Rennes, 35130 Visseiche</div></div>
+    <div class="bt"><a class="btn" href="#commander">Commander pour ce soir</a><a class="btn ghost" href="#evenements">Réserver le camion</a></div>
+   </div>
+  </div>
+ </div>
+</div></section>
+
+<footer><div class="wrap"><span>© Sylvain Tacos & Burgers · Food truck · Visseiche (35)</span><span>Photos&nbsp;: Sylvain Tacos & Burgers</span></div></footer>
+
+<div class="mbar"><a class="btn ghost" href="tel:+33780367360">📞 Appeler</a><a class="btn" href="#commander">Commander pour 19h15</a></div>
+
+<script>
+document.querySelectorAll('.spot').forEach(b=>b.onclick=()=>{document.querySelectorAll('.spot').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById('ow').textContent=b.dataset.w});
+document.querySelectorAll('.slot').forEach(b=>b.onclick=()=>{if(b.classList.contains('full'))return;document.querySelectorAll('.slot').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById('ot').textContent=b.textContent;document.getElementById('bt').textContent=b.textContent;document.querySelectorAll('.bag .btn,.mbar .btn:not(.ghost)').forEach(x=>x.textContent='Commander pour '+b.textContent)});
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id==='p-'+b.dataset.p))});
+document.querySelectorAll('.add').forEach(b=>b.onclick=()=>{b.classList.toggle('done');b.textContent=b.classList.contains('done')?'✓ Ajouté':'+ Ajouter'});
+const r=document.getElementById('r');r.oninput=()=>{const v=+r.value;document.getElementById('rv').textContent=v;document.getElementById('fm').textContent=v<300?'Petit food truck':v<1200?'Grand food truck':'Structure barnum'};
+document.querySelectorAll('.chips').forEach(g=>g.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{g.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));c.classList.add('on')}));
+</script>
+</body>
+</html>
