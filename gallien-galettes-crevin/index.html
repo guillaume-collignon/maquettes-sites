@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galettes & crêpes Gallien · Artisan galettier-crêpier à Crevin</title>
+<meta name="description" content="Roland Gallien, artisan galettier-crêpier à Crevin : galettes de blé noir 100 % breton IGP et crêpes. Réservez vos galettes pour le marché, demandez un devis pour vos grosses commandes.">
+<style>
+@font-face{font-family:"Inter";src:url("assets/Inter.ttf") format("truetype");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Calistoga";src:url("assets/Calistoga.ttf") format("truetype");font-weight:400;font-display:swap}
+:root{--bg:#fbf6ee;--card:#fff;--ink:#2a1c12;--muted:#6f6257;--line:#ece2d4;--accent:#e9a43c;--accent-soft:#fcefd9;--sar:#5b3b25;--green:#2f7a52;--green-soft:#e3f2e9;--r:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1220px;margin:0 auto;padding:0 28px}
+h1,h2,h3.d,.display{font-family:Calistoga,Georgia,serif;font-weight:400;letter-spacing:-.01em;line-height:1.05}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:14px 22px;font:700 15px/1 Inter,sans-serif;cursor:pointer;background:var(--accent);color:var(--ink);transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn.dark{background:var(--ink);color:#fff}
+.pill{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--sar)}
+.pill.g{background:var(--green-soft);color:var(--green)}
+/* nav */
+.nav{position:sticky;top:0;z-index:30;background:rgba(251,246,238,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+.brand{display:flex;align-items:center;gap:12px}
+.mono{width:44px;height:44px;border-radius:50%;background:var(--sar);color:var(--accent);display:grid;place-items:center;font:400 24px Calistoga,serif;box-shadow:inset 0 0 0 3px #7a5238}
+.brand b{font-family:Calistoga,serif;font-weight:400;font-size:21px;display:block;line-height:1.1}
+.brand small{display:block;font-size:12px;color:var(--muted)}
+.nav ul{display:flex;gap:28px;list-style:none;font-size:14.5px;font-weight:500;color:var(--muted)}
+.nav .right{display:flex;gap:10px;align-items:center}
+/* hero */
+.hero{padding:46px 0 0;text-align:center;position:relative}
+.hero h1{font-size:74px;max-width:980px;margin:18px auto 16px}
+.hero h1 span{color:var(--sar);background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
+.hero p.lead{font-size:19px;color:var(--muted);max-width:640px;margin:0 auto}
+.console{position:relative;margin:34px auto 0;display:grid;grid-template-columns:1.15fr 1fr .95fr;background:var(--card);border:1px solid var(--line);border-radius:30px;box-shadow:0 40px 80px -40px rgba(42,28,18,.35);text-align:left;overflow:hidden;z-index:2}
+.console>div{padding:26px 26px 24px}
+.console>div+div{border-left:1px solid var(--line)}
+.step{font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.step i{font-style:normal;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:11px;letter-spacing:0}
+.mk{display:flex;align-items:center;gap:12px;width:100%;border:1.5px solid var(--line);background:#fff;border-radius:16px;padding:10px 12px;margin-bottom:8px;cursor:pointer;font:inherit;color:inherit;text-align:left}
+.mk .dd{width:46px;flex:none;text-align:center;border-radius:11px;background:var(--bg);padding:5px 0;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase}
+.mk .dd b{display:block;font:400 18px/1.1 Calistoga,serif;color:var(--ink);text-transform:none}
+.mk strong{display:block;font-size:14.5px}
+.mk span.h{font-size:12.5px;color:var(--muted)}
+.mk.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.mk.on .dd{background:var(--accent);color:var(--ink)}
+.prod{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.prod img{width:56px;height:56px;border-radius:14px;object-fit:cover}
+.prod .t{flex:1}
+.prod .t b{display:block;font-size:14.5px}
+.prod .t small{font-size:12.5px;color:var(--muted)}
+.stepper{display:flex;align-items:center;gap:6px;background:var(--bg);border-radius:999px;padding:4px}
+.stepper button{width:30px;height:30px;border-radius:50%;border:0;background:#fff;font:700 16px Inter;cursor:pointer;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.stepper output{min-width:26px;text-align:center;font-weight:800;font-size:15px}
+.slots{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.slot{border:1.5px solid var(--line);background:#fff;border-radius:11px;padding:8px 11px;font:600 13px Inter;cursor:pointer;color:var(--ink)}
+.slot.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.sum{background:var(--accent-soft)}
+.ticket{background:#fff;border-radius:18px;padding:16px 16px 12px;margin-bottom:14px;position:relative}
+.ticket:after{content:"";position:absolute;left:14px;right:14px;bottom:-1px;border-bottom:2px dashed var(--line)}
+.ticket .row{display:flex;justify-content:space-between;font-size:14px;padding:4px 0}
+.ticket .row b{font-weight:700}
+.ticket .who{font-size:12.5px;color:var(--muted);margin-bottom:6px}
+.sum .btn{width:100%;padding:16px}
+.sum .fine{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+.smsmini{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:12.5px;color:var(--sar)}
+.smsmini .ic{width:30px;height:30px;border-radius:10px;background:#fff;display:grid;place-items:center;flex:none}
+.band{position:relative;margin-top:-90px;height:400px;border-radius:0;overflow:hidden}
+.band img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.band:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg) 0%,rgba(251,246,238,0) 34%,rgba(42,28,18,.15) 100%);z-index:1}
+.band .float{position:absolute;z-index:2;bottom:28px;background:rgba(255,255,255,.95);border-radius:18px;padding:12px 16px;font-size:14px;display:flex;gap:10px;align-items:center;box-shadow:0 14px 30px -14px rgba(0,0,0,.35)}
+.band .float b{display:block}
+.band .f1{left:6%}.band .f2{right:6%}
+/* sections */
+section.block{padding:84px 0 10px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:34px}
+.head h2{font-size:46px;max-width:640px}
+.head p{color:var(--muted);max-width:400px}
+.kicker{font-size:13px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#b0711b;margin-bottom:10px;display:block}
+/* week */
+.week{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.day{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;position:relative;overflow:hidden}
+.day .n{font:400 30px/1 Calistoga,serif}
+.day .w{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.day .place{font-weight:700;margin-top:14px}
+.day .hrs{font-size:13.5px;color:var(--muted)}
+.day .hrs + .place{margin-top:12px}
+.day.today{background:var(--ink);color:#fff;border-color:var(--ink)}
+.day.today .w,.day.today .hrs{color:#d8c9b8}
+.day.today .pill{position:absolute;top:16px;right:16px;background:var(--accent);color:var(--ink)}
+.day.off{background:transparent;border-style:dashed;color:var(--muted)}
+/* auto */
+.auto{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.phone{background:var(--ink);color:#fff;border-radius:28px;padding:26px;position:relative}
+.phone .lbl{font-size:12px;opacity:.7;margin-bottom:12px;display:flex;justify-content:space-between}
+.sms{background:#fff;color:var(--ink);border-radius:18px 18px 18px 5px;padding:12px 14px;font-size:14.5px;margin-bottom:10px;max-width:88%}
+.sms.r{background:var(--accent);margin-left:auto;border-radius:18px 18px 5px 18px;max-width:60%}
+.sms small{display:block;font-size:11.5px;color:var(--muted);margin-top:4px}
+.tag2{display:inline-flex;gap:6px;align-items:center;font-size:12px;background:rgba(255,255,255,.12);padding:6px 11px;border-radius:999px;margin-top:6px}
+.prep{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:26px}
+.prep h3{font-size:20px;margin-bottom:4px}
+.prep .sub{color:var(--muted);font-size:14.5px;margin-bottom:18px}
+.bar{display:grid;grid-template-columns:150px 1fr 54px;align-items:center;gap:12px;font-size:14px;margin-bottom:12px}
+.bar .tr{height:12px;border-radius:9px;background:var(--bg);overflow:hidden}
+.bar .tr i{display:block;height:100%;border-radius:9px;background:var(--accent)}
+.bar .tr i.s{background:var(--sar)}
+.bar b{text-align:right}
+.prep .names{margin-top:18px;border-top:1px dashed var(--line);padding-top:14px;font-size:13.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px}
+.prep .names span{background:var(--bg);border-radius:999px;padding:5px 10px;color:var(--ink)}
+/* big orders */
+.big{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:stretch}
+.form{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:28px}
+.form h3{font-size:22px;margin-bottom:4px}
+.form .sub{color:var(--muted);font-size:14.5px;margin-bottom:18px}
+.lab{font-size:13px;font-weight:700;margin:14px 0 8px;display:block}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:14px;padding:9px 13px;font:500 14px Inter,sans-serif;cursor:pointer;color:var(--ink)}
+.chip.on{border-color:var(--ink);background:var(--ink);color:#fff}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{border:1.5px solid var(--line);border-radius:14px;padding:11px 14px;font-size:14.5px;background:#fff}
+.field small{display:block;font-size:11.5px;color:var(--muted)}
+.qty{display:flex;align-items:center;gap:14px}
+.qty input{flex:1;accent-color:var(--sar)}
+.qty b{font:400 26px Calistoga,serif;min-width:70px;text-align:right}
+.form .btn{margin-top:20px}
+.sorted{display:flex;gap:10px;align-items:center;margin-top:16px;font-size:13px;color:var(--green);background:var(--green-soft);padding:10px 12px;border-radius:14px}
+.photo{position:relative;border-radius:28px;overflow:hidden;min-height:440px}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo .cap{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(255,255,255,.95);border-radius:18px;padding:14px 16px;font-size:14px}
+.photo .cap b{display:block;font-size:15.5px}
+/* savoir-faire */
+.sf{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:250px 250px;gap:18px}
+.tile{position:relative;border-radius:var(--r);overflow:hidden;background:#eee}
+.tile img{width:100%;height:100%;object-fit:cover}
+.tile.tall{grid-row:span 2}
+.tile .cap{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.95);border-radius:14px;padding:9px 13px;font-size:13.5px;font-weight:600}
+.tile.txt{background:var(--sar);color:#fff;padding:26px;display:flex;flex-direction:column;justify-content:space-between}
+.tile.txt h3{font-family:Calistoga,serif;font-weight:400;font-size:30px;line-height:1.1}
+.tile.txt p{font-size:14.5px;color:#e9dccd}
+.tile.rev{background:var(--accent-soft);padding:24px;display:flex;flex-direction:column;justify-content:space-between}
+.tile.rev q{font:400 20px/1.3 Calistoga,serif;quotes:"« " " »"}
+.tile.rev small{color:var(--muted);font-size:13px}
+.stars{color:#c9821f;letter-spacing:2px;font-size:15px}
+/* faq bot */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.bot{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:24px}
+.bot .top{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.bot .top .mono{width:38px;height:38px;font-size:19px}
+.bot .top small{display:block;color:var(--green);font-size:12.5px;font-weight:600}
+.msg{max-width:84%;padding:11px 14px;border-radius:18px;font-size:14.5px;margin-bottom:10px}
+.msg.q{background:var(--bg);margin-left:auto;border-radius:18px 18px 5px 18px}
+.msg.a{background:var(--accent-soft);border-radius:18px 18px 18px 5px}
+.sugg{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.sugg span{font-size:13px;border:1.5px solid var(--line);border-radius:999px;padding:7px 12px;background:#fff}
+.contact{background:var(--ink);color:#fff;border-radius:28px;padding:30px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.contact h3{font-size:34px;line-height:1.1}
+.contact p{color:#d8c9b8}
+.contact .lines{display:grid;gap:10px;font-size:15px}
+.contact .lines div{display:flex;gap:12px;align-items:center;background:rgba(255,255,255,.07);border-radius:14px;padding:12px 14px}
+.contact .btns{display:flex;gap:10px;flex-wrap:wrap}
+.contact .btn.ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3)}
+footer{padding:50px 0 40px;color:var(--muted);font-size:13.5px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:24px}
+.mbar{display:none}
+@media (max-width:900px){
+ .wrap{padding:0 18px}
+ .nav ul,.nav .right .ghost{display:none}
+ .nav .wrap{height:62px}
+ .nav .right .btn{padding:10px 14px;font-size:13.5px}
+ .hero{padding-top:26px}
+ .hero h1{font-size:40px;margin:14px auto 12px}
+ .hero p.lead{font-size:16px}
+ .console{grid-template-columns:1fr;border-radius:24px;margin-top:22px}
+ .console>div{padding:20px 18px}
+ .console>div+div{border-left:0;border-top:1px solid var(--line)}
+ .mk{padding:9px 10px}
+ .band{height:230px;margin-top:-50px}
+ .band .float{font-size:12.5px;padding:9px 12px;bottom:14px}
+ .band .f2{display:none}
+ .band .f1{left:18px}
+ section.block{padding:56px 0 6px}
+ .head{display:block;margin-bottom:22px}
+ .head h2{font-size:32px}
+ .head p{margin-top:10px}
+ .week{grid-template-columns:1fr 1fr;gap:10px}
+ .day{padding:16px}
+ .auto,.big,.duo{grid-template-columns:1fr}
+ .bar{grid-template-columns:110px 1fr 44px;font-size:13px}
+ .photo{min-height:300px}
+ .grid2{grid-template-columns:1fr}
+ .sf{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+ .sf .tile{height:200px}
+ .sf .tile.tall{grid-row:auto;grid-column:span 2;height:240px}
+ .sf .tile.txt,.sf .tile.rev{grid-column:span 2;height:auto}
+ .contact h3{font-size:28px}
+ body{padding-bottom:84px}
+ .mbar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:12px 14px calc(12px + env(safe-area-inset-bottom))}
+ .mbar .btn{flex:1;padding:15px 10px}
+ .mbar .btn.ghost{flex:.55}
+}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+ <a class="brand" href="#"><span class="mono">G</span><span><b>Galettes Gallien</b><small>Artisan galettier-crêpier · Crevin</small></span></a>
+ <ul><li><a href="#commander">Commander</a></li><li><a href="#marches">Les marchés</a></li><li><a href="#grosses">Grosses commandes</a></li><li><a href="#questions">Questions</a></li></ul>
+ <div class="right"><a class="btn ghost" href="tel:+33661203052">06 61 20 30 52</a><a class="btn" href="#commander">Réserver</a></div>
+</div></nav>
+
+<header class="hero" id="commander"><div class="wrap">
+ <span class="pill">🌾 Blé noir 100 % breton · IGP</span>
+ <h1>Vos galettes vous attendent <span>au marché</span>.</h1>
+ <p class="lead">Réservez la veille, passez au stand, repartez avec votre paquet sans attendre. Le lundi soir est réglé.</p>
+
+ <div class="console">
+  <div>
+   <div class="step"><i>1</i>Choisissez votre marché</div>
+   <button class="mk on" data-slots="9h30 – 10h30|15h30 – 16h30|16h30 – 17h30|17h30 – 18h30|18h30 – 19h30"><span class="dd">Lun<b>26</b></span><span><strong>Crevin · parking de la pharmacie</strong><span class="h">9h30 – 10h30 et 15h30 – 19h30</span></span></button>
+   <button class="mk" data-slots="8h00 – 9h30|9h30 – 11h00|11h00 – 12h45"><span class="dd">Mer<b>28</b></span><span><strong>Pacé · marché</strong><span class="h">8h00 – 12h45</span></span></button>
+   <button class="mk" data-slots="8h00 – 9h30|9h30 – 11h00|11h00 – 12h45"><span class="dd">Jeu<b>29</b></span><span><strong>Rennes · quartier Jeanne d'Arc</strong><span class="h">8h00 – 12h45</span></span></button>
+   <button class="mk" data-slots="8h00 – 9h30|9h30 – 11h00|11h00 – 12h45|16h00 – 19h00 (Bourg-des-Comptes)"><span class="dd">Ven<b>30</b></span><span><strong>Rennes Bréquigny · Bourg-des-Comptes</strong><span class="h">8h00 – 12h45 · 16h00 – 19h00</span></span></button>
+  </div>
+  <div>
+   <div class="step"><i>2</i>Composez votre paquet</div>
+   <div class="prod"><img src="assets/galettes-roulees.jpg" alt="Galettes de blé noir"><div class="t"><b>Galettes de blé noir</b><small>Farine 100 % bretonne IGP · par paquet de 6</small></div><div class="stepper" data-k="g"><button>−</button><output>2</output><button>+</button></div></div>
+   <div class="prod"><img src="assets/bilig-vapeur.jpg" alt="Crêpes sur le bilig"><div class="t"><b>Crêpes</b><small>Pour le goûter · par paquet de 6</small></div><div class="stepper" data-k="c"><button>−</button><output>1</output><button>+</button></div></div>
+   <div class="step" style="margin-top:18px"><i>3</i>Heure de passage</div>
+   <div class="slots" id="slots"></div>
+  </div>
+  <div class="sum">
+   <div class="step"><i>4</i>Votre réservation</div>
+   <div class="ticket">
+    <div class="who">Au nom de <b>Mme Martin</b> · 06 •• •• •• 12</div>
+    <div class="row"><span>Galettes de blé noir</span><b id="tg">12</b></div>
+    <div class="row"><span>Crêpes</span><b id="tc">6</b></div>
+    <div class="row"><span id="tm">Lundi · Crevin</span><b id="ts">17h30 – 18h30</b></div>
+   </div>
+   <button class="btn">Réserver mes galettes</button>
+   <p class="fine">Réglé sur place, au stand. Aucun compte à créer.</p>
+   <div class="smsmini"><span class="ic">💬</span><span>Confirmation par SMS tout de suite, petit rappel la veille au soir. Votre paquet est prêt, à votre nom.</span></div>
+  </div>
+ </div>
+</div>
+<div class="band"><img src="assets/crepiere-marche.jpg" alt="Galette étalée au rozell sur la crêpière, au marché">
+ <div class="float f1"><span style="font-size:22px">🥞</span><span><b>Galettes et crêpes artisanales</b>Faites par Roland, à Crevin</span></div>
+ <div class="float f2"><span style="font-size:22px">★</span><span><b>5/5 sur Google</b>« Les galettes sont incroyables ! »</span></div>
+</div>
+</header>
+
+<section class="block" id="marches"><div class="wrap">
+ <div class="head"><div><span class="kicker">La semaine</span><h2>Où trouver le stand, jour par jour</h2></div><p>Toujours à jour : en cas de marché annulé ou d'horaire qui change, le site et les clients qui ont réservé sont prévenus automatiquement.</p></div>
+ <div class="week">
+  <div class="day today"><span class="pill">Prochain</span><div class="w">Lundi</div><div class="n">Crevin</div><div class="place">Parking de la pharmacie</div><div class="hrs">9h30 – 10h30<br>15h30 – 19h30</div></div>
+  <div class="day off"><div class="w">Mardi</div><div class="n">Pas de marché</div><div class="hrs" style="margin-top:14px">Les réservations en ligne restent ouvertes, 24h/24.</div></div>
+  <div class="day"><div class="w">Mercredi</div><div class="n">Pacé</div><div class="place">Marché</div><div class="hrs">8h00 – 12h45</div></div>
+  <div class="day"><div class="w">Jeudi</div><div class="n">Rennes</div><div class="place">Quartier Jeanne d'Arc</div><div class="hrs">8h00 – 12h45</div></div>
+  <div class="day"><div class="w">Vendredi</div><div class="n">Rennes & Bourg</div><div class="place">Bréquigny</div><div class="hrs">8h00 – 12h45</div><div class="place">Bourg-des-Comptes</div><div class="hrs">16h00 – 19h00</div></div>
+ </div>
+</div></section>
+
+<section class="block"><div class="wrap">
+ <div class="head"><div><span class="kicker">Ce qui se fait tout seul</span><h2>Moins de coups de fil, plus de galettes</h2></div><p>Les réservations arrivent rangées par marché. La veille, vous savez exactement combien en préparer, sans carnet ni messages à recopier.</p></div>
+ <div class="auto">
+  <div class="phone">
+   <div class="lbl"><span>SMS · Galettes Gallien</span><span>automatique</span></div>
+   <div class="sms">Bonjour Mme Martin, c'est noté ! 12 galettes de blé noir + 6 crêpes vous attendent lundi à Crevin, entre 17h30 et 18h30. 🥞<small>Envoyé dès la réservation</small></div>
+   <div class="sms">Petit rappel : votre paquet est prêt demain au stand, parking de la pharmacie. Un empêchement ? Répondez « DÉCALER ».<small>Dimanche, 19h00</small></div>
+   <div class="sms r">Parfait, à demain !</div>
+   <span class="tag2">⚙️ Confirmation + rappel envoyés automatiquement</span>
+  </div>
+  <div class="prep">
+   <h3>Votre liste du lundi, prête dimanche soir</h3>
+   <p class="sub">Exemple de récapitulatif reçu par mail ou SMS, à partir des réservations en ligne.</p>
+   <div class="bar"><span>Galettes réservées</span><span class="tr"><i style="width:78%"></i></span><b>96</b></div>
+   <div class="bar"><span>Crêpes réservées</span><span class="tr"><i class="s" style="width:40%"></i></span><b>42</b></div>
+   <div class="bar"><span>Créneau 9h30</span><span class="tr"><i style="width:22%"></i></span><b>5</b></div>
+   <div class="bar"><span>Créneau 17h30</span><span class="tr"><i style="width:64%"></i></span><b>14</b></div>
+   <div class="names"><span>Mme Martin · 2 + 1</span><span>Julien · 1</span><span>Famille Robert · 4</span><span>Annie · 1 + 2</span><span>+ 22 autres</span></div>
+  </div>
+ </div>
+</div></section>
+
+<section class="block" id="grosses"><div class="wrap">
+ <div class="head"><div><span class="kicker">Particuliers & professionnels</span><h2>Une fête, une crêperie, un comité ? Demandez vos quantités</h2></div><p>Petites et grosses quantités, comme aujourd'hui. Les demandes arrivent complètes et triées par date : il ne reste qu'à répondre.</p></div>
+ <div class="big">
+  <div class="form">
+   <h3>Demande de grosse commande</h3>
+   <p class="sub">Réponse rapide par téléphone ou par mail.</p>
+   <span class="lab">C'est pour…</span>
+   <div class="chips"><button class="chip on">Anniversaire / fête</button><button class="chip">Mariage</button><button class="chip">Association</button><button class="chip">Restaurant / traiteur</button><button class="chip">Comité d'entreprise</button></div>
+   <span class="lab">Combien de galettes ?</span>
+   <div class="qty"><input type="range" min="12" max="400" value="150" id="r"><b id="rv">150</b></div>
+   <span class="lab">Et des crêpes ?</span>
+   <div class="chips"><button class="chip">Non merci</button><button class="chip on">Oui, une cinquantaine</button><button class="chip">Oui, beaucoup</button></div>
+   <div class="grid2" style="margin-top:14px">
+    <div class="field"><small>Date souhaitée</small>Samedi 14 novembre</div>
+    <div class="field"><small>Retrait</small>À Crevin ou sur un marché</div>
+   </div>
+   <button class="btn dark">Envoyer ma demande</button>
+   <div class="sorted">✔︎ Votre demande est classée automatiquement au 14 novembre, avec les quantités : rien à recopier.</div>
+  </div>
+  <div class="photo"><img src="assets/galette-complete.jpg" alt="Galette complète de blé noir"><div class="cap"><b>Depuis plusieurs années, pour différents événements…</b>« …je prends mes crêpes et mes galettes là-bas, c'est top. » · Avis Google</div></div>
+ </div>
+</div></section>
+
+<section class="block"><div class="wrap">
+ <div class="head"><div><span class="kicker">Le savoir-faire</span><h2>Du blé noir breton, une crêpière, et le sourire</h2></div><p>Des galettes et des crêpes faites par un artisan, pour la maison, les marchés et les grandes tablées.</p></div>
+ <div class="sf">
+  <div class="tile tall"><img src="assets/crepiere-marche.jpg" alt="Galette sur la crêpière"><span class="cap">Étalée au rozell, une par une</span></div>
+  <div class="tile txt"><h3>Blé noir 100 % breton, certifié IGP</h3><p>La base de chaque galette. Pour les crêpes, la même attention, version goûter.</p></div>
+  <div class="tile"><img src="assets/galette-saucisse.jpg" alt="Galette-saucisse"><span class="cap">La galette-saucisse, évidemment</span></div>
+  <div class="tile"><img src="assets/bilig-vapeur.jpg" alt="Crêpière fumante"><span class="cap">Tout juste sortie du bilig</span></div>
+  <div class="tile rev"><div class="stars">★★★★★</div><q>Et maintenant c'est un quotidien de prendre des galettes le lundi.</q><small>Avis Google</small></div>
+ </div>
+</div></section>
+
+<section class="block" id="questions"><div class="wrap">
+ <div class="duo">
+  <div class="bot">
+   <div class="top"><span class="mono">G</span><div><b>Une question ? Réponse tout de suite</b><small>● Disponible 24h/24, même pendant le marché</small></div></div>
+   <div class="msg q">Vous êtes où jeudi ?</div>
+   <div class="msg a">Jeudi, au marché du quartier Jeanne d'Arc à Rennes, de 8h00 à 12h45. Vous voulez réserver votre paquet ?</div>
+   <div class="msg q">Je peux commander 200 galettes pour une fête ?</div>
+   <div class="msg a">Oui, les grosses quantités sont possibles, pour les particuliers comme pour les pros. Indiquez la date et le nombre ici, Roland vous recontacte.</div>
+   <div class="sugg"><span>C'est quelle farine ?</span><span>Où est le stand à Crevin ?</span><span>Je peux payer par carte ?</span></div>
+  </div>
+  <div class="contact">
+   <div><h3>Une envie de galettes, une commande spéciale ?</h3><p style="margin-top:10px">Roland Gallien, artisan galettier-crêpier.</p></div>
+   <div class="lines">
+    <div>📞 06 61 20 30 52</div>
+    <div>✉️ gallien.rolland@neuf.fr</div>
+    <div>📍 3 rue du Champ Guihoré, 35320 Crevin</div>
+   </div>
+   <div class="btns"><a class="btn" href="#commander">Réserver pour le marché</a><a class="btn ghost" href="#grosses">Grosse commande</a></div>
+  </div>
+ </div>
+</div></section>
+
+<footer><div class="wrap"><span>© Galettes Gallien · Artisan galettier-crêpier · Crevin (35)</span><span>Photos d'illustration : Wikimedia Commons (Janine from Mililani, Rhian, Arnaud 25, Laurent Guedon) · CC BY / CC BY-SA</span></div></footer>
+
+<div class="mbar"><a class="btn ghost" href="tel:+33661203052">📞 Appeler</a><a class="btn" href="#commander">Réserver mes galettes</a></div>
+
+<script>
+const slotsEl=document.getElementById('slots');
+function renderSlots(btn,pick){const s=btn.dataset.slots.split('|');slotsEl.innerHTML='';s.forEach((t,i)=>{const b=document.createElement('button');b.className='slot'+(i===(pick??Math.min(3,s.length-1))?' on':'');b.textContent=t;b.onclick=()=>{slotsEl.querySelectorAll('.slot').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById('ts').textContent=t};slotsEl.appendChild(b)});const on=slotsEl.querySelector('.slot.on');document.getElementById('ts').textContent=on.textContent;document.getElementById('tm').textContent=btn.querySelector('.dd').childNodes[0].textContent.replace('Lun','Lundi').replace('Mer','Mercredi').replace('Jeu','Jeudi').replace('Ven','Vendredi')+' · '+btn.querySelector('strong').textContent.split(' · ')[0]}
+document.querySelectorAll('.mk').forEach(b=>b.onclick=()=>{document.querySelectorAll('.mk').forEach(x=>x.classList.remove('on'));b.classList.add('on');renderSlots(b)});
+renderSlots(document.querySelector('.mk.on'),3);
+document.querySelectorAll('.stepper').forEach(st=>{const o=st.querySelector('output');const [m,p]=st.querySelectorAll('button');const up=()=>{document.getElementById('t'+st.dataset.k).textContent=(+o.value)*6};m.onclick=()=>{o.value=Math.max(0,+o.value-1);up()};p.onclick=()=>{o.value=+o.value+1;up()}});
+const r=document.getElementById('r');r.oninput=()=>document.getElementById('rv').textContent=r.value;
+document.querySelectorAll('.chips').forEach(g=>g.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{g.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));c.classList.add('on')}));
+</script>
+</body>
+</html>
